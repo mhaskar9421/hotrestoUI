@@ -9,15 +9,12 @@ import 'rxjs/Rx';
 export class LoginService {
     constructor(private http: HttpClient) { }
 
-    // login(username: string, password: string) {
-    //     return this.http.post<void>(environment.BACKEND.URL.loginUser, { username: username, password: password })
-    //     {
-    //         headers: new HttpHeaders()
-    //             .set('Accept', 'aplication/json')
-    //     }).map(res => {
-    //         return res;
-    //     });
-    // }
+    login(username: string, password: string) {
+        return this.http.post<any>(environment.BACKEND.URL.loginUser, { username: username, password: password })
+            .map(res => {
+                return res;
+            });
+    }
 
     resetPassword(email: string) {
         return this.http.post<any>('environment.BACKEND.URL.resetPwd', { email: email })
