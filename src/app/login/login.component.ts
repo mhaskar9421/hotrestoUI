@@ -30,24 +30,24 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   loginUser() {
-    this.router.navigate(['home']);
+    this.router.navigate(['dashboard']);
     this.loading = true;
     this.loginService.login(this.model.username, this.model.password)
       .subscribe(
-        res => {
-          console.log(res);
-          if (res) {
-            this.router.navigate(['dashboard']);
-          }
-          //else {
-          //this.errorDisplay = true;
-          //this.errorText = data.message;
-          //}
-        },
-        error => {
-          console.log(error);
-          this.loading = false;
-        });
+      res => {
+        console.log(res);
+        if (res) {
+          this.router.navigate(['dashboard']);
+        }
+        //else {
+        //this.errorDisplay = true;
+        //this.errorText = data.message;
+        //}
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+      });
   }
   switchForms() {
     this.isUserLoggedIn = !this.isUserLoggedIn;
@@ -57,13 +57,13 @@ export class LoginComponent implements OnInit {
   recoverPassword() {
     this.loginService.resetPassword(this.model.email)
       .subscribe(
-        data => {
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-          this.loading = false;
-        });
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+      });
   }
 
   // onLogin() {
