@@ -36,13 +36,13 @@
       <h5 class="account-body-subtitle">Please log in to get access.</h5>
       <form class="form account-form" #loginForm="ngForm">
         <div class="form-group">
-          <input type="text" class="form-control" [(ngModel)]="model.username" id="name" name="username"
-            placeholder="Username" tabindex="1" required>
+          <input type="text" class="form-control" required [(ngModel)]="model.username" id="name" name="username" placeholder="Username"
+            tabindex="1">
         </div>
         <!-- /.form-group -->
         <div class="form-group">
-          <input type="password" class="form-control" [(ngModel)]="model.password" id="password" name="password"
-            placeholder="Password" tabindex="2" required>
+          <input type="password" class="form-control" required [(ngModel)]="model.password" id="password" name="password" placeholder="Password"
+            tabindex="2">
         </div>
         <!-- /.form-group -->
         <div class="form-group clearfix">
@@ -78,8 +78,8 @@
               " placeholder="Your Email " tabindex="1 ">
         </div>
         <div class="form-group ">
-          <button type="button" [disabled]="!loginForm.valid" (click)="recoverPassword()"
-            class="btn btn-secondary btn-block btn-lg " tabindex="2 ">
+          <button type="button" [disabled]="!loginForm.valid" (click)="recoverPassword()" class="btn btn-secondary btn-block btn-lg "
+            tabindex="2 ">
             Reset &nbsp;
           </button>
         </div>
