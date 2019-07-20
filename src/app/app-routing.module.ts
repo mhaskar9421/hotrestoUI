@@ -10,20 +10,6 @@ import { UserDetailComponent } from "./users/user-detail/user-detail.component";
 
 const appRoutes: Routes = [
     {
-        path: '',
-        component: LoginComponent
-    },
-    {
-        path: 'dashboard', component: DashboardComponent,
-        children: [
-            { path: 'registerdusers', component: RegisterdUsersComponent },
-            { path: 'registration', component: RegistrationComponent },
-            { path: 'visitors', component: VisitorsComponent },
-            { path: 'myprofile', component: MyprofileComponent },
-            { path: 'noticeboard', component: NoticeboardComponent },
-        ]
-    }
-    {
         path: 'home',
         redirectTo: '/home/dashboard',
         pathMatch: 'full'
