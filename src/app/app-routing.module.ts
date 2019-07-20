@@ -10,58 +10,67 @@ import { UserDetailComponent } from "./users/user-detail/user-detail.component";
 
 const appRoutes: Routes = [
     {
-        path: 'home',
-        redirectTo: '/home/dashboard',
-        pathMatch: 'full'
-    },
-    {
-        path: 'home',
-        canActivate: [AuthGuard],
-        component: HomeComponent,
-        canActivateChild: [AuthGuard],
-        children: [
-            {
-                path: 'dashboard',
-                component: DashboardComponent
-                // resolve: { server: ServerResolver }
-            },
-            {
-                path: 'users',
-                children: [
-                    {
-                        path: '',
-                        redirectTo: 'list',
-                        pathMatch: 'full'
-                    },
-                    {
-                        path: 'list',
-                        component: UsersComponent
-                    },
-                    {
-                        path: ':id',
-                        component: UserDetailComponent
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        path: 'login',
+        path: '',
         component: LoginComponent
-        // resolve: { server: ServerResolver }
     },
     {
-        path: 'not-found',
-        component: ErrorPageComponent,
-        data: { message: 'Error : Page not Found!' }
-    },
-    //important: Default must be at the routes end
-    {
-        path: '**',
-        redirectTo: '/not-found'
+        path: 'dashboard',
+        component: DashboardComponent
     }
-
 ];
+//     {
+//         path: 'home',
+//         redirectTo: '/home/dashboard',
+//         pathMatch: 'full'
+//     },
+//     {
+//         path: 'home',
+//         canActivate: [AuthGuard],
+//         component: HomeComponent,
+//         canActivateChild: [AuthGuard],
+//         children: [
+//             {
+//                 path: 'dashboard',
+//                 component: DashboardComponent
+//                 // resolve: { server: ServerResolver }
+//             },
+//             {
+//                 path: 'users',
+//                 children: [
+//                     {
+//                         path: '',
+//                         redirectTo: 'list',
+//                         pathMatch: 'full'
+//                     },
+//                     {
+//                         path: 'list',
+//                         component: UsersComponent
+//                     },
+//                     {
+//                         path: ':id',
+//                         component: UserDetailComponent
+//                     }
+//                 ]
+//             }
+//         ]
+//     },
+//     {
+//         path: 'login',
+//         component: LoginComponent
+//         // resolve: { server: ServerResolver }
+//     },
+//     {
+//         path: 'not-found',
+//         component: ErrorPageComponent,
+//         data: { message: 'Error : Page not Found!' }
+//     },
+//     //important: Default must be at the routes end
+//     {
+//         path: '**',
+//         redirectTo: '/not-found'
+//     }
+
+// ];
 @NgModule({
 
     // hashtag -> use useHash:true
