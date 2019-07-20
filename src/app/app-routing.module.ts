@@ -3,17 +3,26 @@ import { HomeComponent } from "./home/home.component";
 import { Routes, RouterModule, Router } from "@angular/router";
 import { AuthGuard } from "./auth-guard.service";
 import { ErrorPageComponent } from "./error-page/error-page.component";
-import { LoginComponent } from "./login/login.component";
-import { DashboardComponent } from "./dashboard/dashboard.component";
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from "./users/users.component";
 import { UserDetailComponent } from "./users/user-detail/user-detail.component";
 
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: '/home/dashboard',
-        pathMatch: 'full'
+        component: LoginComponent
     },
+    {
+        path: 'dashboard', component: DashboardComponent,
+        children: [
+            { path: 'registerdusers', component: RegisterdUsersComponent },
+            { path: 'registration', component: RegistrationComponent },
+            { path: 'visitors', component: VisitorsComponent },
+            { path: 'myprofile', component: MyprofileComponent },
+            { path: 'noticeboard', component: NoticeboardComponent },
+        ]
+    }
     {
         path: 'home',
         redirectTo: '/home/dashboard',
@@ -40,11 +49,11 @@ const appRoutes: Routes = [
                     },
                     {
                         path: 'list',
-                        component:  UsersComponent 
+                        component: UsersComponent
                     },
                     {
                         path: ':id',
-                        component: UserDetailComponent 
+                        component: UserDetailComponent
                     }
                 ]
             }
