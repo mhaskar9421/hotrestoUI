@@ -42,6 +42,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { CalendarModule } from 'primeng/calendar';
 
 import { environment } from '../environments/environment'; // as per your path
+import { Globals } from '../Globals';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { environment } from '../environments/environment'; // as per your path
     ToastrModule.forRoot()
   ],
   providers: [
+    Globals,
     {
       provide: LOCALE_ID,
       useValue: 'en-US'

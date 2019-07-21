@@ -1,17 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Model } from './login.model';
 import { LoginService } from './login.service';
-
-import { AuthService } from '../auth.service';
-
+import { Globals } from '../../globals';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [LoginService]
+  providers: [LoginService, Globals]
 })
 export class LoginComponent implements OnInit {
 
@@ -21,15 +18,13 @@ export class LoginComponent implements OnInit {
   public model: Model;
   loading = false;
   errorText: string;
-  constructor(private router: Router, private authService: AuthService,
-    private toastrService: ToastrService, private loginService: LoginService) {
+  constructor(private router: Router, private loginService: LoginService, private constants: Globals) {
     this.model = new Model();
   }
 
   ngOnInit() {
   }
   loginUser() {
-    //this.router.navigate(['dashboard']);
     this.loading = true;
     this.loginService.login(this.model.username, this.model.password)
       .subscribe(
@@ -40,7 +35,7 @@ export class LoginComponent implements OnInit {
         }
         else {
           this.loading = true;
-          this.errorText = 'Login Failed';
+          this.errorText = 'constants.error_text';
         }
       },
       error => {
