@@ -11,8 +11,12 @@ import { UserDetailComponent } from "./users/user-detail/user-detail.component";
 const appRoutes: Routes = [
     {
         path: '',
-        component: LoginComponent,
+        redirectTo: "/login",
         pathMatch: 'full'
+    },
+    {
+        path: 'login',
+        component: LoginComponent
     },
     {
         path: 'dashboard',
@@ -66,11 +70,11 @@ const appRoutes: Routes = [
 //         data: { message: 'Error : Page not Found!' }
 //     },
 //     //important: Default must be at the routes end
-//     {
-//         path: '**',
-//         redirectTo: '/not-found'
-//     }
 
+{
+    // path: '**',
+    //     redirectTo: '/login'
+}
 // ];
 @NgModule({
 
