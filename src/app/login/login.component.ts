@@ -20,8 +20,7 @@ export class LoginComponent implements OnInit {
   forgotPasswordForm = false;
   public model: Model;
   loading = false;
-  //errorDisplay = false;
-  //errorText: string;
+  errorText: string;
   constructor(private router: Router, private authService: AuthService,
     private toastrService: ToastrService, private loginService: LoginService) {
     this.model = new Model();
@@ -30,24 +29,24 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   loginUser() {
-    this.router.navigate(['dashboard']);
+    //this.router.navigate(['dashboard']);
     this.loading = true;
     this.loginService.login(this.model.username, this.model.password)
       .subscribe(
-      res => {
-        console.log(res);
-        if (res) {
-          this.router.navigate(['dashboard']);
-        }
-        //else {
-        //this.errorDisplay = true;
-        //this.errorText = data.message;
-        //}
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
+        data => {
+          console.log(data);
+          if (data) {
+            this.router.navigate(['dashboard']);
+          }
+          else {
+            this.loading = true;
+            this.errorText = 'Login Failed';
+          }
+        },
+        error => {
+          console.log(error);
+          this.loading = false;
+        });
   }
   switchForms() {
     this.isUserLoggedIn = !this.isUserLoggedIn;
@@ -57,13 +56,13 @@ export class LoginComponent implements OnInit {
   recoverPassword() {
     this.loginService.resetPassword(this.model.email)
       .subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
+        data => {
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+          this.loading = false;
+        });
   }
 
   // onLogin() {
