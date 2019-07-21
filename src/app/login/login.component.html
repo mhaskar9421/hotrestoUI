@@ -37,13 +37,13 @@
       <div>{{ errorText }}</div>
       <form class="form account-form" #loginForm="ngForm" method="post">
         <div class="form-group">
-          <input type="text" class="form-control" required [(ngModel)]="model.username" id="username" name="username" placeholder="Username"
-            tabindex="1">
+          <input type="text" class="form-control" required [(ngModel)]="model.username" id="username" name="username"
+            placeholder="Username" tabindex="1">
         </div>
         <!-- /.form-group -->
         <div class="form-group">
-          <input type="password" class="form-control" required [(ngModel)]="model.password" id="password" name="password" placeholder="Password"
-            tabindex="2">
+          <input type="password" class="form-control" required [(ngModel)]="model.password" id="password"
+            name="password" placeholder="Password" tabindex="2">
         </div>
         <!-- /.form-group -->
         <div class="form-group clearfix">
@@ -79,8 +79,8 @@
               " placeholder="Your Email " tabindex="1 ">
         </div>
         <div class="form-group ">
-          <button type="button" [disabled]="!loginForm.valid" (click)="recoverPassword()" class="btn btn-secondary btn-block btn-lg "
-            tabindex="2 ">
+          <button type="button" [disabled]="!loginForm.valid" (click)="recoverPassword()"
+            class="btn btn-secondary btn-block btn-lg " tabindex="2 ">
             Reset &nbsp;
           </button>
         </div>

@@ -22,7 +22,4 @@ export class LoginService {
                 return res;
             });
     }
-    logout(username: string, password: string) {
-        return this.http.post<any>('environment.BACKEND.URL.logout', { username: username, password: password })
-    }
 }

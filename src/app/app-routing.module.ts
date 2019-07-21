@@ -5,8 +5,6 @@ import { AuthGuard } from "./auth-guard.service";
 import { ErrorPageComponent } from "./error-page/error-page.component";
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { UsersComponent } from "./users/users.component";
-import { UserDetailComponent } from "./users/user-detail/user-detail.component";
 
 const appRoutes: Routes = [
     {

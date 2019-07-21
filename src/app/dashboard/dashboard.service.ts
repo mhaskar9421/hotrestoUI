@@ -8,11 +8,11 @@ export class DashboardService {
 
     constructor(private http: HttpClient) { }
 
-    getDashboardStatistics() {
-        return this.http.get([
-            environment.BACKEND.URL.FULL,
-            environment.BACKEND.ENTRY_POINTS.DASHBOARD
-        ].join(''));
+    logout() {
+        return this.http.post<any>(environment.BACKEND.URL.logout, {})
+            .map(res => {
+                return res;
+            });
     }
 
 }

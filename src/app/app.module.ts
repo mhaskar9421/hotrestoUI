@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { StatusService } from './status.service';
-import { UsersService } from './users/users.service';
 import { DashboardService } from './dashboard/dashboard.service';
 import { LoginService } from './login/login.service';
 
@@ -25,10 +24,6 @@ import { LoginComponent } from './login/login.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { NavComponent } from './nav/nav.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { UsersComponent } from './users/users.component';
-import { UserDetailComponent } from './users/user-detail/user-detail.component';
-import { UsersListComponent } from './users/users-list/users-list.component';
-import { UsersFilterComponent } from './users/users-filter/users-filter.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 // modules
@@ -42,7 +37,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { CalendarModule } from 'primeng/calendar';
 
 import { environment } from '../environments/environment'; // as per your path
-import { Globals } from '../Globals';
+import { notificationMessages } from '../notificationMessages';
 
 @NgModule({
   declarations: [
@@ -52,11 +47,7 @@ import { Globals } from '../Globals';
     ErrorPageComponent,
     DashboardComponent,
     NavComponent,
-    SidebarComponent,
-    UsersComponent,
-    UserDetailComponent,
-    UsersListComponent,
-    UsersFilterComponent
+    SidebarComponent
   ],
   entryComponents: [],
   imports: [
@@ -79,7 +70,7 @@ import { Globals } from '../Globals';
     ToastrModule.forRoot()
   ],
   providers: [
-    Globals,
+    notificationMessages,
     {
       provide: LOCALE_ID,
       useValue: 'en-US'
@@ -96,7 +87,6 @@ import { Globals } from '../Globals';
     },
     DashboardService,
     AuthService,
-    UsersService,
     StatusService,
     AuthGuard,
     LoginService

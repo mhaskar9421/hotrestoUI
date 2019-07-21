@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Model } from './login.model';
 import { LoginService } from './login.service';
-import { Globals } from '../../globals';
+import { notificationMessages } from '../../notificationMessages';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [LoginService, Globals]
+  providers: [LoginService, notificationMessages]
 })
 export class LoginComponent implements OnInit {
 
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   public model: Model;
   loading = false;
   errorText: string;
-  constructor(private router: Router, private loginService: LoginService, private constants: Globals) {
+  constructor(private router: Router, private loginService: LoginService, public constants: notificationMessages) {
     this.model = new Model();
   }
 
@@ -28,20 +28,20 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.loginService.login(this.model.username, this.model.password)
       .subscribe(
-      data => {
-        console.log(data);
-        if (data) {
-          this.router.navigate(['dashboard']);
-        }
-        else {
-          this.loading = true;
-          this.errorText = 'constants.error_text';
-        }
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
+        data => {
+          console.log(data);
+          if (data) {
+            this.router.navigate(['dashboard']);
+          }
+          else {
+            this.loading = true;
+            this.errorText = this.constants.error_text;
+          }
+        },
+        error => {
+          console.log(error);
+          this.loading = false;
+        });
   }
   switchForms() {
     this.isUserLoggedIn = !this.isUserLoggedIn;
@@ -51,18 +51,13 @@ export class LoginComponent implements OnInit {
   recoverPassword() {
     this.loginService.resetPassword(this.model.email)
       .subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
-  }
-
-  logoutUser() {
-    this.loginService.logout(this.model.username, this.model.password);
-    this.router.navigate(['login']);
+        data => {
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+          this.loading = false;
+        });
   }
 
   // onLogin() {

@@ -16,32 +16,8 @@ export class StatusService {
     // this.startPolling();
   }
 
-  startPolling() {
-    this.retrieveStatus();
-  }
-
   stopPolling() {
     clearTimeout(this.statuspoller);
   }
-
-
-  //start status polling
-  retrieveStatus() {
-    this.httpClient.get([
-      environment.BACKEND.URL.FULL,
-      environment.BACKEND.ENTRY_POINTS.STATUS
-    ].join('')).pipe(
-      finalize(() => {
-        this.statuspoller = setTimeout(() => {
-          this.retrieveStatus();
-        }, environment.FRONTEND.POLLING_TIMEOUT);
-      }
-      )
-    ).subscribe((response) => {
-      this.statusChanged.next(response);
-    });
-  }
-
-
 
 }
