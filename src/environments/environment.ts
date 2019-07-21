@@ -18,7 +18,7 @@ export const environment = {
   },
   BACKEND: {
     URL: {
-      loginUser: "http://hotresto/backend/loginController/loginUser",
+      loginUser: "http://hotresto/backend/Users/loginUser",
       FULL: "https://angular-starter-kit-backend.herokuapp.com/api"
     },
     WS: "ws://localhost:5500",

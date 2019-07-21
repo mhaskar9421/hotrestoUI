@@ -14,6 +14,7 @@ export const environment = {
   },
   BACKEND: {
     URL: {
+      loginUser: "http://hotresto/backend/Users/loginUser",
       FULL: "https://angular-starter-kit-backend.herokuapp.com/api"
     },
     WS: "ws://localhost:5500",
@@ -21,8 +22,8 @@ export const environment = {
       SIGNIN: "/login",
       SIGNOUT: "/logout",
       DASHBOARD: "/statistics",
-      STATUS:"/status",
-      USERS:"/users"
+      STATUS: "/status",
+      USERS: "/users"
     }
   }
 };
