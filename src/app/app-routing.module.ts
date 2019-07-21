@@ -10,7 +10,7 @@ import { UserDetailComponent } from "./users/user-detail/user-detail.component";
 
 const appRoutes: Routes = [
     {
-        path: 'login',
+        path: '',
         component: LoginComponent,
         pathMatch: 'full'
     },
