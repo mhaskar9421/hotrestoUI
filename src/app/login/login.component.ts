@@ -30,21 +30,21 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.loginService.login(this.model.username, this.model.password)
       .subscribe(
-      data => {
-        console.log(data);
-        if (data) {
-          this.router.navigate(['dashboard']);
-        }
-        else {
-          this.loading = true;
-          this.errorDisplay = true;
-          this.errorText = this.constants.error_text;
-        }
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
+        data => {
+          console.log(data);
+          if (data) {
+            this.router.navigate(['dashboard']);
+          }
+          else {
+            this.loading = true;
+            this.errorDisplay = true;
+            this.errorText = this.constants.loginFailed;
+          }
+        },
+        error => {
+          console.log(error);
+          this.loading = false;
+        });
   }
 
   switchForms() {
@@ -55,13 +55,13 @@ export class LoginComponent implements OnInit {
   recoverPassword() {
     this.loginService.resetPassword(this.model.email)
       .subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
+        data => {
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+          this.loading = false;
+        });
   }
 
   // onLogin() {
