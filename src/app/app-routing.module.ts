@@ -6,6 +6,7 @@ import { ErrorPageComponent } from "./error-page/error-page.component";
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddroomComponent } from "src/app/addroom/addroom.component";
+import { CustomerInfoComponent } from "src/app/customer-info/customer-info.component";
 
 const appRoutes: Routes = [
     {
@@ -22,7 +23,7 @@ const appRoutes: Routes = [
         component: DashboardComponent,
         children: [
             { path: 'addroom', component: AddroomComponent },
-            // { path: 'registration', component: RegistrationComponent },
+            { path: 'customer-info', component: CustomerInfoComponent }
             // { path: 'visitors', component: VisitorsComponent },
             // { path: 'myprofile', component: MyprofileComponent },
             // { path: 'noticeboard', component: NoticeboardComponent },

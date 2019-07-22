@@ -39,6 +39,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { environment } from '../environments/environment'; // as per your path
 import { notificationMessages } from '../notificationMessages';
 import { AddroomComponent } from './addroom/addroom.component';
+import { CustomerInfoComponent } from './customer-info/customer-info.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AddroomComponent } from './addroom/addroom.component';
     DashboardComponent,
     NavComponent,
     SidebarComponent,
-    AddroomComponent
+    AddroomComponent,
+    CustomerInfoComponent
   ],
   entryComponents: [],
   imports: [

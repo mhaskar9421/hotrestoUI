@@ -150,13 +150,13 @@
                         Add Room
                     </a>
                 </li>
-                <!-- <li [ngClass]="(selectedMenu=='visit or') ? 'active' : '' " (click)="activeMenu('visitor')">
-                    <a [routerLink]="['visitors']">
-                        <i class="fa fa-group"></i>
-                        Visitors
+                <li [ngClass]="(selectedMenu=='customer-info') ? 'active' : '' " (click)="activeMenu('customer-info')">
+                    <a [routerLink]="['custome-info']">
+                        <i class="fa fa-users"></i>
+                        Add Customer
                     </a>
                 </li>
-                <li [ngClass]="(selectedMenu=='noticeboard') ? 'active' : '' " (click)="activeMenu('noticeboard')">
+                <!--<li [ngClass]="(selectedMenu=='noticeboard') ? 'active' : '' " (click)="activeMenu('noticeboard')">
                     <a [routerLink]="['noticeboard']">
                         <i class="fa fa-calendar-o"></i>
                         Notice Board
