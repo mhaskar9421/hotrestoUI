@@ -1,0 +1,199 @@
+<div class="form-group">
+  <div *ngIf="errorDisplay">
+    <div class="alert alert-danger">
+      <a class="close" (click)="hideMsg()">×</a>
+      {{errorText}}
+    </div>
+  </div>
+</div>
+<!-- <div class="form-group"> -->
+<div class="content-container">
+  <div class="row">
+    <div class="portlet">
+      <div class="portlet-header">
+        <h3>
+          Add Room
+        </h3>
+      </div>
+      <!-- portlet-header -->
+      <div class="portlet-content">
+        <div class="row">
+          <form class="form account-form" #loginForm="ngForm">
+            <div class="row">
+              <div class="form-group col-md-8">
+                <div class="row">
+                  <div class="form-group col-md-8">
+                    <label for=" roomnumber">Room Number</label>
+                    <input type="text " class="form-control " #ctrl="ngModel" required [(ngModel)]="regmodel.roomnumber " id="roomnumber" name="roomnumber
+              " placeholder="Room Number">
+                  </div>
+                  <!-- /.form-group -->
+                  <div class="form-group col-md-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                      </span>
+                      <label for="lastname " class="placeholder-hidden">Last Name</label>
+                      <input type="text " class="form-control " #ctrl="ngModel" required [(ngModel)]="regmodel.lastname " id="lastname" name="lastname
+              " placeholder="Last Name " tabindex="2 ">
+                    </div>
+                    <!-- ./input group -->
+                  </div>
+                  <!-- /.form-group -->
+                </div>
+                <!-- / row 1 -->
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa fa-envelope"></i>
+                      </span>
+                      <label for="email " class="placeholder-hidden">Email</label>
+                      <input type="text" class="form-control" #ctrl="ngModel" required [(ngModel)]="regmodel.email" id="email" name="email
+                  " placeholder="Email" tabindex="3 ">
+                    </div>
+                    <!-- ./input-group -->
+                  </div>
+                  <!-- /.form-group -->
+                  <div class="form-group col-md-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">+91</span>
+                      <label for="mobile" class="placeholder-hidden ">Mobile</label>
+                      <input type="number" class="form-control" #ctrl="ngModel" required [(ngModel)]="regmodel.mobileno" id="mobileno" name="mobileno
+              " placeholder=" Mobile" tabindex="3">
+                    </div>
+                    <!-- ./input group -->
+                  </div>
+                  <!-- /.form-group -->
+                </div>
+                <!-- ./row 2 -->
+                <div class="form-group col-md-12">
+                  <label for="address" class="placeholder-hidden ">Address</label>
+                  <textarea class="form-control" rows="5" #ctrl="ngModel" required [(ngModel)]="regmodel.address" id="address" name="address"
+                    placeholder="Address"></textarea>
+                </div>
+                <!-- /.form-group -->
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-home"></i>
+                      </span>
+                      <label for="societyname " class="placeholder-hidden">Society Name</label>
+                      <input type="text " class="form-control " #ctrl="ngModel" required [(ngModel)]="regmodel.societyname " id="societyname" name="societyname"
+                        placeholder="Society Name">
+                    </div>
+                    <!-- ./input group -->
+                  </div>
+                  <!-- /.form-group -->
+                  <div class="form-group col-md-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa glyphicon glyphicon-home"></i>
+                      </span>
+                      <label for="city" class="placeholder-hidden ">City</label>
+                      <input type="text" class="form-control" #ctrl="ngModel" required [(ngModel)]="regmodel.city" id="city" name="city" placeholder="City">
+                    </div>
+                    <!-- ./input group -->
+                  </div>
+                  <!-- /.form-group -->
+                </div>
+                <!-- ./row 3-->
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa glyphicon glyphicon-home"></i>
+                      </span>
+                      <label for="state" class="placeholder-hidden ">State</label>
+                      <input type="text" class="form-control" #ctrl="ngModel" required [(ngModel)]="regmodel.state" id="state" name="state" placeholder="State">
+                    </div>
+                    <!-- ./input group -->
+                  </div>
+                  <!-- /.form-group -->
+                  <div class="form-group col-md-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa glyphicon glyphicon-home"></i>
+                      </span>
+                      <label for="pincode" class="placeholder-hidden ">Pin Code</label>
+                      <input type="number" class="form-control" #ctrl="ngModel" required [(ngModel)]="regmodel.pincode" id="pincode" name="pincode"
+                        placeholder="Pin Code">
+                    </div>
+                    <!-- ./input group -->
+                  </div>
+                  <!-- /.form-group -->
+                </div>
+                <!-- ./row 4 -->
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <select #ctrl="ngModel" required [(ngModel)]="regmodel.usertype" id="usertype" name="usertype" class="ui-select2">
+                      <option [ngValue]="undefined" disabled selected>User Type</option>
+                      <option value="admin">admin</option>
+                      <option value="societyIncharge">societyIncharge</option>
+                      <option value="societyMember">societyMember</option>
+                      <option value="securityGuard">securityGuard</option>
+                    </select>
+                  </div>
+                  <!-- /.form-group -->
+                  <div class="form-group col-md-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa glyphicon glyphicon-user"></i>
+                      </span>
+                      <label for="username" class="placeholder-hidden ">Username</label>
+                      <input type="text" class="form-control" #ctrl="ngModel" required [(ngModel)]="regmodel.username " id="username " name="username
+              " placeholder="Username " tabindex="3 ">
+                    </div>
+                    <!-- ./input group -->
+                  </div>
+                  <!-- /.form-group -->
+                </div>
+                <!-- /row 6-->
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa fa-lock"></i>
+                      </span>
+                      <input type="password" #ctrl="ngModel" required [(ngModel)]="regmodel.password" class="form-control" id="password
+                  " name="password" placeholder="Password " tabindex="4 ">
+                    </div>
+                    <!-- ./input group -->
+                  </div>
+                  <!-- /.form-group -->
+                  <div class="form-group col-md-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa fa-lock"></i>
+                      </span>
+                      <input type="password" #ctrl="ngModel" required [(ngModel)]="confirmpassword" class="form-control" id="confirmpassword
+              " name="confirmpassword" placeholder="Confirm Password " tabindex="4 ">
+                    </div>
+                    <!-- ./input group -->
+                  </div>
+                  <!-- /.form-group -->
+                </div>
+                <!-- /row 7 -->
+              </div>
+              <div class="form-group col-md-12 pull-right">
+                <button type="button" [disabled]="!loginForm.valid" (click)="registerUser()" value="Register" class=" btn btn-secondary"
+                  tabindex="6">
+                  Register</button>
+
+              </div>
+              <!-- /.form-group -->
+            </div>
+            <!-- /.row -->
+          </form>
+          <!-- /.form Class -->
+        </div>
+        <!-- ./row -->
+      </div>
+      <!-- ./portlet-content -->
+    </div>
+    <!-- /.portlet -->
+  </div>
+  <!-- ./row -->
+</div>
+<!-- ./content-container -->

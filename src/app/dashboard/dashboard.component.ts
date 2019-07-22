@@ -1,9 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DashboardService } from './dashboard.service';
-// import * as Chart from 'chart.js'
-// import { interval, Observable } from 'rxjs';
-// import { timer } from 'rxjs';
-// import { finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 
@@ -13,10 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  selectedMenu = 'dashboard';
   constructor(private router: Router, private dashboardService: DashboardService) { }
 
   ngOnInit() { }
+
+  activeMenu(menu) {
+    this.selectedMenu = menu;
+  }
 
   logoutUser() {
     this.dashboardService.logout()

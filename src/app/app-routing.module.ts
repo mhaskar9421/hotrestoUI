@@ -5,6 +5,7 @@ import { AuthGuard } from "./auth-guard.service";
 import { ErrorPageComponent } from "./error-page/error-page.component";
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddroomComponent } from "src/app/addroom/addroom.component";
 
 const appRoutes: Routes = [
     {
@@ -18,7 +19,14 @@ const appRoutes: Routes = [
     },
     {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        children: [
+            { path: 'addroom', component: AddroomComponent },
+            // { path: 'registration', component: RegistrationComponent },
+            // { path: 'visitors', component: VisitorsComponent },
+            // { path: 'myprofile', component: MyprofileComponent },
+            // { path: 'noticeboard', component: NoticeboardComponent },
+        ]
     }
 ];
 //     {
