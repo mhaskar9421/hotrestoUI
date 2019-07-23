@@ -14,7 +14,7 @@ export const environment = {
   },
   BACKEND: {
     URL: {
-      loginUser: "http://hotresto/backend/userController/loginUser",
+      loginUser: "http://hotresto/backend/AuthUser/loginUser",
       logout: "http://hotresto/backend/userController/logout"
     },
     WS: "ws://localhost:5500",
