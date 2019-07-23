@@ -1,6 +1,6 @@
 <div class="row">
 
-  <div class="col-sm-4">
+  <div class="col-sm-10">
 
     <div class="portlet">
 
@@ -8,7 +8,7 @@
 
         <h3>
           <i class="fa fa-home"></i>
-          Add Rooms
+          Add Customers
         </h3>
 
       </div>
@@ -19,26 +19,44 @@
         <form id="validate-basic" action="http://jumpstartthemespreview.com/target-admin/form-validation.html" data-validate="parsley"
           class="form parsley-form">
 
-          <div class="form-group">
-            <label for="roomname">Room Name</label>
-            <input type="text" id="roomname" name="roomname" class="form-control" data-required="true">
+          <div class="form-group col-md-10">
+            <label for="customername" class="placeholder-hidden ">Customer Name </label>
+            <input type="text" class="form-control" required [(ngModel)]="custmodel.username " id="username " name="username
+              " placeholder="Username " tabindex="3 ">
+          </div>
+          <!-- ./form group -->
+          <div class="form-group col-md-6">
+            <label for="custidcustid" class="placeholder-hidden ">CustId</label>
+            <input type="text" class="form-control" required [(ngModel)]="custmodel.custid " id="custid " name="custid
+        " placeholder="CustId " tabindex="3 ">
+          </div>
+          <!-- ./form group -->
+
+          <div class="form-group col-md-6">
+            <label for="idnumber" class="placeholder-hidden ">Id Number</label>
+            <input type="text" class="form-control" required [(ngModel)]="custmodel.idnumber " id="idnumber " name="idnumber
+          " placeholder="Id Number " tabindex="3 ">
+          </div>
+          <!-- ./form group -->
+
+          <div class="form-group col-md-6">
+            <label for="phonenumber" class="placeholder-hidden ">Phone Number</label>
+            <input type="text" class="form-control" required [(ngModel)]="custmodel.phonenumber " id="phonenumber " name="phonenumber
+            " placeholder="Phone Number " tabindex="3 ">
+          </div>
+          <!-- ./form group -->
+
+          <div class="form-group col-md-6">
+            <label for="address" class="placeholder-hidden ">Address</label>
+            <input type="textarea" id="address" required [(ngModel)]="custmodel.address " name="address" class="form-control" data-required="true"
+              placeholder="Address " tabindex="3 ">
           </div>
 
           <div class="form-group">
-            <label for="roomno">Room Number*</label>
-            <input type="text" id="roomno" name="roomno" class="form-control" data-required="true">
-          </div>
-
-          <div class="form-group">
-            <label for="noofbeds">No of Beds*</label>
-            <input type="text" id="noofbeds" name="noofbeds" class="form-control" data-required="true">
-          </div>
-
-          <div class="form-group">
-            <label>Upload Image</label>
-            <div class="uploadimage">
+            <label>Upload Id</label>
+            <div class="uploadid">
               <label>
-                <input type="file" name="uploadimage">
+                <input type="file" name="uploadid">
               </label>
             </div>
           </div>
