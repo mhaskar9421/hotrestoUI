@@ -22,9 +22,8 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.logout()
       .subscribe(
         data => {
-          console.log(data);
           if (data) {
-            //this.router.navigate(['login']);
+            this.router.navigate(['login']);
           }
         },
         error => {
