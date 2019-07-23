@@ -10,7 +10,7 @@ export class LoginService {
     constructor(private http: HttpClient) { }
 
     login(username: string, password: string) {
-        return this.http.post(environment.BACKEND.URL.loginUser, { username: username, password: password })
+        return this.http.post(environment.BACKEND.URL.login, { username: username, password: password })
             .map(res => {
                 return res;
             });

@@ -18,8 +18,8 @@ export const environment = {
   },
   BACKEND: {
     URL: {
-      loginUser: "http://hotresto/backend/AuthUser/loginUser",
-      logout: "http://hotresto/backend/AuthUser/logout"
+      login: "http://hotresto/backend/AuthController/login",
+      logout: "http://hotresto/backend/AuthController/logout"
     },
     WS: "ws://localhost:5500",
     ENTRY_POINTS: {
