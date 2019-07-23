@@ -38,8 +38,8 @@ import { CalendarModule } from 'primeng/calendar';
 
 import { environment } from '../environments/environment'; // as per your path
 import { notificationMessages } from '../notificationMessages';
-import { AddroomComponent } from './addroom/addroom.component';
-import { CustomerInfoComponent } from './customer-info/customer-info.component';
+import { AddroomComponent } from './rooms/rooms.component';
+import { CustomerInfoComponent } from './customer/customer.component';
 
 @NgModule({
   declarations: [
