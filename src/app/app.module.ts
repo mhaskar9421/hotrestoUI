@@ -12,6 +12,7 @@ import { AuthGuard } from './auth-guard.service';
 import { StatusService } from './status.service';
 import { DashboardService } from './dashboard/dashboard.service';
 import { LoginService } from './login/login.service';
+import { CustomerService } from './customer/customer.service';
 
 // interceptors
 import { RequestsInterceptor } from './httpRequestsInterceptor.service';
@@ -93,7 +94,8 @@ import { CustomerInfoComponent } from './customer/customer.component';
     AuthService,
     StatusService,
     AuthGuard,
-    LoginService
+    LoginService,
+    CustomerService
   ],
   bootstrap: [AppComponent]
 })

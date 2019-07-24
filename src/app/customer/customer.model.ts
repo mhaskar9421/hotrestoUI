@@ -1,7 +1,7 @@
 export class CustomerModel {
-    customerusername: string;
+    customername: string;
     custid: string;
     idnumber: string;
     phonenumber: number;
-    Address: string;
+    address: string;
 }
