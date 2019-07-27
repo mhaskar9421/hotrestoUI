@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddroomComponent } from "src/app/rooms/rooms.component";
 import { CustomerInfoComponent } from "src/app/customer/customer.component";
+import { TaxComponent } from './tax/tax.component';
 
 const appRoutes: Routes = [
     {
@@ -22,9 +23,9 @@ const appRoutes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         children: [
-            { path: 'room', component: AddroomComponent },
-            { path: 'customer', component: CustomerInfoComponent }
-            // { path: 'visitors', component: VisitorsComponent },
+            { path: 'rooms', component: AddroomComponent },
+            { path: 'customer', component: CustomerInfoComponent },
+            { path: 'tax', component: TaxComponent }
             // { path: 'myprofile', component: MyprofileComponent },
             // { path: 'noticeboard', component: NoticeboardComponent },
         ]

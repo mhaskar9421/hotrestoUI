@@ -42,6 +42,7 @@ import { environment } from '../environments/environment'; // as per your path
 import { notificationMessages } from '../notificationMessages';
 import { AddroomComponent } from './rooms/rooms.component';
 import { CustomerInfoComponent } from './customer/customer.component';
+import { TaxComponent } from './tax/tax.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { CustomerInfoComponent } from './customer/customer.component';
     NavComponent,
     SidebarComponent,
     AddroomComponent,
-    CustomerInfoComponent
+    CustomerInfoComponent,
+    TaxComponent
   ],
   entryComponents: [],
   imports: [

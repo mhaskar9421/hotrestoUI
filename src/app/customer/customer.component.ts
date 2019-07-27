@@ -15,6 +15,7 @@ export class CustomerInfoComponent implements OnInit {
   loading = true;
 
   constructor(private router: Router, private route: ActivatedRoute, private customerService: CustomerService) {
+    this.customermodel = new CustomerModel();
   }
 
   ngOnInit() {

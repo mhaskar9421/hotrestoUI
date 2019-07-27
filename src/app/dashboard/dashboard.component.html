@@ -146,8 +146,8 @@
                         Dashboard
                     </a>
                 </li>
-                <li [ngClass]="(selectedMenu=='room') ? 'active' : '' " (click)="activeMenu('room')">
-                    <a [routerLink]="['room']">
+                <li [ngClass]="(selectedMenu=='rooms') ? 'active' : '' " (click)="activeMenu('rooms')">
+                    <a [routerLink]="['rooms']">
                         <i class="fa fa-home"></i>
                         Rooms
                     </a>
@@ -158,12 +158,12 @@
                         Customers
                     </a>
                 </li>
-                <!--<li [ngClass]="(selectedMenu=='noticeboard') ? 'active' : '' " (click)="activeMenu('noticeboard')">
-                    <a [routerLink]="['noticeboard']">
+                <li [ngClass]="(selectedMenu=='tax') ? 'active' : '' " (click)="activeMenu('tax')">
+                    <a [routerLink]="['tax']">
                         <i class="fa fa-calendar-o"></i>
-                        Notice Board
+                        Tax
                     </a>
-                </li> -->
+                </li>
             </ul>
 
         </div>
