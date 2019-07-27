@@ -25,6 +25,8 @@ $theme-colors: ("primary": #000000,
 @import "src/assets/css/target-admin.css";
 @import "src/assets/css/ui-buttons.css";
 @import "src/assets/css/ui-notifications.css";
+@import "src/assets/js/plugins/magnific/magnific-popup.css";
+@import "src/assets/js/libs/css/ui-lightness/jquery-ui-1.9.2.custom.min.css";
 
 @include mat-core();
 
