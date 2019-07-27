@@ -43,7 +43,6 @@
               [(ngModel)]="customermodel.phonenumber " id="phonenumber " name="phonenumber
             " placeholder="Phone Number " maxlength="10">
             <div *ngIf="loginForm.submitted && phonenumber.invalid" class="invalid-feedback">
-              <div *ngIf="phonenumber.errors.maxlength">Enter 10 digits</div>
             </div>
           </div>
           <!-- ./form group -->
@@ -52,7 +51,6 @@
             <input type="textarea" id="address" required [ngClass]="{ 'is-invalid': loginForm.submitted && address.invalid }" [(ngModel)]="customermodel.address "
               name="address" class="form-control" data-required="true" placeholder="Address ">
             <div *ngIf="loginForm.submitted && address.invalid" class="invalid-feedback">
-              <div *ngIf="address.errors.required">Address is required</div>
             </div>
           </div>
           <!-- ./form group -->
