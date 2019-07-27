@@ -17,4 +17,12 @@ export class RoomService {
                 return res;
             });
     }
+
+    viewRoom() {
+        return this.http.get(environment.BACKEND.URL.viewRoom)
+            .map(res => {
+                return res;
+            });
+    }
+
 }

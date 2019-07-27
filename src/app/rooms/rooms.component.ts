@@ -24,6 +24,26 @@ export class AddroomComponent implements OnInit {
   ngOnInit() {
   }
 
+  viewRooms() {
+    //this.loading = true;
+    this.roomService.viewRoom()
+      .subscribe(
+        data => {
+          if (data) {
+            console.log(data);
+          }
+          else {
+            //this.loading = true;
+            //this.errorDisplay = true;
+            //this.errorText = this.constants.loginFailed;
+          }
+        },
+        error => {
+          console.log(error);
+          //this.loading = false;
+        });
+  }
+
   addRoom() {
     this.loading = true;
     this.roomService.addRoom(this.model.roomname, this.model.roomnumber, this.model.noofbeds)
