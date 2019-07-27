@@ -9,34 +9,51 @@
       </div>
       <!-- /.portlet-header -->
       <div class="portlet-content">
-        <form class="form account-form" #loginForm="ngForm">
+        <form class="form account-form" (ngSubmit)="loginForm.form.valid && onSubmit()" #loginForm="ngForm" novalidate>
           <div class="form-group">
             <label for="customername">Customer Name </label>
-            <input type="text" class="form-control" required [(ngModel)]="customermodel.customername" id="customername " name="customername
+            <input type="text" class="form-control" required [ngClass]="{ 'is-invalid': loginForm.submitted && customername.invalid }"
+              [(ngModel)]="customermodel.customername" id="customername " name="customername
               " placeholder="Customer Name ">
+            <div *ngIf="loginForm.submitted && customername.invalid" class="invalid-feedback">
+            </div>
           </div>
           <!-- ./form group -->
           <div class="form-group">
             <label for="custid">CustId </label>
-            <input type="text" class="form-control" required [(ngModel)]="customermodel.custid " id="custid " name="custid
+            <input type="text" class="form-control" required [ngClass]="{ 'is-invalid': loginForm.submitted && custid.invalid }" [(ngModel)]="customermodel.custid "
+              id="custid " name="custid
         " placeholder="CustId ">
+            <div *ngIf="loginForm.submitted && custid.invalid" class="invalid-feedback">
+            </div>
           </div>
           <!-- ./form group -->
           <div class="form-group">
             <label for="idnumber">Id Number </label>
-            <input type="text" class="form-control" required [(ngModel)]="customermodel.idnumber " id="idnumber " name="idnumber
+            <input type="text" class="form-control" required [ngClass]="{ 'is-invalid': loginForm.submitted && idnumber.invalid }" [(ngModel)]="customermodel.idnumber "
+              id="idnumber " name="idnumber
           " placeholder="Id Number ">
+            <div *ngIf="loginForm.submitted && idnumber.invalid" class="invalid-feedback">
+            </div>
           </div>
           <!-- ./form group -->
           <div class="form-group">
             <label for="phonenumber">Phone Number </label>
-            <input type="text" class="form-control" required [(ngModel)]="customermodel.phonenumber " id="phonenumber " name="phonenumber
-            " placeholder="Phone Number ">
+            <input type="telephone" (keypress)="keyPress($event)" class="form-control" required [ngClass]="{ 'is-invalid': loginForm.submitted && phonenumber.invalid }"
+              [(ngModel)]="customermodel.phonenumber " id="phonenumber " name="phonenumber
+            " placeholder="Phone Number " maxlength="10">
+            <div *ngIf="loginForm.submitted && phonenumber.invalid" class="invalid-feedback">
+              <div *ngIf="phonenumber.errors.maxlength">Enter 10 digits</div>
+            </div>
           </div>
           <!-- ./form group -->
           <div class="form-group">
-            <input type="textarea" id="address" required [(ngModel)]="customermodel.address " name="address" class="form-control" data-required="true"
-              placeholder="Address ">
+            <label for="address">Address</label>
+            <input type="textarea" id="address" required [ngClass]="{ 'is-invalid': loginForm.submitted && address.invalid }" [(ngModel)]="customermodel.address "
+              name="address" class="form-control" data-required="true" placeholder="Address ">
+            <div *ngIf="loginForm.submitted && address.invalid" class="invalid-feedback">
+              <div *ngIf="address.errors.required">Address is required</div>
+            </div>
           </div>
           <!-- ./form group -->
           <div class="form-group">
@@ -48,7 +65,8 @@
             </div>
           </div>
           <div class="form-group">
-            <button type="button" (click)="addCustomer()" [disabled]="!loginForm.valid" class="btn btn-secondary" tabindex="3 ">
+            <button type="button" (click)="addCustomer()" data-sticky="true" [disabled]="!loginForm.valid" class="btn btn-secondary howler"
+              tabindex="3 ">
               Save &nbsp;
             </button>
           </div>
