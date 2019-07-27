@@ -12,10 +12,11 @@ import { AuthGuard } from './auth-guard.service';
 import { StatusService } from './status.service';
 import { DashboardService } from './dashboard/dashboard.service';
 import { LoginService } from './login/login.service';
+import { RoomService } from './rooms/room.service';
 import { CustomerService } from './customer/customer.service';
 
 // interceptors
-import { RequestsInterceptor } from './httpRequestsInterceptor.service';
+import { BasicAuthInterceptor } from './httpRequestsInterceptor.service';
 import { ErrorInterceptor } from './httpErrorInterceptor.service';
 
 // components
@@ -87,7 +88,7 @@ import { CustomerInfoComponent } from './customer/customer.component';
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: RequestsInterceptor,
+      useClass: BasicAuthInterceptor,
       multi: true
     },
     DashboardService,
@@ -95,6 +96,7 @@ import { CustomerInfoComponent } from './customer/customer.component';
     StatusService,
     AuthGuard,
     LoginService,
+    RoomService,
     CustomerService
   ],
   bootstrap: [AppComponent]

@@ -1,76 +1,52 @@
 <div class="row">
-
   <div class="col-sm-4">
-
     <div class="portlet">
-
       <div class="portlet-header">
-
         <h3>
           <i class="fa fa-home"></i>
-          Add Rooms
+          Add Room
         </h3>
-
       </div>
-      <!-- /.portlet-header -->
-
       <div class="portlet-content">
-
-        <form id="validate-basic" action="http://jumpstartthemespreview.com/target-admin/form-validation.html" data-validate="parsley"
-          class="form parsley-form">
-
+        <form id="validate-basic" data-validate="parsley" class="form parsley-form">
           <div class="form-group">
-            <label for="roomname">Room Name</label>
-            <input type="text" id="roomname" name="roomname" class="form-control" data-required="true">
+            <label for="roomname">Name</label>
+            <input type="text" id="roomname" name="roomname" [(ngModel)]="model.roomname" placeholder="Room Name"
+              class="form-control" data-required="true" required>
           </div>
-
           <div class="form-group">
-            <label for="roomno">Room Number*</label>
-            <input type="text" id="roomno" name="roomno" class="form-control" data-required="true">
+            <label for="roomno">Number</label>
+            <input type="text" id="roomno" name="roomnumber" [(ngModel)]="model.roomnumber" placeholder="Room Number"
+              class="form-control" data-required="true" required>
           </div>
-
           <div class="form-group">
-            <label for="noofbeds">No of Beds*</label>
-            <input type="text" id="noofbeds" name="noofbeds" class="form-control" data-required="true">
+            <label for="noofbeds">Number of Bed</label>
+            <input type="text" id="noofbeds" name="noofbeds" [(ngModel)]="model.noofbeds" placeholder="Number of Bed"
+              class="form-control" data-required="true" required>
           </div>
-
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label>Upload Image</label>
             <div class="uploadimage">
               <label>
                 <input type="file" name="uploadimage">
               </label>
             </div>
-          </div>
-
+          </div> -->
           <div class="form-group">
-            <button type="button" class="btn btn-secondary">Save</button>
+            <button type="button" (click)="addRoom()" class="btn btn-secondary">Save</button>
           </div>
-
         </form>
-
       </div>
-      <!-- /.portlet-content -->
-
     </div>
-    <!-- /.portlet -->
   </div>
-  <!-- col-->
-
   <div class="col-md-8">
-
     <div class="portlet">
-
       <div class="portlet-header">
-
         <h3>
           <i class="fa fa-table"></i>
           Booked Rooms list
         </h3>
-
       </div>
-      <!-- /.portlet-header -->
-
       <div class="portlet-content">
         <div class="row dt-rt">
           <div class="col-sm-6">
@@ -93,22 +69,24 @@
             </div>
           </div>
         </div>
-
         <div class="table-responsive">
-
-          <table class="table table-striped table-bordered table-hover table-highlight table-checkable" data-provide="datatable" data-display-rows="10"
-            data-info="true" data-search="true" data-length-change="true" data-paginate="true">
+          <table class="table table-striped table-bordered table-hover table-highlight table-checkable"
+            data-provide="datatable" data-display-rows="10" data-info="true" data-search="true"
+            data-length-change="true" data-paginate="true">
             <thead>
               <tr>
                 <th class="checkbox-column">
                   <input type="checkbox" class="icheck-input">
                 </th>
-                <th data-filterable="true" data-sortable="true" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
-                  rowspan="1" colspan="1" style="width: 192px;" aria-label="Platform(s): activate to sort column ascending">Room Name</th>
-                <th data-filterable="true" data-sortable="true" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
-                  rowspan="1" colspan="1" style="width: 192px;" aria-label="Platform(s): activate to sort column ascending">Room Number</th>
-                <th data-filterable="true" data-sortable="true" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
-                  rowspan="1" colspan="1" style="width: 192px;" aria-label="Platform(s): activate to sort column ascending">No of Beds</th>
+                <th data-filterable="true" data-sortable="true" class="sorting" role="columnheader" tabindex="0"
+                  aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 192px;"
+                  aria-label="Platform(s): activate to sort column ascending">Room Name</th>
+                <th data-filterable="true" data-sortable="true" class="sorting" role="columnheader" tabindex="0"
+                  aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 192px;"
+                  aria-label="Platform(s): activate to sort column ascending">Room Number</th>
+                <th data-filterable="true" data-sortable="true" class="sorting" role="columnheader" tabindex="0"
+                  aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 192px;"
+                  aria-label="Platform(s): activate to sort column ascending">No of Beds</th>
                 <th data-filterable="false" class="hidden-sm">Status</th>
               </tr>
             </thead>
@@ -182,15 +160,7 @@
             </tbody>
           </table>
         </div>
-        <!-- /.table-responsive -->
-
       </div>
-      <!-- /.portlet-content -->
-
     </div>
-    <!-- /.portlet -->
   </div>
-  <!-- /.col -->
-
 </div>
-<!-- /.row -->

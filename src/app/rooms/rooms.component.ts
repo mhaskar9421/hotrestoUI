@@ -1,15 +1,46 @@
 import { Component, OnInit } from '@angular/core';
+import { roomsModel } from './rooms.model';
+import { RoomService } from './room.service';
+import { notificationMessages } from '../../notificationMessages';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addroom',
   templateUrl: './rooms.component.html',
-  styleUrls: ['./rooms.component.scss']
+  styleUrls: ['./rooms.component.scss'],
+  providers: [RoomService, notificationMessages]
 })
 export class AddroomComponent implements OnInit {
 
-  constructor() { }
+  loading = false;
+  errorText: string;
+  errorDisplay: true;
+  public model: roomsModel;
+
+  constructor(private router: Router, private roomService: RoomService, public constants: notificationMessages) {
+    this.model = new roomsModel();
+  }
 
   ngOnInit() {
   }
 
+  addRoom() {
+    this.loading = true;
+    this.roomService.addRoom(this.model.roomname, this.model.roomnumber, this.model.noofbeds)
+      .subscribe(
+        data => {
+          if (data) {
+            console.log(data);
+          }
+          else {
+            this.loading = true;
+            this.errorDisplay = true;
+            this.errorText = this.constants.loginFailed;
+          }
+        },
+        error => {
+          console.log(error);
+          this.loading = false;
+        });
+  }
 }
