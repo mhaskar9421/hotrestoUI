@@ -26,7 +26,7 @@ import { LoginComponent } from './login/login.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { NavComponent } from './nav/nav.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent, DialogDataExampleDialog } from './dashboard/dashboard.component';
 
 // modules
 import { AppRoutingModule } from './app-routing.module';
@@ -51,13 +51,14 @@ import { TaxComponent } from './tax/tax.component';
     LoginComponent,
     ErrorPageComponent,
     DashboardComponent,
+    DialogDataExampleDialog,
     NavComponent,
     SidebarComponent,
     AddroomComponent,
     CustomerInfoComponent,
     TaxComponent
   ],
-  entryComponents: [],
+  entryComponents: [DashboardComponent,DialogDataExampleDialog],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -101,7 +102,7 @@ import { TaxComponent } from './tax/tax.component';
     RoomService,
     CustomerService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, DashboardComponent]
 })
 export class AppModule { }
 

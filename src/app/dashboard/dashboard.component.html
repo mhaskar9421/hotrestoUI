@@ -28,7 +28,8 @@
                                 </span>
                                 <span class="noticebar-item-body">
                                     <strong class="noticebar-item-title">Templates Synced</strong>
-                                    <span class="noticebar-item-text">20 Templates have been synced to the Mashon Demo instance.
+                                    <span class="noticebar-item-text">20 Templates have been synced to the Mashon Demo
+                                        instance.
                                     </span>
                                     <span class="noticebar-item-time">
                                         <i class="fa fa-clock-o"></i> 12 minutes ago</span>
@@ -42,7 +43,8 @@
                                 </span>
                                 <span class="noticebar-item-body">
                                     <strong class="noticebar-item-title">Sync Error</strong>
-                                    <span class="noticebar-item-text">5 Designs have been failed to be synced to the Mashon Demo instance.</span>
+                                    <span class="noticebar-item-text">5 Designs have been failed to be synced to the
+                                        Mashon Demo instance.</span>
                                     <span class="noticebar-item-time">
                                         <i class="fa fa-clock-o"></i> 20 minutes ago</span>
                                 </span>
@@ -74,7 +76,8 @@
                                 </span>
                                 <span class="noticebar-item-body">
                                     <strong class="noticebar-item-title">New Message</strong>
-                                    <span class="noticebar-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span>
+                                    <span class="noticebar-item-text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit...</span>
                                     <span class="noticebar-item-time">
                                         <i class="fa fa-clock-o"></i> 20 minutes ago</span>
                                 </span>
@@ -87,7 +90,8 @@
                                 </span>
                                 <span class="noticebar-item-body">
                                     <strong class="noticebar-item-title">New Message</strong>
-                                    <span class="noticebar-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span>
+                                    <span class="noticebar-item-text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit...</span>
                                     <span class="noticebar-item-time">
                                         <i class="fa fa-clock-o"></i> 5 hours ago</span>
                                 </span>
@@ -141,7 +145,7 @@
             <ul class="nav navbar-nav mainbar-nav">
 
                 <li [ngClass]="(selectedMenu=='dashboard') ? 'active' : '' " (click)="activeMenu('dashboard')">
-                    <a>
+                    <a [routerLink]="['dashboard']">
                         <i class="fa fa-dashboard"></i>
                         Dashboard
                     </a>
@@ -159,10 +163,10 @@
                     </a>
                 </li>
                 <li [ngClass]="(selectedMenu=='tax') ? 'active' : '' " (click)="activeMenu('tax')">
-                    <a [routerLink]="['tax']">
-                        <i class="fa fa-calendar-o"></i>
-                        Tax
-                    </a>
+                    <!-- <a [routerLink]="['tax']">
+                        <i class="fa fa-calendar-o"></i> -->
+                    <button mat-button (click)="openDialog()">Open dialog</button>
+                    <!-- </a> -->
                 </li>
             </ul>
         </div>
