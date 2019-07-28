@@ -26,7 +26,7 @@ import { LoginComponent } from './login/login.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { NavComponent } from './nav/nav.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { DashboardComponent, DialogDataExampleDialog } from './dashboard/dashboard.component';
+import { DashboardComponent, AddTaxDialog } from './dashboard/dashboard.component';
 
 // modules
 import { AppRoutingModule } from './app-routing.module';
@@ -42,7 +42,7 @@ import { environment } from '../environments/environment'; // as per your path
 import { notificationMessages } from '../notificationMessages';
 import { AddroomComponent } from './rooms/rooms.component';
 import { CustomerInfoComponent } from './customer/customer.component';
-import { TaxComponent } from './tax/tax.component';
+// import { TaxComponent } from './tax/tax.component';
 
 @NgModule({
   declarations: [
@@ -51,14 +51,14 @@ import { TaxComponent } from './tax/tax.component';
     LoginComponent,
     ErrorPageComponent,
     DashboardComponent,
-    DialogDataExampleDialog,
+    AddTaxDialog,
     NavComponent,
     SidebarComponent,
     AddroomComponent,
-    CustomerInfoComponent,
-    TaxComponent
+    CustomerInfoComponent
+    // TaxComponent
   ],
-  entryComponents: [DashboardComponent,DialogDataExampleDialog],
+  entryComponents: [DashboardComponent, AddTaxDialog],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
