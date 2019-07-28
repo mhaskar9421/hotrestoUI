@@ -4,7 +4,6 @@ import { DashboardService } from './dashboard.service';
 import { Router } from '@angular/router';
 
 export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
 }
 
 @Component({
@@ -23,7 +22,7 @@ export class DashboardComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(DialogDataExampleDialog, {
+    this.dialog.open(AddTaxDialog, {
       data: {
         animal: 'panda'
       }
@@ -33,22 +32,32 @@ export class DashboardComponent implements OnInit {
   logoutUser() {
     this.dashboardService.logout()
       .subscribe(
-        data => {
-          if (data) {
-            this.router.navigate(['login']);
-          }
-        },
-        error => {
-          console.log(error);
-        });
+      data => {
+        if (data) {
+          this.router.navigate(['login']);
+        }
+      },
+      error => {
+        console.log(error);
+      });
   }
 }
 
 
 @Component({
-  selector: 'dialog-data-example-dialog',
-  templateUrl: 'dialog-data-example-dialog.html',
+  selector: 'addtax',
+  templateUrl: 'addTax.html',
 })
-export class DialogDataExampleDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+export class AddTaxDialog {
+  constructor( @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+  IsmodelShow = false;
+  addTax() {
+    console.log("Add tax");
+  }
+  close() {
+    this.IsmodelShow = true;// set false while you need open your model popup
+    // do your more code
+  }
+
+
 }
