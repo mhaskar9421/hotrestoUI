@@ -7,7 +7,6 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddroomComponent } from "src/app/rooms/rooms.component";
 import { CustomerInfoComponent } from "src/app/customer/customer.component";
-// import { TaxComponent } from './tax/tax.component';
 
 const appRoutes: Routes = [
     {
@@ -23,78 +22,12 @@ const appRoutes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         children: [
-            {
-                path: '',
-                redirectTo: 'dashboard',
-                pathMatch: 'full'
-            },
-            {
-                path: 'dashboard',
-                component: DashboardComponent
-            },
             { path: 'rooms', component: AddroomComponent },
-            { path: 'customer', component: CustomerInfoComponent },
-            // { path: 'tax', component: TaxComponent }
-            // { path: 'myprofile', component: MyprofileComponent },
-            // { path: 'noticeboard', component: NoticeboardComponent },
+            { path: 'customer', component: CustomerInfoComponent }
         ]
     }
 ];
-//     {
-//         path: 'home',
-//         redirectTo: '/home/dashboard',
-//         pathMatch: 'full'
-//     },
-//     {
-//         path: 'home',
-//         canActivate: [AuthGuard],
-//         component: HomeComponent,
-//         canActivateChild: [AuthGuard],
-//         children: [
-//             {
-//                 path: 'dashboard',
-//                 component: DashboardComponent
-//                 // resolve: { server: ServerResolver }
-//             },
-//             {
-//                 path: 'users',
-//                 children: [
-//                     {
-//                         path: '',
-//                         redirectTo: 'list',
-//                         pathMatch: 'full'
-//                     },
-//                     {
-//                         path: 'list',
-//                         component: UsersComponent
-//                     },
-//                     {
-//                         path: ':id',
-//                         component: UserDetailComponent
-//                     }
-//                 ]
-//             }
-//         ]
-//     },
-//     {
-//         path: 'login',
-//         component: LoginComponent
-//         // resolve: { server: ServerResolver }
-//     },
-//     {
-//         path: 'not-found',
-//         component: ErrorPageComponent,
-//         data: { message: 'Error : Page not Found!' }
-//     },
-//     //important: Default must be at the routes end
-
-{
-    // path: '**',
-    //     redirectTo: '/login'
-}
-// ];
 @NgModule({
-
     // hashtag -> use useHash:true
     imports: [
         RouterModule.forRoot(appRoutes, { useHash: true })

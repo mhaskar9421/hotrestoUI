@@ -15,6 +15,7 @@ export class AddroomComponent implements OnInit {
   loading = false;
   errorText: string;
   errorDisplay: true;
+  roomList: {};
   public model: roomsModel;
 
   constructor(private router: Router, private roomService: RoomService, public constants: notificationMessages) {
@@ -31,6 +32,7 @@ export class AddroomComponent implements OnInit {
         data => {
           if (data) {
             console.log(data);
+            this.roomList = data;
           }
           else {
             //this.loading = true;
