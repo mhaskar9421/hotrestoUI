@@ -23,26 +23,22 @@ export class AddroomComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.viewRooms();
   }
 
   viewRooms() {
-    //this.loading = true;
+    this.loading = true;
     this.roomService.viewRoom()
       .subscribe(
         data => {
           if (data) {
-            console.log(data);
+            this.loading = false;
             this.roomList = data;
-          }
-          else {
-            //this.loading = true;
-            //this.errorDisplay = true;
-            //this.errorText = this.constants.loginFailed;
           }
         },
         error => {
           console.log(error);
-          //this.loading = false;
+          this.loading = false;
         });
   }
 
@@ -52,13 +48,14 @@ export class AddroomComponent implements OnInit {
       .subscribe(
         data => {
           if (data) {
-            console.log(data);
+            this.loading = false;
+            this.viewRooms();
           }
-          else {
-            this.loading = true;
-            this.errorDisplay = true;
-            this.errorText = this.constants.loginFailed;
-          }
+          // else {
+          //   this.loading = true;
+          //   this.errorDisplay = true;
+          //   this.errorText = this.constants.loginFailed;
+          // }
         },
         error => {
           console.log(error);
