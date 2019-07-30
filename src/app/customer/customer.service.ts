@@ -9,16 +9,18 @@ import 'rxjs/Rx';
 export class CustomerService {
     constructor(private http: HttpClient) { }
 
-    addCust(customername: string, custid: string, idnumber: string, phonenumber: number, address: string) {
-        return this.http.post('environment.BACKEND.URL.customerinfo', { customername: customername, custid: custid, idnumber: idnumber, phonenumber: phonenumber, address: address })
+    addCustomer(customername: string, custid: string, idnumber: string, phonenumber: number, address: string) {
+        return this.http.post(environment.BACKEND.URL.addCustomer, { customername: customername, custid: custid, idnumber: idnumber, phonenumber: phonenumber, address: address })
             .map(res => {
                 return res;
             });
     }
+
     viewCustomerDetail() {
         return this.http.get('environment.BACKEND.URL.viewCustomerDetail')
             .map(res => {
                 return true;
             });
     }
+
 }

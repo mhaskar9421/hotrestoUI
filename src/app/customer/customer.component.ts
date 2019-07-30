@@ -55,17 +55,18 @@ export class CustomerInfoComponent implements OnInit {
       event.preventDefault();
     }
   }
+
   addCustomer() {
-    this.customerService.addCust(this.customermodel.customername, this.customermodel.custid, this.customermodel.idnumber, this.customermodel.phonenumber, this.customermodel.address)
+    this.customerService.addCustomer(this.customermodel.customername, this.customermodel.custid, this.customermodel.idnumber, this.customermodel.phonenumber, this.customermodel.address)
       .subscribe(
         data => {
           this.loading = false;
-          this._snackBar.open(this.constants.addCust, '', {
+          this._snackBar.open(this.constants.addCustomer, '', {
             duration: 5000,
             horizontalPosition: 'right',
             verticalPosition: 'top'
           });
-          this.viewCustomerDetails();
+          //this.viewCustomerDetails();
         },
         error => {
           console.log(error);

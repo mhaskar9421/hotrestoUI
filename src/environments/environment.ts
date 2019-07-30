@@ -21,7 +21,9 @@ export const environment = {
       login: "http://hotresto/backend/AuthController/login",
       logout: "http://hotresto/backend/AuthController/logout",
       addRoom: "http://hotresto/backend/RoomController/addRoom",
-      viewRoom: "http://hotresto/backend/RoomController/viewRoom"
+      viewRoom: "http://hotresto/backend/RoomController/viewRoom",
+      addCustomer: "http://hotresto/backend/CustomerController/addCustomer",
+      viewCustomer: "http://hotresto/backend/CustomerController/viewCustomer"
     },
     WS: "ws://localhost:5500",
     ENTRY_POINTS: {
