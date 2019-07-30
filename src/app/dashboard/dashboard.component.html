@@ -107,53 +107,58 @@
                 <!-- /.col -->
             </div>
             <!-- Recent SignedUp Users -->
-            <div class="col-md-12">
-                <div class="portlet">
-                    <div class="portlet-header">
-                        <h3>
-                            <i class="fa fa-table"></i>
-                            Customers list
-                        </h3>
-                    </div>
-                    <div class="portlet-content">
-                        <div class="text-center" *ngIf="loading">
-                            <mat-spinner [diameter]="35" class="center-content"></mat-spinner>
-                            Table loading please wait...
+            <div class="row">
+                <div class="col-md-12">
+                    <router-outlet></router-outlet>
+                </div>
+                <div class="col-md-12" *ngIf="showCustomer">
+                    <div class="portlet">
+                        <div class="portlet-header">
+                            <h3>
+                                <i class="fa fa-table"></i>
+                                Customers list
+                            </h3>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover table-highlight" data-display-rows="10" data-info="true" data-search="true"
-                                data-length-change="true" data-paginate="true">
-                                <thead>
-                                    <tr>
-                                        <th data-filterable="true" data-sortable="true" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
-                                            rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Customer Name</th>
-                                        <th data-filterable="true" data-sortable="true" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
-                                            rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">ID Type</th>
-                                        <th data-filterable="false" data-sortable="false" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
-                                            rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">ID Number</th>
-                                        <th data-filterable="false" data-sortable="false" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
-                                            rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Phone Number</th>
-                                        <th data-filterable="false" data-sortable="false" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
-                                            rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Address</th>
-                                        <th data-filterable="false" class="hidden-sm">Image</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngIf="!customerList">
-                                        <td class="text-center" colspan="6">
-                                            No records found
-                                        </td>
-                                    </tr>
-                                    <tr *ngFor="let item of customerList">
-                                        <td>{{item.customer_name}}</td>
-                                        <td>{{item.id_type}}</td>
-                                        <td>{{item.id_number}}</td>
-                                        <td>{{item.phonenumber}}</td>
-                                        <td>{{item.address}}</td>
-                                        <td class=" hidden-xs hidden-sm">{{item.room_image}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="portlet-content">
+                            <div class="text-center" *ngIf="loading">
+                                <mat-spinner [diameter]="35" class="center-content"></mat-spinner>
+                                Table loading please wait...
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover table-highlight" data-display-rows="10" data-info="true" data-search="true"
+                                    data-length-change="true" data-paginate="true">
+                                    <thead>
+                                        <tr>
+                                            <th data-filterable="true" data-sortable="true" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
+                                                rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Customer Name</th>
+                                            <th data-filterable="true" data-sortable="true" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
+                                                rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">ID Type</th>
+                                            <th data-filterable="false" data-sortable="false" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
+                                                rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">ID Number</th>
+                                            <th data-filterable="false" data-sortable="false" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
+                                                rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Phone Number</th>
+                                            <th data-filterable="false" data-sortable="false" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
+                                                rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Address</th>
+                                            <th data-filterable="false" class="hidden-sm">Image</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngIf="!customerList">
+                                            <td class="text-center" colspan="6">
+                                                No records found
+                                            </td>
+                                        </tr>
+                                        <tr *ngFor="let item of customerList">
+                                            <td>{{item.customer_name}}</td>
+                                            <td>{{item.id_type}}</td>
+                                            <td>{{item.id_number}}</td>
+                                            <td>{{item.phonenumber}}</td>
+                                            <td>{{item.address}}</td>
+                                            <td class=" hidden-xs hidden-sm">{{item.room_image}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
