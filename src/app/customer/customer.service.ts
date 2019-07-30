@@ -15,4 +15,10 @@ export class CustomerService {
                 return res;
             });
     }
+    viewCustomerDetail() {
+        return this.http.get('environment.BACKEND.URL.viewCustomerDetail')
+            .map(res => {
+                return true;
+            });
+    }
 }

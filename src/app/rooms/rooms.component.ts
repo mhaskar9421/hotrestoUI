@@ -3,6 +3,7 @@ import { roomsModel } from './rooms.model';
 import { RoomService } from './room.service';
 import { notificationMessages } from '../../notificationMessages';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-addroom',
@@ -18,7 +19,7 @@ export class AddroomComponent implements OnInit {
   roomList: {};
   public model: roomsModel;
 
-  constructor(private router: Router, private roomService: RoomService, public constants: notificationMessages) {
+  constructor(private router: Router, private _snackBar: MatSnackBar, private roomService: RoomService, public constants: notificationMessages) {
     this.model = new roomsModel();
   }
 
@@ -34,6 +35,8 @@ export class AddroomComponent implements OnInit {
           if (data) {
             this.loading = false;
             this.roomList = data;
+          } else {
+            this.loading = false;
           }
         },
         error => {
@@ -49,13 +52,13 @@ export class AddroomComponent implements OnInit {
         data => {
           if (data) {
             this.loading = false;
+            this._snackBar.open(this.constants.addRoom, '', {
+              duration: 5000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top'
+            });
             this.viewRooms();
           }
-          // else {
-          //   this.loading = true;
-          //   this.errorDisplay = true;
-          //   this.errorText = this.constants.loginFailed;
-          // }
         },
         error => {
           console.log(error);

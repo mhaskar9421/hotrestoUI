@@ -1,13 +1,13 @@
 <h1 mat-dialog-title [hidden]="IsmodelShow">Add Tax</h1>
 <div mat-dialog-content>
     <div class="form-group">
-        <label style="padding-right:10px;" for="tax">Tax in %</label>
-        <input type="text" id="tax">
+        <label style="padding-right:12px;" for="tax">Tax</label>
+        <input type="text" id="tax" name="tax" placeholder="tax in %" class="control" data-required="true" required>
     </div>
     <div class="form-group">
-        <button type="button" tabindex="3 " data-dismiss="modal" class="close" (click)="close()" (click)=" addTax() " class="btn btn-secondary "
-            style="float:right;" tabindex="3 ">
-            Save &nbsp;
+        <button type="button" data-dismiss="modal" class="close" (click)="close()" (click)=" addTax() "
+            class="btn btn-secondary " style="float:right;" tabindex="3 ">
+            Add &nbsp;
         </button>
     </div>
 </div>

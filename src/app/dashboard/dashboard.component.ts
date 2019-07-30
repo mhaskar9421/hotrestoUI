@@ -13,18 +13,23 @@ export interface DialogData {
 })
 export class DashboardComponent implements OnInit {
   selectedMenu = 'dashboard';
+  showCustomer = true;
   constructor(private router: Router, private dashboardService: DashboardService, public dialog: MatDialog) { }
 
-  ngOnInit() { }
+  ngOnInit() {
 
+  }
   activeMenu(menu) {
     this.selectedMenu = menu;
+    this.showCustomer = false;
+    if (menu === 'dashboard') {
+      this.showCustomer = true;
+    }
   }
 
   openDialog() {
     this.dialog.open(AddTaxDialog, {
       data: {
-        animal: 'panda'
       }
     });
   }
@@ -32,14 +37,14 @@ export class DashboardComponent implements OnInit {
   logoutUser() {
     this.dashboardService.logout()
       .subscribe(
-      data => {
-        if (data) {
-          this.router.navigate(['login']);
-        }
-      },
-      error => {
-        console.log(error);
-      });
+        data => {
+          if (data) {
+            this.router.navigate(['login']);
+          }
+        },
+        error => {
+          console.log(error);
+        });
   }
 }
 
@@ -49,7 +54,7 @@ export class DashboardComponent implements OnInit {
   templateUrl: 'addTax.html',
 })
 export class AddTaxDialog {
-  constructor( @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) { }
   IsmodelShow = false;
   addTax() {
     console.log("Add tax");
