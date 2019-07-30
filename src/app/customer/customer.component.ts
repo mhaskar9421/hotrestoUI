@@ -28,7 +28,7 @@ export class CustomerInfoComponent implements OnInit {
 
   viewCustomerDetails() {
     this.loading = true;
-    this.customerService.viewCustomerDetail()
+    this.customerService.viewCustomerDetails()
       .subscribe(
         data => {
           if (data) {
@@ -66,7 +66,7 @@ export class CustomerInfoComponent implements OnInit {
             horizontalPosition: 'right',
             verticalPosition: 'top'
           });
-          //this.viewCustomerDetails();
+          this.viewCustomerDetails();
         },
         error => {
           console.log(error);

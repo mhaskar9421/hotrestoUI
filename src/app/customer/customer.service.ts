@@ -16,10 +16,10 @@ export class CustomerService {
             });
     }
 
-    viewCustomerDetail() {
-        return this.http.get('environment.BACKEND.URL.viewCustomerDetail')
+    viewCustomerDetails() {
+        return this.http.get(environment.BACKEND.URL.viewCustomer)
             .map(res => {
-                return true;
+                return res;
             });
     }
 
