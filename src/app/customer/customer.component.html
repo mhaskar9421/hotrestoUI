@@ -107,10 +107,12 @@
                 <th data-filterable="false" class="hidden-sm">Image</th>
               </tr>
             </thead>
-            <tbody *ngIf="!customerList">
-              <div>
-                No data found
-              </div>
+            <tbody>
+              <tr *ngIf="!customerList">
+                <td class="text-center" colspan="6">
+                  No records found
+                </td>
+              </tr>
               <tr *ngFor="let item of customerList">
                 <td>{{item.customer_name}}</td>
                 <td>{{item.id_type}}</td>

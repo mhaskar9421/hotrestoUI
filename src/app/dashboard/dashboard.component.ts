@@ -14,6 +14,7 @@ export interface DialogData {
 export class DashboardComponent implements OnInit {
   selectedMenu = 'dashboard';
   showCustomer = true;
+  customerList: {};
   constructor(private router: Router, private dashboardService: DashboardService, public dialog: MatDialog) { }
 
   ngOnInit() {
