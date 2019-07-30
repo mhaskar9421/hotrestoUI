@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
 
   }
+
   activeMenu(menu) {
     this.selectedMenu = menu;
     this.showCustomer = false;
@@ -37,14 +38,14 @@ export class DashboardComponent implements OnInit {
   logoutUser() {
     this.dashboardService.logout()
       .subscribe(
-        data => {
-          if (data) {
-            this.router.navigate(['login']);
-          }
-        },
-        error => {
-          console.log(error);
-        });
+      data => {
+        if (data) {
+          this.router.navigate(['login']);
+        }
+      },
+      error => {
+        console.log(error);
+      });
   }
 }
 
@@ -54,7 +55,7 @@ export class DashboardComponent implements OnInit {
   templateUrl: 'addTax.html',
 })
 export class AddTaxDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+  constructor( @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
   IsmodelShow = false;
   addTax() {
     console.log("Add tax");
