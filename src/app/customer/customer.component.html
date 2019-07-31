@@ -14,49 +14,50 @@
           <div class="form-group">
             <label for="customername">Customer Name </label>
             <input type="text" class="form-control" required
-              [ngClass]="{ 'is-invalid': loginForm.submitted && customername.invalid }"
+              [ngClass]="{ 'is-invalid': loginForm.submitted && loginForm.customername.invalid }"
               [(ngModel)]="customermodel.customername" id="customername " name="customername
               " placeholder="Customer Name ">
-            <div *ngIf="loginForm.submitted && customername.invalid" class="invalid-feedback">
+            <div *ngIf="loginForm.submitted && loginForm.customername.invalid" class="invalid-feedback">
             </div>
           </div>
           <!-- ./form group -->
           <div class="form-group">
             <label for="custid">Id Type </label>
             <input type="text" class="form-control" required
-              [ngClass]="{ 'is-invalid': loginForm.submitted && custid.invalid }" [(ngModel)]="customermodel.custid "
-              id="custid " name="custid
+              [ngClass]="{ 'is-invalid': loginForm.submitted && loginForm.custid.invalid }"
+              [(ngModel)]="customermodel.custid " id="custid " name="custid
         " placeholder="CustId ">
-            <div *ngIf="loginForm.submitted && custid.invalid" class="invalid-feedback">
+            <div *ngIf="loginForm.submitted && loginForm.custid.invalid" class="invalid-feedback">
             </div>
           </div>
           <!-- ./form group -->
           <div class="form-group">
             <label for="idnumber">Id Number </label>
             <input type="text" class="form-control" required
-              [ngClass]="{ 'is-invalid': loginForm.submitted && idnumber.invalid }"
+              [ngClass]="{ 'is-invalid': loginForm.submitted && loginForm.idnumber.invalid }"
               [(ngModel)]="customermodel.idnumber " id="idnumber " name="idnumber
           " placeholder="Id Number ">
-            <div *ngIf="loginForm.submitted && idnumber.invalid" class="invalid-feedback">
+            <div *ngIf="loginForm.submitted && loginForm.idnumber.invalid" class="invalid-feedback">
             </div>
           </div>
           <!-- ./form group -->
           <div class="form-group">
             <label for="phonenumber">Phone Number </label>
             <input type="telephone" (keypress)="keyPress($event)" class="form-control" required
-              [ngClass]="{ 'is-invalid': loginForm.submitted && phonenumber.invalid }"
+              [ngClass]="{ 'is-invalid': loginForm.submitted && loginForm.phonenumber.invalid }"
               [(ngModel)]="customermodel.phonenumber " id="phonenumber " name="phonenumber
             " placeholder="Phone Number " maxlength="10">
-            <div *ngIf="loginForm.submitted && phonenumber.invalid" class="invalid-feedback">
+            <div *ngIf="loginForm.submitted && loginForm.phonenumber.invalid" class="invalid-feedback">
             </div>
           </div>
           <!-- ./form group -->
           <div class="form-group">
             <label for="address">Address</label>
             <input type="textarea" id="address" required
-              [ngClass]="{ 'is-invalid': loginForm.submitted && address.invalid }" [(ngModel)]="customermodel.address "
-              name="address" class="form-control" data-required="true" placeholder="Address ">
-            <div *ngIf="loginForm.submitted && address.invalid" class="invalid-feedback">
+              [ngClass]="{ 'is-invalid': loginForm.submitted && loginForm.address.invalid }"
+              [(ngModel)]="customermodel.address " name="address" class="form-control" data-required="true"
+              placeholder="Address ">
+            <div *ngIf="loginForm.submitted && loginForm.address.invalid" class="invalid-feedback">
             </div>
           </div>
           <!-- ./form group -->
