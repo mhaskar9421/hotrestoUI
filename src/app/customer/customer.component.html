@@ -65,7 +65,7 @@
             <label>Upload Id</label>
             <div>
               <label>
-                <input type="file" name="uploadid" tabindex="3 ">
+                <input type="file" name="uploadid" tabindex="3" (change)="onSelectedFile($event)">
               </label>
             </div>
           </div>
@@ -116,6 +116,7 @@
                   aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
                   aria-label="Platform(s): activate to sort column ascending">Address</th>
                 <th data-filterable="false" class="hidden-sm">Image</th>
+                <th data-filterable="false" class="hidden-sm">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -131,6 +132,9 @@
                 <td>{{item.customer_mobile}}</td>
                 <td>{{item.customer_address}}</td>
                 <td class=" hidden-xs hidden-sm">{{item.customer_uploadImage}}</td>
+                <td>
+                  <i class="fa fa-trash-o" (click)="deleteRow(item.customer_id)"></i>
+                </td>
               </tr>
             </tbody>
           </table>

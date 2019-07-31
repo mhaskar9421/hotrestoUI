@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { notificationMessages } from '../../notificationMessages';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-customer',
@@ -73,4 +74,22 @@ export class CustomerInfoComponent implements OnInit {
           this.loading = false;
         });
   }
+
+  deleteRow(item) {
+    this.customerService.deleteRow(item)
+      .subscribe(data => {
+        console.log(data);
+        this.viewCustomerDetails();
+      })
+  };
+
+  onSelectedFile(event) {
+    if (event.target.files.length > 0) {
+      const productImage = event.target.files[0];
+      const formData = new FormData();
+      formData.append('productImage', productImage);
+      console.log(formData);
+    }
+  }
+
 }

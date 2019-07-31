@@ -11,7 +11,7 @@ export class RoomService {
     constructor(private http: HttpClient) {
     }
 
-    addRoom(roomname: string, roomnumber: string, noofbeds: string) {
+    addRoom(roomname: string, roomnumber: string, noofbeds: string, image: File) {
         return this.http.post(environment.BACKEND.URL.addRoom, { roomname: roomname, roomnumber: roomnumber, noofbeds: noofbeds })
             .map(res => {
                 return res;
@@ -23,6 +23,13 @@ export class RoomService {
             .map(res => {
                 return res;
             });
+    }
+
+    deleteRoom(roomId: number) {
+        return this.http.get('environment.BACKEND.URL.deleteRoom/' + roomId)
+            .map(res => {
+                return res;
+            })
     }
 
 }

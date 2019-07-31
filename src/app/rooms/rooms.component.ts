@@ -4,6 +4,7 @@ import { RoomService } from './room.service';
 import { notificationMessages } from '../../notificationMessages';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-addroom',
@@ -65,4 +66,12 @@ export class AddroomComponent implements OnInit {
           this.loading = false;
         });
   }
+
+  deleteRow(item) {
+    this.roomService.deleteRoom(item)
+      .subscribe(data => {
+        console.log(data);
+        this.viewRooms();
+      })
+  };
 }
