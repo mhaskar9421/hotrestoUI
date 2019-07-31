@@ -10,18 +10,18 @@
               {{errorText}}
             </div>
           </div>
-          <input type="text" class="form-control" required [(ngModel)]="model.username" id="username" name="username" placeholder="Username"
-            tabindex="1">
+          <input type="text" class="form-control" required [(ngModel)]="model.username" id="username" name="username"
+            placeholder="Username" tabindex="1">
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" required [(ngModel)]="model.password" id="password" name="password" placeholder="Password"
-            tabindex="2">
+          <input type="password" class="form-control" required [(ngModel)]="model.password" id="password"
+            name="password" placeholder="Password" tabindex="2">
         </div>
-        <div class="form-group clearfix">
+        <!-- <div class="form-group clearfix">
           <div class="pull-right">
             <a (click)="switchForms()">Forgot Password?</a>
           </div>
-        </div>
+        </div> -->
         <div class="form-group">
           <button type="button" (click)="loginUser()" [disabled]="!loginForm.valid" class="btn btn-primary btn-block
               btn-lg " tabindex="4 ">
@@ -45,8 +45,8 @@
               " placeholder="Your Email " tabindex="1 ">
         </div>
         <div class="form-group ">
-          <button type="button" [disabled]="!loginForm.valid" (click)="recoverPassword()" class="btn btn-secondary btn-block btn-lg "
-            tabindex="2 ">
+          <button type="button" [disabled]="!loginForm.valid" (click)="recoverPassword()"
+            class="btn btn-secondary btn-block btn-lg " tabindex="2 ">
             Reset &nbsp;
           </button>
         </div>
