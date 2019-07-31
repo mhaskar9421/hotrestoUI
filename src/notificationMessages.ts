@@ -5,5 +5,6 @@ import { Injectable } from "@angular/core";
 export class notificationMessages {
     loginFailed = 'Incorrect username/password';
     addRoom = 'Room added successfully!';
+    deleteRoom = 'Room deleted successfully!';
     addCustomer = 'Customer added successfully!';
 }

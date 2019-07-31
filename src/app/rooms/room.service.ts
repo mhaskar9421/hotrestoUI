@@ -26,7 +26,7 @@ export class RoomService {
     }
 
     deleteRoom(room_id: number) {
-        return this.http.get('environment.BACKEND.URL.deleteRoom/' + room_id)
+        return this.http.get(environment.BACKEND.URL.deleteRoom + room_id)
             .map(res => {
                 return res;
             })
