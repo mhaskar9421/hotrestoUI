@@ -4,3 +4,11 @@
 .btn-secondary {
     float: right;
 }
+i {
+    color:rgb(187, 8, 8);
+    font-size:22px;
+}
+
+.table-bordered.table-highlight thead tr:first-child th {
+    width: 150px!important;
+}

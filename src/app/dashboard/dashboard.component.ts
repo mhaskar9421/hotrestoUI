@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   activeMenu(menu) {
     this.selectedMenu = menu;
     this.showCustomer = false;
-    if (menu === 'dashboard') {
+    if (menu === 'dashboard' || 'tax') {
       this.showCustomer = true;
     }
   }
@@ -58,6 +58,7 @@ export class DashboardComponent implements OnInit {
 export class AddTaxDialog {
   constructor( @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
   IsmodelShow = false;
+
   addTax() {
     console.log("Add tax");
   }
