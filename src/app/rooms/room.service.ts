@@ -12,7 +12,7 @@ export class RoomService {
     }
 
     addRoom(roomname: string, roomnumber: string, noofbeds: string, image: File) {
-        return this.http.post(environment.BACKEND.URL.addRoom, { roomname: roomname, roomnumber: roomnumber, noofbeds: noofbeds })
+        return this.http.post(environment.BACKEND.URL.addRoom, { roomname: roomname, roomnumber: roomnumber, noofbeds: noofbeds, image: image })
             .map(res => {
                 return res;
             });
@@ -25,8 +25,8 @@ export class RoomService {
             });
     }
 
-    deleteRoom(roomId: number) {
-        return this.http.get('environment.BACKEND.URL.deleteRoom/' + roomId)
+    deleteRoom(room_id: number) {
+        return this.http.get('environment.BACKEND.URL.deleteRoom/' + room_id)
             .map(res => {
                 return res;
             })

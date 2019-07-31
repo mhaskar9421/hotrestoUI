@@ -7,8 +7,8 @@ import { environment } from '../../environments/environment';
 export class CustomerService {
     constructor(private http: HttpClient) { }
 
-    addCustomer(customername: string, custid: string, idnumber: string, phonenumber: number, address: string) {
-        return this.http.post(environment.BACKEND.URL.addCustomer, { customername: customername, custid: custid, idnumber: idnumber, phonenumber: phonenumber, address: address })
+    addCustomer(customername: string, custid: string, idnumber: string, phonenumber: number, address: string, image: File) {
+        return this.http.post(environment.BACKEND.URL.addCustomer, { customername: customername, custid: custid, idnumber: idnumber, phonenumber: phonenumber, address: address, image: image })
             .map(res => {
                 return res;
             });

@@ -48,7 +48,7 @@ export class AddroomComponent implements OnInit {
 
   addRoom() {
     this.loading = true;
-    this.roomService.addRoom(this.model.roomname, this.model.roomnumber, this.model.noofbeds)
+    this.roomService.addRoom(this.model.roomname, this.model.roomnumber, this.model.noofbeds, this.model.image)
       .subscribe(
         data => {
           if (data) {
@@ -67,10 +67,10 @@ export class AddroomComponent implements OnInit {
         });
   }
 
-  deleteRow(item) {
+  deleteRoom(item) {
     this.roomService.deleteRoom(item)
       .subscribe(data => {
-        console.log(data);
+        confirm("Do you want to delete the record?");
         this.viewRooms();
       })
   };

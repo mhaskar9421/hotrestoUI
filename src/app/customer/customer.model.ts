@@ -4,4 +4,5 @@ export class CustomerModel {
     idnumber: string;
     phonenumber: number;
     address: string;
+    image: File;
 }

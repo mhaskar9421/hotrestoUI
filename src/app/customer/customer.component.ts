@@ -58,7 +58,7 @@ export class CustomerInfoComponent implements OnInit {
   }
 
   addCustomer() {
-    this.customerService.addCustomer(this.customermodel.customername, this.customermodel.custid, this.customermodel.idnumber, this.customermodel.phonenumber, this.customermodel.address)
+    this.customerService.addCustomer(this.customermodel.customername, this.customermodel.custid, this.customermodel.idnumber, this.customermodel.phonenumber, this.customermodel.address, this.customermodel.image)
       .subscribe(
         data => {
           this.loading = false;
@@ -78,7 +78,7 @@ export class CustomerInfoComponent implements OnInit {
   deleteRow(item) {
     this.customerService.deleteRow(item)
       .subscribe(data => {
-        console.log(data);
+        confirm("Do you want to delete the record?");
         this.viewCustomerDetails();
       })
   };
