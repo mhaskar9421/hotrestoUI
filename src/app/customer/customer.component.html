@@ -100,20 +100,15 @@
             data-info="true" data-search="true" data-length-change="true" data-paginate="true">
             <thead>
               <tr>
-                <th data-filterable="true" data-sortable="true" class="sorting" role="columnheader" tabindex="0"
-                  aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
-                  aria-label="Platform(s): activate to sort column ascending">Customer Name</th>
-                <th data-filterable="true" data-sortable="true" class="sorting" role="columnheader" tabindex="0"
-                  aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                  aria-label="Platform(s): activate to sort column ascending">Name</th>
+                <th role="columnheader" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
                   aria-label="Platform(s): activate to sort column ascending">ID Type</th>
-                <th data-filterable="false" data-sortable="false" class="sorting" role="columnheader" tabindex="0"
-                  aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
                   aria-label="Platform(s): activate to sort column ascending">ID Number</th>
-                <th data-filterable="false" data-sortable="false" class="sorting" role="columnheader" tabindex="0"
-                  aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
-                  aria-label="Platform(s): activate to sort column ascending">Phone Number</th>
-                <th data-filterable="false" data-sortable="false" class="sorting" role="columnheader" tabindex="0"
-                  aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                  aria-label="Platform(s): activate to sort column ascending">Mobile</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
                   aria-label="Platform(s): activate to sort column ascending">Address</th>
                 <th data-filterable="false" class="hidden-sm">Image</th>
                 <th data-filterable="false" class="hidden-sm">Action</th>
@@ -121,7 +116,7 @@
             </thead>
             <tbody>
               <tr *ngIf="!customerList">
-                <td class="text-center" colspan="6">
+                <td class="text-center" colspan="7">
                   No records found
                 </td>
               </tr>
@@ -133,7 +128,7 @@
                 <td>{{item.customer_address}}</td>
                 <td class=" hidden-xs hidden-sm">{{item.customer_uploadImage}}</td>
                 <td>
-                  <i class="fa fa-trash-o" (click)="deleteRow(item.customer_id)"></i>
+                  <i class="fa fa-trash-o" (click)="deleteCustomer(item.customer_id)"></i>
                 </td>
               </tr>
             </tbody>

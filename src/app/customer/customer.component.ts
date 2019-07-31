@@ -37,6 +37,7 @@ export class CustomerInfoComponent implements OnInit {
             this.customerList = data;
           } else {
             this.loading = false;
+            this.customerList = null;
           }
         },
         error => {
@@ -75,10 +76,14 @@ export class CustomerInfoComponent implements OnInit {
         });
   }
 
-  deleteRow(item) {
-    this.customerService.deleteRow(item)
+  deleteCustomer(item) {
+    this.customerService.deleteCustomer(item)
       .subscribe(data => {
-        confirm("Do you want to delete the record?");
+        this._snackBar.open(this.constants.deleteCustomer, '', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
+        });
         this.viewCustomerDetails();
       })
   };

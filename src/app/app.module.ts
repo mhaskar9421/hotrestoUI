@@ -26,8 +26,8 @@ import { LoginComponent } from './login/login.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { NavComponent } from './nav/nav.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { DashboardComponent, AddTaxDialog } from './dashboard/dashboard.component';
-
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddTaxDialog } from './dashboard/tax.component';
 // modules
 import { AppRoutingModule } from './app-routing.module';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
@@ -103,7 +103,7 @@ import { CustomerInfoComponent } from './customer/customer.component';
     RoomService,
     CustomerService
   ],
-  bootstrap: [AppComponent, DashboardComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
 

@@ -24,7 +24,8 @@ export const environment = {
       viewRoom: "http://hotresto/backend/RoomController/viewRoom",
       deleteRoom: "http://hotresto/backend/RoomController/deleteRoom/",
       addCustomer: "http://hotresto/backend/CustomerController/addCustomer",
-      viewCustomer: "http://hotresto/backend/CustomerController/viewCustomer"
+      viewCustomer: "http://hotresto/backend/CustomerController/viewCustomer",
+      deleteCustomer: "http://hotresto/backend/CustomerController/deleteCustomer/"
     },
     WS: "ws://localhost:5500",
     ENTRY_POINTS: {

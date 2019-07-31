@@ -21,8 +21,8 @@ export class CustomerService {
             });
     }
 
-    deleteRow(customer_id: string) {
-        return this.http.get('environment.BACKEND.URL.deleteRow/' + customer_id)
+    deleteCustomer(customer_id: string) {
+        return this.http.get(environment.BACKEND.URL.deleteCustomer + customer_id)
             .map(res => {
                 return res;
             });

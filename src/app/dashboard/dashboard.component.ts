@@ -1,32 +1,54 @@
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { DashboardService } from './dashboard.service';
+import { CustomerInfoComponent } from '../customer/customer.component';
+import { CustomerService } from '../customer/customer.service';
+import { AddTaxDialog } from './tax.component';
 import { Router } from '@angular/router';
 
-export interface DialogData {
-}
-
 @Component({
-  selector: 'app-dashboard',
+  selector: 'appDashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
   selectedMenu = 'dashboard';
   showCustomer = true;
   customerList: {};
-  constructor(private router: Router, private dashboardService: DashboardService, public dialog: MatDialog) { }
+  loading = false;
+  constructor(private router: Router, private dashboardService: DashboardService, public dialog: MatDialog, private customerService: CustomerService) { }
 
   ngOnInit() {
-
+    this.viewCustomer();
   }
 
   activeMenu(menu) {
     this.selectedMenu = menu;
     this.showCustomer = false;
-    if (menu === 'dashboard' || 'tax') {
+    if (menu === 'dashboard') {
+      this.viewCustomer();
       this.showCustomer = true;
     }
+  }
+
+  viewCustomer() {
+    this.loading = true;
+    this.customerService.viewCustomerDetails()
+      .subscribe(
+        data => {
+          if (data) {
+            this.loading = false;
+            this.customerList = data;
+          } else {
+            this.loading = false;
+            this.customerList = null;
+          }
+        },
+        error => {
+          console.log(error);
+          this.loading = false;
+        });
   }
 
   openDialog() {
@@ -39,33 +61,13 @@ export class DashboardComponent implements OnInit {
   logoutUser() {
     this.dashboardService.logout()
       .subscribe(
-      data => {
-        if (data) {
-          this.router.navigate(['login']);
-        }
-      },
-      error => {
-        console.log(error);
-      });
+        data => {
+          if (data) {
+            this.router.navigate(['login']);
+          }
+        },
+        error => {
+          console.log(error);
+        });
   }
-}
-
-
-@Component({
-  selector: 'addtax',
-  templateUrl: 'addTax.html',
-})
-export class AddTaxDialog {
-  constructor( @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
-  IsmodelShow = false;
-
-  addTax() {
-    console.log("Add tax");
-  }
-  close() {
-    this.IsmodelShow = true;// set false while you need open your model popup
-    // do your more code
-  }
-
-
 }
