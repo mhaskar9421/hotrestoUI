@@ -14,8 +14,16 @@ export class DashboardService {
                 return res;
             });
     }
+
     addTax(taxType: string, taxAmount: string) {
         return this.http.post<any>(environment.BACKEND.URL.addTax, { taxType: taxType, taxAmount: taxAmount })
+            .map(res => {
+                return res;
+            });
+    }
+
+    viewTax() {
+        return this.http.get(environment.BACKEND.URL.viewTax)
             .map(res => {
                 return res;
             });

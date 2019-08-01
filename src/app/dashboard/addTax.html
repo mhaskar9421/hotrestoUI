@@ -16,8 +16,18 @@
             </button>
         </div>
     </form>
-    <div style="margin-top: -15px; margin-bottom: 0;">
-        <label> State GST - </label>
-        <span>10%</span>
-    </div>
+    <table class="table table-bordered table-highlight">
+        <thead>
+            <tr>
+                <th style="padding: 3px;">Name</th>
+                <th style="padding: 3px;">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of taxDetails">
+                <td style="padding: 3px;">{{item.tax_type}}</td>
+                <td style="padding: 3px;">{{item.tax_amount}}%</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

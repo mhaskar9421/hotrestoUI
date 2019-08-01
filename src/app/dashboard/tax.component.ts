@@ -17,9 +17,26 @@ export interface DialogData {
 export class AddTaxDialog {
     public taxModel: TaxModel;
     IsmodelShow = false;
+    taxDetails: {};
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public constants: notificationMessages, private _snackBar: MatSnackBar, public dialog: MatDialog, private dashboardService: DashboardService, ) {
         this.taxModel = new TaxModel();
+        this.viewTax();
+    }
+
+    viewTax() {
+        this.dashboardService.viewTax()
+            .subscribe(
+                data => {
+                    if (data) {
+                        this.taxDetails = data;
+                    } else {
+                        this.taxDetails = null;
+                    }
+                },
+                error => {
+                    console.log(error);
+                });
     }
 
     addTax() {
@@ -38,6 +55,7 @@ export class AddTaxDialog {
                     console.log(error);
                 });
     }
+
     close() {
         this.IsmodelShow = true;// set false while you need open your model popup
         // do your more code
