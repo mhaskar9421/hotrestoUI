@@ -84,18 +84,15 @@
 }
 
 .logout {
-    color: white;
-    padding: 19px;
+    color: #070707;
+    padding: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .fa-sign-out:before {
     font-size: 15px !important;
-}
-
-h4 {
-    color: white;
-    padding: 10px;
-    font-size: 25px;
 }
 
 .control {
@@ -118,4 +115,16 @@ border: 1px solid;
 border-radius: 5px;
 padding: 5px;
 margin-bottom: 10px;
+cursor: pointer;
+}
+
+.navbar{
+    background: #eeeeee;
+  }
+
+.logo-align{
+    vertical-align: middle;
+    height: 100px;
+    width: 150px;
+    height: 100px;
 }

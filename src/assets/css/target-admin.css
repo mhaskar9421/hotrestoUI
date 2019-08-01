@@ -1118,9 +1118,6 @@ input[type="checkbox"] {
 }
 
 @media (min-width: 768px) {
-  .navbar {
-    height: 60px;
-  }
 
   .navbar .navbar-nav>li>a {
     padding-top: 20px;
@@ -1294,7 +1291,7 @@ input[type="checkbox"] {
 
   .mainbar .mainbar-nav>li>a {
     padding: 12px 12px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .mainbar .mainbar-nav>li>a>i {
