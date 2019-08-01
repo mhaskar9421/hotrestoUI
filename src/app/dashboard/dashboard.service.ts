@@ -41,4 +41,11 @@ export class DashboardService {
                 return 5;
             });
     }
+
+    deleteTax(tax_id: number) {
+        return this.http.get(environment.BACKEND.URL.deleteTax + tax_id)
+            .map(res => {
+                return res;
+            })
+    }
 }

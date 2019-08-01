@@ -20,6 +20,7 @@ export const environment = {
       viewTax: "http://hotresto/backend/TaxController/viewTax",
       addRoom: "http://hotresto/backend/RoomController/addRoom",
       viewRoom: "http://hotresto/backend/RoomController/viewRoom",
+      deleteTax: "http://hotresto/backend/TaxController/deleteTax/",
       deleteRoom: "http://hotresto/backend/RoomController/deleteRoom/",
       totalRooms: "http://hotresto/backend/CustomerController/totalRooms/",
       addCustomer: "http://hotresto/backend/CustomerController/addCustomer",

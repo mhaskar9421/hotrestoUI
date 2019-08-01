@@ -56,6 +56,13 @@ export class AddTaxDialog {
                 });
     }
 
+    deleteTax(item) {
+        this.dashboardService.deleteTax(item)
+            .subscribe(data => {
+                this.viewTax();
+            })
+    }
+
     close() {
         this.IsmodelShow = true;// set false while you need open your model popup
         // do your more code
