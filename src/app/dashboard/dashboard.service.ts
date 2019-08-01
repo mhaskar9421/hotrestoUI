@@ -14,5 +14,10 @@ export class DashboardService {
                 return res;
             });
     }
-
+    addTax(tax: string) {
+        return this.http.post<any>('environment.BACKEND.URL.addtax', { tax: tax })
+            .map(res => {
+                return res;
+            });
+    }
 }

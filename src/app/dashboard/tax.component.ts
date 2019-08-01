@@ -1,5 +1,9 @@
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { DashboardService } from './dashboard.service';
+import { notificationMessages } from '../../notificationMessages';
+import { TaxModel } from './tax.model';
+import { MatSnackBar } from '@angular/material';
 
 export interface DialogData {
 }
@@ -7,14 +11,32 @@ export interface DialogData {
 @Component({
     selector: 'addtax',
     templateUrl: './addTax.html',
+    providers: [DashboardService, notificationMessages]
 })
 
 export class AddTaxDialog {
-    constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public dialog: MatDialog, ) { }
+    public taxModel: TaxModel;
     IsmodelShow = false;
 
+    constructor( @Inject(MAT_DIALOG_DATA) public data: DialogData, public constants: notificationMessages, private _snackBar: MatSnackBar, public dialog: MatDialog, private dashboardService: DashboardService, ) {
+        this.taxModel = new TaxModel();
+    }
+
     addTax() {
-        console.log("Add tax");
+        this.dashboardService.addTax(this.taxModel.tax)
+            .subscribe(
+            data => {
+                if (data) {
+                    this._snackBar.open(this.constants.addTax, '', {
+                        duration: 3000,
+                        horizontalPosition: 'right',
+                        verticalPosition: 'top'
+                    });
+                }
+            },
+            error => {
+                console.log(error);
+            });
     }
     close() {
         this.IsmodelShow = true;// set false while you need open your model popup
