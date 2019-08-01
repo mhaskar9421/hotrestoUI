@@ -53,8 +53,8 @@
                         Customers
                     </a>
                 </li>
-                <li [ngClass]="(selectedMenu=='tax') ? 'active' : '' " (click)="activeMenu('tax')">
-                    <a (click)="openDialog()" class="tax">
+                <li [ngClass]="(selectedMenu=='tax') ? 'active pointer' : 'pointer' " (click)="activeMenu('tax')">
+                    <a (click)="openDialog()">
                         <i class="fa fa-calendar-o"></i>
                         Tax
                     </a>
@@ -123,18 +123,29 @@
                                 Table loading please wait...
                             </div>
                             <div class="table-responsive" *ngIf="!loading">
-                                <table class="table table-striped table-bordered table-hover table-highlight" data-display-rows="10" data-info="true" data-search="true"
-                                    data-length-change="true" data-paginate="true">
+                                <table class="table table-striped table-bordered table-hover table-highlight"
+                                    data-display-rows="10" data-info="true" data-search="true" data-length-change="true"
+                                    data-paginate="true">
                                     <thead>
                                         <tr>
-                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Customer Name
+                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1"
+                                                style="width: 192px; text-align:left;"
+                                                aria-label="Platform(s): activate to sort column ascending">Customer
+                                                Name</th>
+                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1"
+                                                style="width: 192px; text-align:left;"
+                                                aria-label="Platform(s): activate to sort column ascending">ID Type</th>
+                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1"
+                                                style="width: 192px; text-align:left;"
+                                                aria-label="Platform(s): activate to sort column ascending">ID Number
                                             </th>
-                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">ID Type</th>
-                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">ID Number
+                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1"
+                                                style="width: 192px; text-align:left;"
+                                                aria-label="Platform(s): activate to sort column ascending">Phone Number
                                             </th>
-                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Phone Number
-                                            </th>
-                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Address</th>
+                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1"
+                                                style="width: 192px; text-align:left;"
+                                                aria-label="Platform(s): activate to sort column ascending">Address</th>
                                             <!-- <th data-filterable="false" class="hidden-sm">Image</th> -->
                                         </tr>
                                     </thead>

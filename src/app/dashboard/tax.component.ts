@@ -18,25 +18,25 @@ export class AddTaxDialog {
     public taxModel: TaxModel;
     IsmodelShow = false;
 
-    constructor( @Inject(MAT_DIALOG_DATA) public data: DialogData, public constants: notificationMessages, private _snackBar: MatSnackBar, public dialog: MatDialog, private dashboardService: DashboardService, ) {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public constants: notificationMessages, private _snackBar: MatSnackBar, public dialog: MatDialog, private dashboardService: DashboardService, ) {
         this.taxModel = new TaxModel();
     }
 
     addTax() {
-        this.dashboardService.addTax(this.taxModel.tax)
+        this.dashboardService.addTax(this.taxModel.taxType, this.taxModel.taxAmount)
             .subscribe(
-            data => {
-                if (data) {
-                    this._snackBar.open(this.constants.addTax, '', {
-                        duration: 3000,
-                        horizontalPosition: 'right',
-                        verticalPosition: 'top'
-                    });
-                }
-            },
-            error => {
-                console.log(error);
-            });
+                data => {
+                    if (data) {
+                        this._snackBar.open(this.constants.addTax, '', {
+                            duration: 3000,
+                            horizontalPosition: 'right',
+                            verticalPosition: 'top'
+                        });
+                    }
+                },
+                error => {
+                    console.log(error);
+                });
     }
     close() {
         this.IsmodelShow = true;// set false while you need open your model popup

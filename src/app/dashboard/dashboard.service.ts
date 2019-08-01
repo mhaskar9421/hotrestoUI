@@ -14,8 +14,8 @@ export class DashboardService {
                 return res;
             });
     }
-    addTax(tax: string) {
-        return this.http.post<any>('environment.BACKEND.URL.addtax', { tax: tax })
+    addTax(taxType: string, taxAmount: string) {
+        return this.http.post<any>(environment.BACKEND.URL.addTax, { taxType: taxType, taxAmount: taxAmount })
             .map(res => {
                 return res;
             });

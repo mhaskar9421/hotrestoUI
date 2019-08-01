@@ -110,19 +110,20 @@
     -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
-.tax{
-border: 1px solid;
-border-radius: 5px;
-padding: 5px;
-margin-bottom: 10px;
-cursor: pointer;
+
+.tax {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 
-.navbar{
+.navbar {
     background: #eeeeee;
-  }
+}
 
-.logo-align{
+.logo-align {
     vertical-align: middle;
     height: 100px;
     width: 150px;

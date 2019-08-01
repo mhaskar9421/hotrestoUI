@@ -271,6 +271,7 @@ footer {
 .center-content {
   margin: 0 auto;
 }
+
 .navbar .navbar-collapse {
   background: #eeeeee;
 }
@@ -280,4 +281,8 @@ footer {
   font-size: 15px;
   font-weight: 600;
   text-transform: capitalize;
+}
+
+.pointer {
+  cursor: pointer;
 }

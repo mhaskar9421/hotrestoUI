@@ -16,13 +16,13 @@ export const environment = {
     URL: {
       login: "http://hotresto/backend/AuthController/login",
       logout: "http://hotresto/backend/AuthController/logout",
+      addTax: "http://hotresto/backend/TaxController/addTax",
       addRoom: "http://hotresto/backend/RoomController/addRoom",
       viewRoom: "http://hotresto/backend/RoomController/viewRoom",
       deleteRoom: "http://hotresto/backend/RoomController/deleteRoom/",
       addCustomer: "http://hotresto/backend/CustomerController/addCustomer",
       viewCustomer: "http://hotresto/backend/CustomerController/viewCustomer",
-      deleteCustomer: "http://hotresto/backend/CustomerController/deleteCustomer/",
-      addTax: "http://hotresto/backend/TaxController/addTax/"
+      deleteCustomer: "http://hotresto/backend/CustomerController/deleteCustomer/"
     },
     WS: "ws://localhost:5500",
     ENTRY_POINTS: {

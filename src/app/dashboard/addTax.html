@@ -1,17 +1,23 @@
-<h1 mat-dialog-title [hidden]="IsmodelShow">Add Tax</h1>
+<h3 mat-dialog-title style="margin: 0 0 15px;">Add Tax</h3>
 <div mat-dialog-content>
-    <div class="form-group">
-        <label style="padding-right:12px;" for="tax">Tax</label>
-        <input type="text" id="tax" name="tax" placeholder="tax in %" class="control" data-required="true" required>
-    </div>
-    <div class="tax">
+    <form (ngSubmit)="taxForm.form.valid" #taxForm="ngForm" novalidate>
+        <div class="form-group">
+            <input type="text" id="tax" [(ngModel)]="taxModel.taxType" class="form-control" name="tax"
+                placeholder="Type" data-required="true" required>
+        </div>
+        <div class="form-group">
+            <input type="text" id="amount" [(ngModel)]="taxModel.taxAmount" class="form-control" name="amount"
+                placeholder="Amount" data-required="true" required>
+        </div>
+        <div class="form-group">
+            <button type="button" [disabled]="!taxForm.valid" data-dismiss="modal" (click)="addTax()" [mat-dialog-close]
+                class="btn btn-secondary" tabindex="3">
+                Add &nbsp;
+            </button>
+        </div>
+    </form>
+    <div style="margin-top: -15px; margin-bottom: 0;">
         <label> State GST - </label>
         <span>10%</span>
-    </div>
-    <div class="form-group ">
-        <button type="button " data-dismiss="modal " class="close " (click)="close() " (click)=" addTax() " class="btn
-        btn-secondary " style="float:right; " tabindex="3 ">
-            Add &nbsp;
-        </button>
     </div>
 </div>
