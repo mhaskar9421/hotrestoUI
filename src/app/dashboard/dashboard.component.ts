@@ -17,9 +17,13 @@ export class DashboardComponent implements OnInit {
   showCustomer = true;
   customerList: {};
   loading = false;
+  customerCount = 0;
+  roomCount = 0;
   constructor(private router: Router, private dashboardService: DashboardService, public dialog: MatDialog, private customerService: CustomerService) { }
 
   ngOnInit() {
+    this.totalRooms();
+    this.totalCustomers();
     this.viewCustomer();
   }
 
@@ -36,19 +40,19 @@ export class DashboardComponent implements OnInit {
     this.loading = true;
     this.customerService.viewCustomerDetails()
       .subscribe(
-        data => {
-          if (data) {
-            this.loading = false;
-            this.customerList = data;
-          } else {
-            this.loading = false;
-            this.customerList = null;
-          }
-        },
-        error => {
-          console.log(error);
+      data => {
+        if (data) {
           this.loading = false;
-        });
+          this.customerList = data;
+        } else {
+          this.loading = false;
+          this.customerList = null;
+        }
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+      });
   }
 
   openDialog() {
@@ -57,17 +61,46 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-
   logoutUser() {
     this.dashboardService.logout()
       .subscribe(
-        data => {
-          if (data) {
-            this.router.navigate(['login']);
-          }
-        },
-        error => {
-          console.log(error);
-        });
+      data => {
+        if (data) {
+          this.router.navigate(['login']);
+        }
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+  totalCustomers() {
+    this.dashboardService.totalCustomers()
+      .subscribe(
+      data => {
+        if (data) {
+          this.customerCount = data;
+        } else {
+          this.customerCount = 0;
+        }
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+  totalRooms() {
+    this.dashboardService.totalRooms()
+      .subscribe(
+      data => {
+        if (data) {
+          this.roomCount = data;
+        } else {
+          this.roomCount = 0;
+        }
+      },
+      error => {
+        console.log(error);
+      });
   }
 }

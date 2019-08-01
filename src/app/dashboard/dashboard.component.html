@@ -74,7 +74,7 @@
                 <div class="col-sm-6 col-md-3">
                     <div class="row-stat">
                         <p class="row-stat-label">Total Customers </p>
-                        <h3 class="row-stat-value">0</h3>
+                        <h3 class="row-stat-value">{{ customerCount }}</h3>
                     </div>
                     <!-- /.row-stat -->
                 </div>
@@ -98,7 +98,7 @@
                 <div class="col-sm-6 col-md-3">
                     <div class="row-stat">
                         <p class="row-stat-label">Rooms Left</p>
-                        <h3 class="row-stat-value">0</h3>
+                        <h3 class="row-stat-value">{{ roomCount }}</h3>
                     </div>
                     <!-- /.row-stat -->
                 </div>
@@ -123,29 +123,18 @@
                                 Table loading please wait...
                             </div>
                             <div class="table-responsive" *ngIf="!loading">
-                                <table class="table table-striped table-bordered table-hover table-highlight"
-                                    data-display-rows="10" data-info="true" data-search="true" data-length-change="true"
-                                    data-paginate="true">
+                                <table class="table table-striped table-bordered table-hover table-highlight" data-display-rows="10" data-info="true" data-search="true"
+                                    data-length-change="true" data-paginate="true">
                                     <thead>
                                         <tr>
-                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1"
-                                                style="width: 192px; text-align:left;"
-                                                aria-label="Platform(s): activate to sort column ascending">Customer
-                                                Name</th>
-                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1"
-                                                style="width: 192px; text-align:left;"
-                                                aria-label="Platform(s): activate to sort column ascending">ID Type</th>
-                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1"
-                                                style="width: 192px; text-align:left;"
-                                                aria-label="Platform(s): activate to sort column ascending">ID Number
+                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Customer Name
                                             </th>
-                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1"
-                                                style="width: 192px; text-align:left;"
-                                                aria-label="Platform(s): activate to sort column ascending">Phone Number
+                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">ID Type</th>
+                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">ID Number
                                             </th>
-                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1"
-                                                style="width: 192px; text-align:left;"
-                                                aria-label="Platform(s): activate to sort column ascending">Address</th>
+                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Phone Number
+                                            </th>
+                                            <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Address</th>
                                             <!-- <th data-filterable="false" class="hidden-sm">Image</th> -->
                                         </tr>
                                     </thead>

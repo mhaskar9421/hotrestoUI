@@ -31,19 +31,19 @@ export class CustomerInfoComponent implements OnInit {
     this.loading = true;
     this.customerService.viewCustomerDetails()
       .subscribe(
-        data => {
-          if (data) {
-            this.loading = false;
-            this.customerList = data;
-          } else {
-            this.loading = false;
-            this.customerList = null;
-          }
-        },
-        error => {
-          console.log(error);
+      data => {
+        if (data) {
           this.loading = false;
-        });
+          this.customerList = data;
+        } else {
+          this.loading = false;
+          this.customerList = null;
+        }
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+      });
   }
 
   onSubmit() {
@@ -61,19 +61,19 @@ export class CustomerInfoComponent implements OnInit {
   addCustomer() {
     this.customerService.addCustomer(this.customermodel.customername, this.customermodel.custid, this.customermodel.idnumber, this.customermodel.phonenumber, this.customermodel.address, this.customermodel.image)
       .subscribe(
-        data => {
-          this.loading = false;
-          this._snackBar.open(this.constants.addCustomer, '', {
-            duration: 5000,
-            horizontalPosition: 'right',
-            verticalPosition: 'top'
-          });
-          this.viewCustomerDetails();
-        },
-        error => {
-          console.log(error);
-          this.loading = false;
+      data => {
+        this.loading = false;
+        this._snackBar.open(this.constants.addCustomer, '', {
+          duration: 5000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
         });
+        this.viewCustomerDetails();
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+      });
   }
 
   deleteCustomer(item) {

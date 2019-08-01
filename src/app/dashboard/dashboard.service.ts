@@ -28,4 +28,17 @@ export class DashboardService {
                 return res;
             });
     }
+
+    totalCustomers() {
+        return this.http.get<any>('environment.BACKEND.URL.totalCustomers', {})
+            .map(res => {
+                return 4;
+            });
+    }
+    totalRooms() {
+        return this.http.get<any>('environment.BACKEND.URL.totalRooms', {})
+            .map(res => {
+                return 5;
+            });
+    }
 }
