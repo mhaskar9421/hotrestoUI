@@ -30,9 +30,9 @@ export class DashboardService {
     }
 
     totalCustomers() {
-        return this.http.get<any>('environment.BACKEND.URL.totalCustomers', {})
+        return this.http.get<any>(environment.BACKEND.URL.totalCustomers, {})
             .map(res => {
-                return 4;
+                return res;
             });
     }
     totalRooms() {

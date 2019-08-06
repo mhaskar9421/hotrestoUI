@@ -1,7 +1,7 @@
 {
-    "app":{
-        "title":"Angular Stater Kit",
-        "alternativeTitle":"ngular Starter Kit"
+    "app": {
+        "title": "Angular Stater Kit",
+        "alternativeTitle": "ngular Starter Kit"
     },
     "pages": {
         "login": {
@@ -12,27 +12,27 @@
             "login_title": "Sign in"
         },
         "dashboard": {
-            "menuTitle":"Dashboard",
-            "title":"Sales",
+            "menuTitle": "Dashboard",
+            "title": "Sales",
             "chartTitle": "Sales of Samsung & iPhone"
         },
         "users": {
-            "menuTitle":"Users",
+            "menuTitle": "Users",
             "title": "Users",
-            "name":"Name",
-            "surname":"Surname",
-            "address":"Address",
-            "gender":"Gender",
-            "email":"Email",
-            "filter":{
-                "do_filter":"Filter",
-                "male":"Male",
-                "female":"Female",
-                "both":"Both"
+            "name": "Name",
+            "surname": "Surname",
+            "address": "Address",
+            "gender": "Gender",
+            "email": "Email",
+            "filter": {
+                "do_filter": "Filter",
+                "male": "Male",
+                "female": "Female",
+                "both": "Both"
             }
         },
-        "invoices":{
-            "menuTitle":"Invoices"
+        "invoices": {
+            "menuTitle": "Invoices"
         }
     },
     "general": {

@@ -15,6 +15,7 @@ import { filter } from 'rxjs/operators';
 export class AddroomComponent implements OnInit {
 
   loading = false;
+  showCustomer = false;
   errorText: string;
   errorDisplay: true;
   roomList: {};
@@ -26,46 +27,49 @@ export class AddroomComponent implements OnInit {
 
   ngOnInit() {
     this.viewRooms();
+    this.showCustomer = false;
   }
 
   viewRooms() {
     this.loading = true;
     this.roomService.viewRoom()
       .subscribe(
-      data => {
-        if (data) {
+        data => {
+          if (data) {
+            this.loading = false;
+            this.roomList = data;
+          } else {
+            this.loading = false;
+            this.roomList = null;
+          }
+        },
+        error => {
+          console.log(error);
           this.loading = false;
-          this.roomList = data;
-        } else {
-          this.loading = false;
-          this.roomList = null;
-        }
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
+        });
   }
 
   addRoom() {
     this.loading = true;
     this.roomService.addRoom(this.model.roomname, this.model.roomnumber, this.model.noofbeds, this.model.image)
       .subscribe(
-      data => {
-        if (data) {
+        data => {
+          if (data) {
+            this.loading = false;
+            this._snackBar.open(this.constants.addRoom, '', {
+              duration: 5000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top'
+            });
+            //setTimeout(() => {
+            this.viewRooms();
+            //}, 2000);
+          }
+        },
+        error => {
+          console.log(error);
           this.loading = false;
-          this._snackBar.open(this.constants.addRoom, '', {
-            duration: 3000,
-            horizontalPosition: 'right',
-            verticalPosition: 'top'
-          });
-          this.viewRooms();
-        }
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
+        });
   }
 
   deleteRoom(item) {

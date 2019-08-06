@@ -27,23 +27,23 @@ export class AuthService {
     logout() {
         this.clearSession();
         this.loggedIn = false;
-        this.router.navigate([environment.FRONTEND.BASIC_ROUTES.LOGIN_ROUTE]);
+        this.router.navigate(['environment.FRONTEND.BASIC_ROUTES.LOGIN_ROUTE']);
     }
 
     setSession(token: any) {
         // expires at - seconds . local storage
         // const expiresAt = moment().add(authResult.expiresIn,'second');
         // localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
-        sessionStorage.setItem(environment.AUTHENTICATION.TOKENNAME, token);
+        sessionStorage.setItem('environment.AUTHENTICATION.TOKENNAME', token);
     }
 
     getToken() {
-        let temp = sessionStorage.getItem(environment.AUTHENTICATION.TOKENNAME);
+        let temp = sessionStorage.getItem('environment.AUTHENTICATION.TOKENNAME');
         return temp ? temp : '';
     }
 
     clearSession() {
-        sessionStorage.removeItem(environment.AUTHENTICATION.TOKENNAME);
+        sessionStorage.removeItem('environment.AUTHENTICATION.TOKENNAME');
     }
 
 
