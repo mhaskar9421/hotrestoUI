@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     let customer = this.router.url.indexOf('customer');
     let rooms = this.router.url.indexOf('rooms');
+    let bookRoom = this.router.url.indexOf('book-room');
     if (customer != -1) { this.selectedMenu = 'customer'; this.showCustomer = false; }
     if (rooms != -1) { this.selectedMenu = 'rooms'; this.showCustomer = false; }
   }
@@ -45,43 +46,43 @@ export class DashboardComponent implements OnInit {
   logoutUser() {
     this.dashboardService.logout()
       .subscribe(
-        data => {
-          if (data) {
-            this.router.navigate(['login']);
-          }
-        },
-        error => {
-          console.log(error);
-        });
+      data => {
+        if (data) {
+          this.router.navigate(['login']);
+        }
+      },
+      error => {
+        console.log(error);
+      });
   }
 
   totalCustomers() {
     this.dashboardService.totalCustomers()
       .subscribe(
-        data => {
-          if (data) {
-            this.customerCount = data;
-          } else {
-            this.customerCount = 0;
-          }
-        },
-        error => {
-          console.log(error);
-        });
+      data => {
+        if (data) {
+          this.customerCount = data;
+        } else {
+          this.customerCount = 0;
+        }
+      },
+      error => {
+        console.log(error);
+      });
   }
 
   totalRooms() {
     this.dashboardService.totalRooms()
       .subscribe(
-        data => {
-          if (data) {
-            this.roomCount = data;
-          } else {
-            this.roomCount = 0;
-          }
-        },
-        error => {
-          console.log(error);
-        });
+      data => {
+        if (data) {
+          this.roomCount = data;
+        } else {
+          this.roomCount = 0;
+        }
+      },
+      error => {
+        console.log(error);
+      });
   }
 }

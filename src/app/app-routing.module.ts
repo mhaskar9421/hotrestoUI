@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddroomComponent } from "src/app/rooms/rooms.component";
 import { CustomerInfoComponent } from "src/app/customer/customer.component";
+import { BookRoomComponent } from './book-room/book-room.component';
 
 const appRoutes: Routes = [
     {
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
         component: DashboardComponent,
         children: [
             { path: 'rooms', component: AddroomComponent },
-            { path: 'customer', component: CustomerInfoComponent }
+            { path: 'customer', component: CustomerInfoComponent },
+            { path: 'book-room', component: BookRoomComponent }
         ]
     }
 ];

@@ -43,6 +43,7 @@ import { notificationMessages } from '../notificationMessages';
 import { AddroomComponent } from './rooms/rooms.component';
 import { CustomerInfoComponent } from './customer/customer.component';
 import { CustomerTableComponent } from './customer-table/customer-table.component';
+import { BookRoomComponent } from './book-room/book-room.component';
 // import { TaxComponent } from './tax/tax.component';
 
 @NgModule({
@@ -57,7 +58,8 @@ import { CustomerTableComponent } from './customer-table/customer-table.componen
     SidebarComponent,
     AddroomComponent,
     CustomerInfoComponent,
-    CustomerTableComponent
+    CustomerTableComponent,
+    BookRoomComponent
     // TaxComponent
   ],
   entryComponents: [DashboardComponent, AddTaxDialog],

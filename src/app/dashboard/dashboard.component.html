@@ -40,6 +40,14 @@
                         Dashboard
                     </a>
                 </li>
+
+                <li [ngClass]="(selectedMenu=='book-room') ? 'active' : '' " (click)="activeMenu('book-room')">
+                    <a [routerLink]="['book-room']">
+                        <i class="fa fa-home"></i>
+                        Book Room
+                    </a>
+                </li>
+
                 <li [ngClass]="(selectedMenu=='rooms') ? 'active' : '' " (click)="activeMenu('rooms')">
                     <a [routerLink]="['rooms']">
                         <i class="fa fa-home"></i>
