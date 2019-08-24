@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerService } from '../customer/customer.service';
 
@@ -12,6 +12,7 @@ export class CustomerTableComponent implements OnInit {
   loading = false;
   showButton: true;
   selectedMenu: 'dashboard';
+  @Input() activeTab: string;
 
   constructor(private router: Router, private customerService: CustomerService) { }
 
@@ -27,19 +28,19 @@ export class CustomerTableComponent implements OnInit {
     this.loading = true;
     this.customerService.viewCustomerDetails()
       .subscribe(
-      data => {
-        if (data) {
+        data => {
+          if (data) {
+            this.loading = false;
+            this.customerList = data;
+          } else {
+            this.loading = false;
+            this.customerList = null;
+          }
+        },
+        error => {
+          console.log(error);
           this.loading = false;
-          this.customerList = data;
-        } else {
-          this.loading = false;
-          this.customerList = null;
-        }
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
+        });
   }
 
 }

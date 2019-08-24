@@ -12,18 +12,23 @@
         Table loading please wait...
       </div>
       <div class="table-responsive" *ngIf="!loading">
-        <table class="table table-striped table-bordered table-hover table-highlight" data-display-rows="10" data-info="true" data-search="true"
-          data-length-change="true" data-paginate="true">
+        <table class="table table-striped table-bordered table-hover table-highlight" data-display-rows="10"
+          data-info="true" data-search="true" data-length-change="true" data-paginate="true">
           <thead>
             <tr>
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Customer Name
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">Customer Name
               </th>
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">ID Type</th>
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">ID Number
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">ID Type</th>
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">ID Number
               </th>
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Phone Number
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">Phone Number
               </th>
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Address</th>
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">Address</th>
               <!-- <th data-filterable="false" class="hidden-sm">Image</th> -->
               <th data-filterable="false" class="hidden-sm">Action</th>
             </tr>
@@ -41,10 +46,10 @@
               <td>{{item.customer_mobile}}</td>
               <td>{{item.customer_address}}</td>
               <td>
-                <button *ngIf="!showButton" type="button" class="btn btn-secondary">
+                <button *ngIf="activeTab == 'dashboard'" type="button" class="btn btn-secondary">
                   CheckOut &nbsp;
                 </button>
-                <i class="fa fa-trash-o" *ngIf="showButton" (click)="deleteCustomer(item.customer_id)"></i>
+                <i class="fa fa-trash-o" *ngIf="activeTab == 'customer'" (click)="deleteCustomer(item.customer_id)"></i>
               </td>
               <!-- <td class=" hidden-xs hidden-sm">{{item.customer_uploadImage}}</td> -->
             </tr>
