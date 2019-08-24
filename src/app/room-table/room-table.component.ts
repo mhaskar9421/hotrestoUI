@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RoomService } from '../rooms/room.service';
 import { MatSnackBar } from '@angular/material';
 import { notificationMessages } from '../../notificationMessages';
@@ -9,6 +9,7 @@ import { notificationMessages } from '../../notificationMessages';
   styleUrls: ['./room-table.component.scss']
 })
 export class RoomTableComponent implements OnInit {
+  @Input() tabTitle: string;
   loading = false;
   roomList: {};
   constructor(private _snackBar: MatSnackBar, private roomService: RoomService, public constants: notificationMessages) { }
