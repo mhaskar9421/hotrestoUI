@@ -18,12 +18,16 @@ export class CustomerInfoComponent implements OnInit {
   loading = true;
   submitted = false;
   customerList: {};
+  showCustomer = true;
+  selectedMenu = "";
 
   constructor(private router: Router, public constants: notificationMessages, private route: ActivatedRoute, private _snackBar: MatSnackBar, private customerService: CustomerService) {
     this.customermodel = new CustomerModel();
   }
 
   ngOnInit() {
+    let customer = this.router.url.indexOf('customer');
+    if (customer != -1) { this.selectedMenu = 'customer'; this.showCustomer = true; }
     this.viewCustomerDetails();
   }
 
