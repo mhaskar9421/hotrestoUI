@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { roomsModel } from './rooms.model';
 import { RoomService } from './room.service';
 import { notificationMessages } from '../../notificationMessages';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { filter } from 'rxjs/operators';
+import { RoomTableComponent } from '../room-table/room-table.component';
 
 @Component({
   selector: 'app-addroom',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss'],
-  providers: [RoomService, notificationMessages]
+  providers: [RoomService, notificationMessages, RoomTableComponent]
 })
 export class AddroomComponent implements OnInit {
 
@@ -25,28 +26,10 @@ export class AddroomComponent implements OnInit {
     this.model = new roomsModel();
   }
 
-  ngOnInit() {
-    this.viewRooms();
-    this.showCustomer = false;
-  }
+  @ViewChild(RoomTableComponent) roomcomponent: RoomTableComponent;
 
-  viewRooms() {
-    this.loading = true;
-    this.roomService.viewRoom()
-      .subscribe(
-        data => {
-          if (data) {
-            this.loading = false;
-            this.roomList = data;
-          } else {
-            this.loading = false;
-            this.roomList = null;
-          }
-        },
-        error => {
-          console.log(error);
-          this.loading = false;
-        });
+  ngOnInit() {
+    this.showCustomer = false;
   }
 
   addRoom() {
@@ -61,26 +44,12 @@ export class AddroomComponent implements OnInit {
               horizontalPosition: 'right',
               verticalPosition: 'top'
             });
-            //setTimeout(() => {
-            this.viewRooms();
-            //}, 2000);
+            this.roomcomponent.viewRooms();
           }
         },
         error => {
           console.log(error);
           this.loading = false;
         });
-  }
-
-  deleteRoom(item) {
-    this.roomService.deleteRoom(item)
-      .subscribe(data => {
-        this._snackBar.open(this.constants.deleteRoom, '', {
-          duration: 3000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top'
-        });
-        this.viewRooms();
-      })
   }
 }

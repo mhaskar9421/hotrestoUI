@@ -1,0 +1,47 @@
+<div class="portlet">
+  <div class="portlet-header">
+    <h3>
+      <i class="fa fa-table"></i>
+      Booked Rooms list
+    </h3>
+  </div>
+  <div class="portlet-content">
+    <div class="text-center" *ngIf="loading">
+      <mat-spinner [diameter]="35" class="center-content"></mat-spinner>
+      Table loading please wait...
+    </div>
+    <div class="table-responsive" *ngIf="!loading">
+      <table class="table table-striped table-bordered table-hover table-highlight" data-provide="datatable"
+        data-display-rows="10" data-info="true" data-search="true" data-length-change="true" data-paginate="true">
+        <thead>
+          <tr>
+            <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px;"
+              aria-label="Platform(s): activate to sort column ascending">Room Name</th>
+            <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px;"
+              aria-label="Platform(s): activate to sort column ascending">Room Number</th>
+            <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px;"
+              aria-label="Platform(s): activate to sort column ascending">No of Beds</th>
+            <!-- <th data-filterable="false" class="hidden-sm">Image</th> -->
+            <th data-filterable="false" class="hidden-sm">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="!roomList">
+            <td class="text-center" colspan="4">
+              No records found
+            </td>
+          </tr>
+          <tr *ngFor="let item of roomList">
+            <td>{{item.room_name}}</td>
+            <td>{{item.room_number}}</td>
+            <td>{{item.room_bed_count}}</td>
+            <!-- <td class=" hidden-xs hidden-sm">{{item.room_image}}</td> -->
+            <td>
+              <i class="fa fa-trash-o" (click)="deleteRoom(item.room_id)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
