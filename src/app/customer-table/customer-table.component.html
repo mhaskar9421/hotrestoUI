@@ -41,10 +41,10 @@
               <td>{{item.customer_mobile}}</td>
               <td>{{item.customer_address}}</td>
               <td>
-                <button *ngIf="!showCustomer" type="button" class="btn btn-secondary">
+                <button *ngIf="!showButton" type="button" class="btn btn-secondary">
                   CheckOut &nbsp;
                 </button>
-                <i class="fa fa-trash-o" *ngIf="showCustomer" (click)="deleteCustomer(item.customer_id)"></i>
+                <i class="fa fa-trash-o" *ngIf="showButton" (click)="deleteCustomer(item.customer_id)"></i>
               </td>
               <!-- <td class=" hidden-xs hidden-sm">{{item.customer_uploadImage}}</td> -->
             </tr>
