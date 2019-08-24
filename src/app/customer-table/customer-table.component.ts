@@ -10,17 +10,11 @@ import { CustomerService } from '../customer/customer.service';
 export class CustomerTableComponent implements OnInit {
   customerList: {};
   loading = false;
-  showButton: true;
-  selectedMenu: 'dashboard';
   @Input() activeTab: string;
 
   constructor(private router: Router, private customerService: CustomerService) { }
 
   ngOnInit() {
-    let dashboard = this.router.url.indexOf('dashboard');
-    let customer = this.router.url.indexOf('customer');
-    if (dashboard != -1) { this.selectedMenu = 'dashboard'; this.showButton = false; }
-    if (customer != -1) { this.selectedMenu = 'customer'; this.showButton = false; }
     this.viewCustomer();
   }
 
@@ -28,19 +22,19 @@ export class CustomerTableComponent implements OnInit {
     this.loading = true;
     this.customerService.viewCustomerDetails()
       .subscribe(
-        data => {
-          if (data) {
-            this.loading = false;
-            this.customerList = data;
-          } else {
-            this.loading = false;
-            this.customerList = null;
-          }
-        },
-        error => {
-          console.log(error);
+      data => {
+        if (data) {
           this.loading = false;
-        });
+          this.customerList = data;
+        } else {
+          this.loading = false;
+          this.customerList = null;
+        }
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+      });
   }
 
 }
