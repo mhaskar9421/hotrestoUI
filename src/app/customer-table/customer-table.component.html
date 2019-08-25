@@ -46,8 +46,8 @@
               <td>{{item.customer_mobile}}</td>
               <td>{{item.customer_address}}</td>
               <td>
-                <button *ngIf="activeTab == 'dashboard'" type="button" class="btn btn-secondary">
-                  CheckOut &nbsp;
+                <button *ngIf="activeTab == 'dashboard'" type="button" class="btn btn-secondary btn-xs">
+                  Checkout &nbsp;
                 </button>
                 <i class="fa fa-trash-o" *ngIf="activeTab == 'customer'" (click)="deleteCustomer(item.customer_id)"></i>
               </td>

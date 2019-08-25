@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { RoomTableComponent } from '../room-table/room-table.component';
 
 @Component({
   selector: 'app-book-room',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class BookRoomComponent implements OnInit {
 
   constructor() { }
+
+  @ViewChild(RoomTableComponent) roomcomponent: RoomTableComponent;
 
   ngOnInit() {
   }
@@ -19,4 +22,9 @@ export class BookRoomComponent implements OnInit {
       event.preventDefault();
     }
   }
+
+  getAvaliableRooms() {
+    this.roomcomponent.viewRooms();
+  }
+
 }

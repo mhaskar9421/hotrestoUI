@@ -39,6 +39,25 @@ export class RoomTableComponent implements OnInit {
         });
   }
 
+  getAvaliableRooms() {
+    this.loading = true;
+    this.roomTableService.getAvaliableRooms()
+      .subscribe(
+        data => {
+          if (data) {
+            this.loading = false;
+            this.roomList = data;
+          } else {
+            this.loading = false;
+            this.roomList = null;
+          }
+        },
+        error => {
+          console.log(error);
+          this.loading = false;
+        });
+  }
+
   deleteRoom(item) {
     this.roomTableService.deleteRoom(item)
       .subscribe(data => {

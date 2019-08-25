@@ -18,6 +18,13 @@ export class RoomTableService {
             });
     }
 
+    getAvaliableRooms() {
+        return this.http.get(environment.BACKEND.URL.viewRoom)
+            .map(res => {
+                return res;
+            });
+    }
+
     deleteRoom(room_id: number) {
         return this.http.get(environment.BACKEND.URL.deleteRoom + room_id)
             .map(res => {
