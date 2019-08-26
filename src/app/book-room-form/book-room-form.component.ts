@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-book-room-form',
@@ -6,19 +7,26 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./book-room-form.component.scss']
 })
 export class BookRoomFormComponent implements OnInit {
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
   formView: boolean = false;
   @Input() activeTab: string;
   @Output() formEvent = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    console.log(this.activeTab);
+    this.firstFormGroup = this.formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this.formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
   }
 
   callRoomTable() {
     this.formEvent.emit(this.formView);
     localStorage.setItem('showRoomList', 'true');
   }
-
 }

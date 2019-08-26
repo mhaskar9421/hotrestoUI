@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule } from '@angular/material';
 
 // services
 import { AuthService } from './auth.service';
@@ -80,6 +81,10 @@ import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
     ChartsModule,
     NGPrimeModule,
     CalendarModule,
+    MatStepperModule,
+    MatInputModule,
+    MatButtonModule,
+    MatAutocompleteModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
