@@ -7,9 +7,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./book-room-form.component.scss']
 })
 export class BookRoomFormComponent implements OnInit {
-  isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
   formView: boolean = false;
   @Input() activeTab: string;
   @Output() formEvent = new EventEmitter<boolean>();
@@ -22,6 +22,9 @@ export class BookRoomFormComponent implements OnInit {
     });
     this.secondFormGroup = this.formBuilder.group({
       secondCtrl: ['', Validators.required]
+    });
+    this.thirdFormGroup = this.formBuilder.group({
+      thirdCtrl: ['', Validators.required]
     });
   }
 

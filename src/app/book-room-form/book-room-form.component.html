@@ -1,12 +1,24 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-</button>
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
+<mat-horizontal-stepper #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
+      <ng-template matStepLabel>Customer Info</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        <input matInput placeholder="Customer Name" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="ID Type" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="ID Number" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Phone Number" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Upload Id" formControlName="firstCtrl" required>
       </mat-form-field>
       <div>
         <button mat-button matStepperNext>Next</button>
@@ -15,9 +27,55 @@
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
+      <ng-template matStepLabel>Room Info</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+        <input matInput placeholder="Rooom Number" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Number of Days" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Room Amount" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Extra Occupancy" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Total Amount" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Payment Info</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Bill Amount(Auto Calculate)" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Payment Type</mat-label>
+        <mat-select matNativeControl formControlName="thirdCtrl" required>
+          <mat-option value="Debit Card">Debit Card</mat-option>
+          <mat-option value="Credit Card">Credit Card</mat-option>
+          <mat-option value="in-Cash">In Cash</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Paid Amount" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Payment Status</mat-label>
+        <mat-select matNativeControl formControlName="thirdCtrl" required>
+          <mat-option value="Partial">Partial</mat-option>
+          <mat-option value="FullPayment">Full Payment</mat-option>
+          <mat-option value="not Done">Not Done</mat-option>
+        </mat-select>
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
@@ -27,10 +85,10 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-    You are now done.
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button matStepperPrevious>Book Now</button>
+      <button mat-button matStepperPrevious>Print Invoice</button>
+      <button mat-button (click)="stepper.reset()">Edit Booking</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>
