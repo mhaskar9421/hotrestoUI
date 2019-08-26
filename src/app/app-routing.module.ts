@@ -8,6 +8,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddroomComponent } from "src/app/rooms/rooms.component";
 import { CustomerInfoComponent } from "src/app/customer/customer.component";
 import { BookRoomComponent } from './book-room/book-room.component';
+import { RoomTableComponent } from './room-table/room-table.component'
+import { BookRoomFormComponent } from './book-room-form/book-room-form.component';
 
 const appRoutes: Routes = [
     {
@@ -27,7 +29,13 @@ const appRoutes: Routes = [
             { path: 'customer', component: CustomerInfoComponent },
             { path: 'book-room', component: BookRoomComponent }
         ]
+    },
+    {
+        path: 'room-table',
+        component: RoomTableComponent
     }
+
+
 ];
 @NgModule({
     // hashtag -> use useHash:true

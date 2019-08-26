@@ -45,6 +45,7 @@ import { CustomerInfoComponent } from './customer/customer.component';
 import { CustomerTableComponent } from './customer-table/customer-table.component';
 import { BookRoomComponent } from './book-room/book-room.component';
 import { RoomTableComponent } from './room-table/room-table.component';
+import { BookRoomFormComponent } from './book-room-form/book-room-form.component';
 // import { TaxComponent } from './tax/tax.component';
 
 @NgModule({
@@ -61,7 +62,8 @@ import { RoomTableComponent } from './room-table/room-table.component';
     CustomerInfoComponent,
     CustomerTableComponent,
     BookRoomComponent,
-    RoomTableComponent
+    RoomTableComponent,
+    BookRoomFormComponent
     // TaxComponent
   ],
   entryComponents: [DashboardComponent, AddTaxDialog],

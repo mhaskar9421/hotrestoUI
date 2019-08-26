@@ -14,4 +14,8 @@
     Search &nbsp;
   </button>
 </div>
-<app-room-table activeTab="book-room" tabTitle="Avaliable Rooms List"></app-room-table>
+<app-room-table *ngIf="!formView" activeTab="book-room" (formEvent)="receiveEvent($event)"
+  tabTitle="Avaliable Rooms List">
+</app-room-table>
+<app-book-room-form *ngIf="formView" activeTab="book-room-form" (formEvent)="receiveEvent($event)">
+</app-book-room-form>

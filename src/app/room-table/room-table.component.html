@@ -37,10 +37,12 @@
             <td>{{item.room_bed_count}}</td>
             <!-- <td class=" hidden-xs hidden-sm">{{item.room_image}}</td> -->
             <td>
-              <button *ngIf="activeTab == 'book-room'" type="button" (click)="viewBookRoomForm(item.room_id)"
+              <!-- <a [routerLink]="['book-room-form']"> -->
+              <button *ngIf="activeTab == 'book-room'" type="button" (click)="callbookRoomForm()"
                 class="btn btn-success btn-xs">
                 Book Room&nbsp;
               </button>
+              <!-- </a> -->
               <i class="fa fa-trash-o" *ngIf="activeTab == 'rooms'" (click)="deleteRoom(item.room_id)"></i>
             </td>
           </tr>

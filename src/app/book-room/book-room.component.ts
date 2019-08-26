@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RoomTableComponent } from '../room-table/room-table.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-room',
@@ -8,11 +9,16 @@ import { RoomTableComponent } from '../room-table/room-table.component';
 })
 export class BookRoomComponent implements OnInit {
 
-  constructor() { }
+  formView: false;
+  constructor(private router: Router) { }
 
   @ViewChild(RoomTableComponent) roomcomponent: RoomTableComponent;
 
   ngOnInit() {
+  }
+
+  receiveEvent($event) {
+    this.formView = $event;
   }
 
   keyPress(event: any) {

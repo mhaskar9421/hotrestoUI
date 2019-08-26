@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RoomTableService } from './room-table.service';
 import { MatSnackBar } from '@angular/material';
 import { notificationMessages } from '../../notificationMessages';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-room-table',
@@ -12,12 +13,23 @@ import { notificationMessages } from '../../notificationMessages';
 export class RoomTableComponent implements OnInit {
   @Input() tabTitle: string;
   @Input() activeTab: string;
+  formView: boolean = true;
   loading = false;
   roomList: {};
-  constructor(private _snackBar: MatSnackBar, private roomTableService: RoomTableService, public constants: notificationMessages) { }
+
+  @Output() formEvent = new EventEmitter<boolean>();
+
+  constructor(private router: Router, private _snackBar: MatSnackBar, private roomTableService: RoomTableService, public constants: notificationMessages) { }
 
   ngOnInit() {
-    if (this.activeTab != 'book-room') { this.viewRooms(); }
+    if (this.activeTab != 'book-room' || localStorage.getItem('showRoomList')) {
+      this.viewRooms();
+      localStorage.removeItem('showRoomList');
+    }
+  }
+
+  callbookRoomForm() {
+    this.formEvent.emit(this.formView);
   }
 
   viewRooms() {
@@ -57,6 +69,8 @@ export class RoomTableComponent implements OnInit {
           this.loading = false;
         });
   }
+
+
 
   deleteRoom(item) {
     this.roomTableService.deleteRoom(item)
