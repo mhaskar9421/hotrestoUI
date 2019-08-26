@@ -45,6 +45,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  receiveEvent($event) {
+    this.showCustomer = $event;
+  }
+
   logoutUser() {
     this.dashboardService.logout()
       .subscribe(

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerService } from '../customer/customer.service';
 
@@ -10,7 +10,9 @@ import { CustomerService } from '../customer/customer.service';
 export class CustomerTableComponent implements OnInit {
   customerList: {};
   loading = false;
+  showCustomer: boolean = false;
   @Input() activeTab: string;
+  @Output() checkoutEvent = new EventEmitter<boolean>();
 
   constructor(private router: Router, private customerService: CustomerService) { }
 
@@ -22,19 +24,23 @@ export class CustomerTableComponent implements OnInit {
     this.loading = true;
     this.customerService.viewCustomerDetails()
       .subscribe(
-      data => {
-        if (data) {
+        data => {
+          if (data) {
+            this.loading = false;
+            this.customerList = data;
+          } else {
+            this.loading = false;
+            this.customerList = null;
+          }
+        },
+        error => {
+          console.log(error);
           this.loading = false;
-          this.customerList = data;
-        } else {
-          this.loading = false;
-          this.customerList = null;
-        }
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
+        });
+  }
+
+  checkout() {
+    this.checkoutEvent.emit(this.showCustomer);
   }
 
 }
