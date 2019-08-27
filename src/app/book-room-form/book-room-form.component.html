@@ -1,95 +1,85 @@
 <mat-horizontal-stepper #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form class="form" [formGroup]="firstFormGroup">
+  <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+    <form class="form" [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()">
       <ng-template matStepLabel>Customer Info</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Customer Name" formControlName="firstCtrl" required>
+        <input matInput placeholder="Customer Name" formControlName="name" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="ID Type" formControlName="firstCtrl" required>
+        <input matInput placeholder="ID Type" formControlName="idtype" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="ID Number" formControlName="firstCtrl" required>
+        <input matInput placeholder="ID Number" formControlName="idnumber" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Phone Number" formControlName="firstCtrl" required>
+        <input matInput placeholder="Phone Number" formControlName="phonenumber" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Address" formControlName="firstCtrl" required>
+        <input matInput placeholder="Address" formControlName="address" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Upload Id" formControlName="firstCtrl" required>
+        <input matInput placeholder="Upload Id" formControlName="uploadid" required>
       </mat-form-field>
       <div>
-        <button mat-button mat-flat-button matStepperNext>Next</button>
+        <button type="submit" [disabled]="firstFormGroup.invalid" mat-button matStepperNext mat-flat-button>Next</button>
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+    <form [formGroup]="secondFormGroup" (ngSubmit)="onSubmit()">
       <ng-template matStepLabel>Room Info</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Rooom Number" formControlName="secondCtrl" required>
+        <input matInput placeholder="Rooom Number" formControlName="roomnumber" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Number of Days" formControlName="secondCtrl" required>
+        <input matInput placeholder="Number of Days" formControlName="noofdays" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Room Amount" formControlName="secondCtrl" required>
+        <input matInput placeholder="Room Amount" formControlName="roomamount" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Extra Occupancy" formControlName="secondCtrl" required>
+        <input matInput placeholder="Extra Occupancy" formControlName="extraoccupancy" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Total Amount" formControlName="secondCtrl" required>
+        <input matInput placeholder="Total Amount" formControlName="totalamount" required>
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button mat-flat-button matStepperNext>Next</button>
+        <button type="submit" [disabled]="secondFormGroup.invalid" mat-button matStepperNext mat-flat-button>Next</button>
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="thirdFormGroup">
+  <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>Payment Info</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Address" formControlName="thirdCtrl" required>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Bill Amount(Auto Calculate)" formControlName="thirdCtrl" required>
+        <input matInput placeholder="Bill Amount(Auto Calculate)" formControlName="billamount" required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Payment Type</mat-label>
-        <mat-select matNativeControl formControlName="thirdCtrl" required>
+        <mat-select matNativeControl formControlName="paymenttype" required>
           <mat-option value="Debit Card">Debit Card</mat-option>
           <mat-option value="Credit Card">Credit Card</mat-option>
           <mat-option value="in-Cash">In Cash</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Paid Amount" formControlName="thirdCtrl" required>
+        <input matInput placeholder="Paid Amount" formControlName="paidamount" required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Payment Status</mat-label>
-        <mat-select matNativeControl formControlName="thirdCtrl" required>
+        <mat-select matNativeControl formControlName="paymentstatus" required>
           <mat-option value="Partial">Partial</mat-option>
           <mat-option value="FullPayment">Full Payment</mat-option>
           <mat-option value="not Done">Not Done</mat-option>
         </mat-select>
       </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button mat-flat-button matStepperNext>Next</button>
+        <button mat-button mat-flat-button matStepperPrevious>Book Now</button>
+        <button mat-button matStepperPrevious>Print Invoice</button>
+        <button mat-button (click)="move(0)">Edit Booking</button>
       </div>
     </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <div>
-      <button mat-button mat-flat-button matStepperPrevious>Book Now</button>
-      <button mat-button matStepperPrevious>Print Invoice</button>
-      <button mat-button (click)="stepper.reset()">Edit Booking</button>
-    </div>
   </mat-step>
 </mat-horizontal-stepper>
 <button type="button" (click)="callRoomTable()" class="btn btn-success btn-xs">

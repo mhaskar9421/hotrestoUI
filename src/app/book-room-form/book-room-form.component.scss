@@ -3,8 +3,12 @@
 }
 
 mat-horizontal-stepper {
-margin:10px;
-border:1px solid #ddd;
-border-radius: 0.8em;
-padding:10px;
+    margin:10px;
+    border:1px solid #ddd;
+    border-radius: 0.8em;
+    padding:10px;
+}
+
+mat-button{
+    border-radius: 4px;
 }
