@@ -1,6 +1,6 @@
 <mat-horizontal-stepper #stepper>
   <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
+    <form class="form" [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Customer Info</ng-template>
       <mat-form-field>
         <input matInput placeholder="Customer Name" formControlName="firstCtrl" required>
@@ -21,7 +21,7 @@
         <input matInput placeholder="Upload Id" formControlName="firstCtrl" required>
       </mat-form-field>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button mat-flat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
@@ -45,7 +45,7 @@
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button mat-flat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
@@ -79,14 +79,14 @@
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button mat-flat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     <div>
-      <button mat-button matStepperPrevious>Book Now</button>
+      <button mat-button mat-flat-button matStepperPrevious>Book Now</button>
       <button mat-button matStepperPrevious>Print Invoice</button>
       <button mat-button (click)="stepper.reset()">Edit Booking</button>
     </div>
