@@ -6,7 +6,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./checkout-form.component.scss']
 })
 export class CheckoutFormComponent implements OnInit {
-  showCustomer: boolean = true;
+  showCheckout: boolean = false;
   @Output() checkoutEvent = new EventEmitter<boolean>();
   constructor() { }
 
@@ -14,7 +14,7 @@ export class CheckoutFormComponent implements OnInit {
   }
 
   callCustomerList() {
-    this.checkoutEvent.emit(this.showCustomer);
+    this.checkoutEvent.emit(this.showCheckout);
   }
 
 }

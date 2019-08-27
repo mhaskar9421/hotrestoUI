@@ -10,7 +10,7 @@ import { CustomerService } from '../customer/customer.service';
 export class CustomerTableComponent implements OnInit {
   customerList: {};
   loading = false;
-  showCustomer: boolean = false;
+  showCheckout: boolean = true;
   @Input() activeTab: string;
   @Output() checkoutEvent = new EventEmitter<boolean>();
 
@@ -40,7 +40,7 @@ export class CustomerTableComponent implements OnInit {
   }
 
   checkout() {
-    this.checkoutEvent.emit(this.showCustomer);
+    this.checkoutEvent.emit(this.showCheckout);
   }
 
 }

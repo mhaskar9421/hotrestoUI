@@ -1,6 +1,60 @@
-<p>
-  checkout-form works!
-</p>
-<button type="button" (click)="callCustomerList()" class="btn btn-success btn-xs">
-  Customer List&nbsp;
-</button>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 invoiceBox">
+      <h3>Invoice Details</h3>
+      <hr>
+      <br>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th class="price">Price</th>
+              <th class="total">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Custom Web Design</td>
+              <td>100.00</td>
+              <td>$2350.00</td>
+            </tr>
+            <tr>
+              <td>Graphic Design</td>
+              <td>75.00</td>
+              <td>$750.00</td>
+            </tr>
+            <tr>
+              <td>CMS Install/Setup</td>
+              <td>1000.00</td>
+              <td>$1000.00</td>
+            </tr>
+            <tr>
+              <td>Customer Loyalty Discount</td>
+              <td>(250.00)</td>
+              <td>($250.00)</td>
+            </tr>
+            <tr class="row-subtotal">
+              <td colspan="1"></td>
+              <td><strong>Subtotal:</strong></td>
+              <td>$4100.00</td>
+            </tr>
+            <tr>
+              <td colspan="1"></td>
+              <td><strong>Discounts:</strong></td>
+              <td>($250.00)</td>
+            </tr>
+            <tr>
+              <td colspan="1"></td>
+              <td><strong>Total Due:</strong></td>
+              <td><strong>$3850.00</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button type="button" (click)="callCustomerList()" class="btn btn-success btn-xs">
+        Customer List&nbsp;
+      </button>
+    </div>
+  </div>
+</div>

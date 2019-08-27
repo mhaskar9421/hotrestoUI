@@ -118,7 +118,7 @@
                 </div>
                 <app-customer-table activeTab="dashboard" *ngIf="showCustomer" (checkoutEvent)="receiveEvent($event)">
                 </app-customer-table>
-                <app-checkout-form *ngIf="!showCustomer" (checkoutEvent)="receiveEvent($event)"></app-checkout-form>
+                <app-checkout-form *ngIf="showCheckout" (checkoutEvent)="receiveEvent($event)"></app-checkout-form>
             </div>
         </div>
     </div>

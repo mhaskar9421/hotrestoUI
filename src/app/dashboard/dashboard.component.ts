@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   selectedMenu = 'dashboard';
   showCustomer = true;
+  showCheckout = false;
   customerCount = 0;
   roomCount = 0;
   constructor(private router: Router, private dashboardService: DashboardService, public dialog: MatDialog) { }
@@ -35,6 +36,7 @@ export class DashboardComponent implements OnInit {
     } else {
       this.selectedMenu = menu;
       this.showCustomer = false;
+      this.showCheckout = false;
     }
   }
 
@@ -46,7 +48,8 @@ export class DashboardComponent implements OnInit {
   }
 
   receiveEvent($event) {
-    this.showCustomer = $event;
+    this.showCheckout = $event;
+    this.showCustomer = !this.showCustomer;
   }
 
   logoutUser() {
