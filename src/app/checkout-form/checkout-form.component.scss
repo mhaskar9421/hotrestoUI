@@ -9,17 +9,24 @@
     }
     #printArea * {
       visibility: visible;
-      overflow:hidden;
     }
     #printArea {
       position: absolute;
       left: 0;
       top: 0;
     }
+    #print{
+      display:block;
+    }
   }
+  
 @media print
 {
   .noprint {
     display:none;
   }
+}
+
+.foodamount{
+  border:none !important;
 }
