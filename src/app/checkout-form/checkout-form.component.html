@@ -20,12 +20,14 @@
             <tr>
               <td>Room Amount</td>
               <td>Room No : 101</td>
-              <td><i class="fa fa-rupee"></i>2350.00</td>
+              <td>
+                <i class="fa fa-rupee"></i>2350.00</td>
             </tr>
             <tr>
               <td>Extra Occupancy Charges</td>
               <td>75.00</td>
-              <td>$750.00</td>
+              <td>
+                <i class="fa fa-rupee"></i>750.00</td>
             </tr>
             <tr>
               <td>Food Amount</td>
@@ -34,7 +36,8 @@
               </td>
               <td>
                 <span>
-                  <input type="text" class="foodamount" placeholder="Enter Amount">
+                  <input type="text" name="amount" id="amount" (keyup)="sync('amount')" class="foodamount" placeholder="Enter Amount">
+
                 </span>
               </td>
             </tr>
@@ -43,7 +46,8 @@
               <td>
                 <strong>Subtotal:</strong>
               </td>
-              <td>$4100.00</td>
+              <td>
+                <i class="fa fa-rupee"></i>4100.00</td>
             </tr>
             <tr>
               <td colspan="1"></td>
@@ -60,7 +64,8 @@
                 <strong>Total Amount:</strong>
               </td>
               <td>
-                <strong>$3850.00</strong>
+                <strong>
+                  <i class="fa fa-rupee"></i>3850.00</strong>
               </td>
             </tr>
           </tbody>
@@ -70,7 +75,7 @@
         <button type="button" (click)="callCustomerList()" class="btn btn-success btn-xs">
           Cancel&nbsp;
         </button>
-        <button type="button" (click)="printInvoice('printArea')" class="btn btn-success btn-xs">
+        <button type="button" value="Print" (click)="printInvoice('printArea')" class="btn btn-success btn-xs">
           Print&nbsp;
         </button>
       </div>

@@ -5,7 +5,7 @@
 }
 @media print {
     body * {
-      visibility: visible;
+      display:block;
     }
     #printArea * {
       visibility: visible;

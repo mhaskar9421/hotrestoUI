@@ -13,6 +13,10 @@ export class CheckoutFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  sync(amount) {
+    var amount1 = (<HTMLInputElement>document.getElementById('amount')).value;
+  }
+
   printInvoice(printArea) {
     var printContents = document.getElementById(printArea).innerHTML;
     var originalContents = document.body.innerHTML;
