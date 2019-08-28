@@ -1,106 +1,82 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 invoiceBox">
+    <div class="col-md-8 invoiceBox" id="printArea">
+
       <h3>Invoice Details</h3>
+      <h5>Customer Name: Deepti Mhaksar</h5>
+
       <hr>
       <br>
       <div class="table-responsive">
-        <div class="portlet-content">
-          <form class="form parsley-form" data-validate="parsley" (ngSubmit)="loginForm.form.valid && onSubmit()" #loginForm="ngForm"
-            novalidate>
-            <div class="form-group">
-              <label for="roomamount">Room Amount </label>
-              <input type="text" class="form-control" required [ngClass]="{ 'is-invalid': loginForm.submitted && loginForm.roomamount.invalid }"
-                id="roomamount " name="roomamount">
-              <div *ngIf="loginForm.submitted && loginForm.roomamount.invalid" class="invalid-feedback">
-              </div>
-            </div>
-            <!-- ./form group -->
-            <div class="form-group">
-              <label for="charges">Extra Occupancy Charges </label>
-              <input type="text" class="form-control" required [ngClass]="{ 'is-invalid': loginForm.submitted && loginForm.charges.invalid }"
-                id="charges " name="charges
-              ">
-              <div *ngIf="loginForm.submitted && loginForm.charges.invalid" class="invalid-feedback">
-              </div>
-            </div>
-            <!-- ./form group -->
-            <div class="form-group">
-              <label for="foodamount">Food Amount</label>
-              <input type="text" class="form-control" required [ngClass]="{ 'is-invalid': loginForm.submitted && loginForm.foodamount.invalid }"
-                id="foodamount " name="foodamount
-                ">
-              <div *ngIf="loginForm.submitted && loginForm.foodamount.invalid" class="invalid-feedback">
-              </div>
-            </div>
-            <!-- ./form group -->
-            <!-- ./form group -->
-            <div class="form-group">
-              <label for="gst">GST(%)</label>
-              <input type="textarea" id="gst" required [ngClass]="{ 'is-invalid': loginForm.submitted && loginForm.gst.invalid }" name="gst"
-                class="form-control" data-required="true">
-              <div *ngIf="loginForm.submitted && loginForm.gst.invalid" class="invalid-feedback">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="billamount">Bill Amount</label>
-              <input type="textarea" id="gst" required [ngClass]="{ 'is-invalid': loginForm.submitted && loginForm.gst.invalid }" name="gst"
-                class="form-control" data-required="true">
-              <div *ngIf="loginForm.submitted && loginForm.gst.invalid" class="invalid-feedback">
-              </div>
-            </div>
-          </form>
-        </div>
-        <!-- <table class="table">
+        <table class="table">
           <thead>
             <tr>
               <th>Description</th>
-              <th class="price">Price</th>
+              <th class="price">Amount</th>
               <th class="total">Total</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Custom Web Design</td>
+              <td>Room Amount</td>
               <td>100.00</td>
               <td>$2350.00</td>
             </tr>
             <tr>
-              <td>Graphic Design</td>
+              <td>Extra Occupancy Charges</td>
               <td>75.00</td>
               <td>$750.00</td>
             </tr>
             <tr>
-              <td>CMS Install/Setup</td>
-              <td>1000.00</td>
-              <td>$1000.00</td>
-            </tr>
-            <tr>
-              <td>Customer Loyalty Discount</td>
-              <td>(250.00)</td>
-              <td>($250.00)</td>
+              <td>Food Amount</td>
+              <td>
+                <span>
+                  <input class="foodamount" type="text">
+                </span>
+              </td>
+              <td>
+                <span>
+                  <input type="text">
+                </span>
+              </td>
             </tr>
             <tr class="row-subtotal">
               <td colspan="1"></td>
-              <td><strong>Subtotal:</strong></td>
+              <td>
+                <strong>Subtotal:</strong>
+              </td>
               <td>$4100.00</td>
             </tr>
             <tr>
               <td colspan="1"></td>
-              <td><strong>Discounts:</strong></td>
-              <td>($250.00)</td>
+              <td>
+                <strong>GST(in %)</strong>
+              </td>
+              <td>
+                <strong>110</strong>
+              </td>
             </tr>
             <tr>
               <td colspan="1"></td>
-              <td><strong>Total Due:</strong></td>
-              <td><strong>$3850.00</strong></td>
+              <td>
+                <strong>Total Amount:</strong>
+              </td>
+              <td>
+                <strong>$3850.00</strong>
+              </td>
             </tr>
           </tbody>
-        </table> -->
+        </table>
       </div>
-      <button type="button" (click)="callCustomerList()" class="btn btn-success btn-xs">
-        Customer List&nbsp;
-      </button>
+      <div class="text-right noprint">
+        <button type="button" (click)="callCustomerList()" class="btn btn-success btn-xs">
+          Cancel&nbsp;
+        </button>
+        <button type="button" (click)="printInvoice('printArea')" class="btn btn-success btn-xs">
+          Print&nbsp;
+        </button>
+      </div>
+
     </div>
   </div>
 </div>

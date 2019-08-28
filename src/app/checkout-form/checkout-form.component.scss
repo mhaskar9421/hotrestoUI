@@ -3,3 +3,23 @@
     padding: 40px;
     border-radius: 5px;
 }
+@media print {
+    body * {
+      visibility: visible;
+    }
+    #printArea * {
+      visibility: visible;
+      overflow:hidden;
+    }
+    #printArea {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+@media print
+{
+  .noprint {
+    display:none;
+  }
+}

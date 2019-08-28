@@ -13,6 +13,16 @@ export class CheckoutFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  printInvoice(printArea) {
+    var printContents = document.getElementById(printArea).innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+  }
   callCustomerList() {
     this.checkoutEvent.emit(this.showCheckout);
   }
