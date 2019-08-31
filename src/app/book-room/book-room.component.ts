@@ -11,6 +11,8 @@ export class BookRoomComponent implements OnInit {
 
   formView: false;
   constructor(private router: Router) { }
+  minDate = new Date();
+  maxDate = new Date(Date.now() + (30 * 24 * 60 * 60 * 1000));
 
   @ViewChild(RoomTableComponent) roomcomponent: RoomTableComponent;
 

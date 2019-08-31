@@ -15,6 +15,7 @@ import { DashboardService } from './dashboard/dashboard.service';
 import { LoginService } from './login/login.service';
 import { RoomService } from './rooms/room.service';
 import { CustomerService } from './customer/customer.service';
+import { BookRoomService } from './book-room-form/book-room-form.service';
 
 // interceptors
 import { BasicAuthInterceptor } from './httpRequestsInterceptor.service';
@@ -116,7 +117,8 @@ import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
     AuthGuard,
     LoginService,
     RoomService,
-    CustomerService
+    CustomerService,
+    BookRoomService
   ],
   bootstrap: [AppComponent]
 })

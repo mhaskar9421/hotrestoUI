@@ -3,25 +3,35 @@
     <form class="form" [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()">
       <ng-template matStepLabel>Customer Info</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Customer Name" formControlName="name" required>
+        <mat-label>Customer List</mat-label>
+        <mat-select matNativeControl formControlName="name">
+          <mat-option value="sachin">sachin</mat-option>
+          <mat-option value="deepti">deepti</mat-option>
+          <mat-option value="swati">swati</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Customer Name" formControlName="name">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="ID Type" formControlName="idtype" required>
+        <input matInput placeholder="ID Type" formControlName="idtype">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="ID Number" formControlName="idnumber" required>
+        <input matInput placeholder="ID Number" formControlName="idnumber">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Phone Number" formControlName="phonenumber" required>
+        <input matInput placeholder="Phone Number" formControlName="phonenumber">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Address" formControlName="address" required>
+        <input matInput placeholder="Address" formControlName="address">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Upload Id" formControlName="uploadid" required>
+        <input matInput placeholder="Upload Id" formControlName="uploadid">
       </mat-form-field>
       <div>
-        <button type="submit" [disabled]="firstFormGroup.invalid" mat-button matStepperNext mat-flat-button>Next</button>
+        <button type="button" [disabled]="firstFormGroup.invalid" mat-button matStepperNext
+          mat-flat-button>Next</button>
       </div>
     </form>
   </mat-step>
@@ -29,7 +39,11 @@
     <form [formGroup]="secondFormGroup" (ngSubmit)="onSubmit()">
       <ng-template matStepLabel>Room Info</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Rooom Number" formControlName="roomnumber" required>
+        <mat-label>Select Room</mat-label>
+        <mat-select matNativeControl formControlName="roomtype" required>
+          <mat-option value="101">101 (Delux)</mat-option>
+          <mat-option value="102">102 (Super Delux)</mat-option>
+        </mat-select>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Number of Days" formControlName="noofdays" required>
@@ -40,12 +54,10 @@
       <mat-form-field>
         <input matInput placeholder="Extra Occupancy" formControlName="extraoccupancy" required>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Total Amount" formControlName="totalamount" required>
-      </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button type="submit" [disabled]="secondFormGroup.invalid" mat-button matStepperNext mat-flat-button>Next</button>
+        <button type="button" [disabled]="secondFormGroup.invalid" mat-button matStepperNext
+          mat-flat-button>Next</button>
       </div>
     </form>
   </mat-step>
@@ -53,8 +65,15 @@
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>Payment Info</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Bill Amount(Auto Calculate)" formControlName="billamount" required>
+        <input matInput placeholder="Food Bill Number" formControlName="billamount" required>
       </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Total Amount" formControlName="totalamount" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Paid Amount" formControlName="paidamount" required>
+      </mat-form-field>
+      <br>
       <mat-form-field>
         <mat-label>Payment Type</mat-label>
         <mat-select matNativeControl formControlName="paymenttype" required>
@@ -63,9 +82,7 @@
           <mat-option value="in-Cash">In Cash</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Paid Amount" formControlName="paidamount" required>
-      </mat-form-field>
+
       <mat-form-field>
         <mat-label>Payment Status</mat-label>
         <mat-select matNativeControl formControlName="paymentstatus" required>
@@ -75,9 +92,9 @@
         </mat-select>
       </mat-form-field>
       <div>
-        <button mat-button mat-flat-button matStepperPrevious>Book Now</button>
-        <button mat-button matStepperPrevious>Print Invoice</button>
+        <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="move(0)">Edit Booking</button>
+        <button mat-button mat-flat-button (click)="onSubmit()">Book Now</button>
       </div>
     </form>
   </mat-step>

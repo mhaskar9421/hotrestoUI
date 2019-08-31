@@ -9,4 +9,5 @@ export class notificationMessages {
     addCustomer = 'Customer added successfully!';
     deleteCustomer = 'Customer deleted successfully!';
     addTax = 'Tax added successfully!';
+    roomBooked = 'Room Booked successfully!'
 }
