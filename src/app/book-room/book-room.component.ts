@@ -29,8 +29,6 @@ export class BookRoomComponent implements OnInit {
   minDate = new Date();
   maxDate = new Date(Date.now() + (30 * 24 * 60 * 60 * 1000));
 
-  @ViewChild(RoomTableComponent) roomcomponent: RoomTableComponent;
-
   ngOnInit() {
   }
 
@@ -55,11 +53,6 @@ export class BookRoomComponent implements OnInit {
           if (data) {
             this.loading = false;
             this.roomList = data;
-            this._snackBar.open(this.constants.roomBooked, '', {
-              duration: 5000,
-              horizontalPosition: 'right',
-              verticalPosition: 'top'
-            });
           } else {
             this.loading = false;
             this.roomList = null;
@@ -69,7 +62,6 @@ export class BookRoomComponent implements OnInit {
           console.log(error);
           this.loading = false;
         });
-    //this.roomcomponent.viewRooms();
   }
 
 }

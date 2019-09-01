@@ -11,7 +11,7 @@
         <form id="validate-basic" data-validate="parsley" class="form parsley-form" (ngSubmit)="loginForm.form.valid"
           #loginForm="ngForm" novalidate>
           <div class="form-group">
-            <label for="roomname">Room Name</label>
+            <label for="roomname">Room Type</label>
             <input type="text" id="roomname" name="roomname" [(ngModel)]="model.roomname" placeholder="Room Name"
               class="form-control" data-required="true" required>
           </div>
