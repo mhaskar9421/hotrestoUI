@@ -16,6 +16,7 @@ export const environment = {
       deleteRoom: "http://hotresto/backend/RoomController/deleteRoom/",
       totalRooms: "http://hotresto/backend/RoomController/totalRooms",
       bookRoom: "http://hotresto/backend/RoomController/bookRoom",
+      getRoomsList: "http://hotresto/backend/RoomController/getAvaliableRooms",
       addCustomer: "http://hotresto/backend/CustomerController/addCustomer",
       viewCustomer: "http://hotresto/backend/CustomerController/viewCustomer",
       deleteCustomer: "http://hotresto/backend/CustomerController/deleteCustomer/",

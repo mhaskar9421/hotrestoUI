@@ -15,7 +15,7 @@ export class RoomTableComponent implements OnInit {
   @Input() activeTab: string;
   formView: boolean = true;
   loading = false;
-  roomList: {};
+  @Input() roomList: {};
 
   @Output() formEvent = new EventEmitter<boolean>();
 

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatStepper } from '@angular/material';
 import { BookRoomModel } from './book-room-form.model';
-import { BookRoomService } from './book-room-form.service';
+import { BookRoomFormService } from './book-room-form.service';
 import { notificationMessages } from '../../notificationMessages';
 
 @Component({
@@ -24,7 +24,7 @@ export class BookRoomFormComponent implements OnInit {
   isEditable = true;
   @Output() formEvent = new EventEmitter<boolean>();
 
-  constructor(private formBuilder: FormBuilder, private bookroomService: BookRoomService, public constants: notificationMessages, private _snackBar: MatSnackBar) {
+  constructor(private formBuilder: FormBuilder, private bookroomformService: BookRoomFormService, public constants: notificationMessages, private _snackBar: MatSnackBar) {
     this.bookroommodel = new BookRoomModel();
   }
 
@@ -63,7 +63,7 @@ export class BookRoomFormComponent implements OnInit {
       "paymentInfo": this.thirdFormGroup.value
     };
     console.log(this.bookForm);
-    this.bookroomService.bookRoom(this.bookForm)
+    this.bookroomformService.bookRoom(this.bookForm)
       .subscribe(
         data => {
           console.log(data);

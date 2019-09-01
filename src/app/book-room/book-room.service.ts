@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operator/map';
 import { environment } from '../../environments/environment';
 @Injectable()
-export class BookRoomFormService {
+export class BookRoomService {
     constructor(private http: HttpClient) { }
 
-    bookRoom(bookroomform: Object) {
-        return this.http.post(environment.BACKEND.URL.bookRoom, { bookroomform: bookroomform })
+    getAvaliableRooms(checkinDate: object, checkoutDate: object) {
+        return this.http.post(environment.BACKEND.URL.getRoomsList, { checkinDate: checkinDate, checkoutDate: checkoutDate })
             .map(res => {
                 return res;
             });
