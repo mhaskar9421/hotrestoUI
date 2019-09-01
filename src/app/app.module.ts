@@ -31,6 +31,7 @@ import { NavComponent } from './nav/nav.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddTaxDialog } from './dashboard/tax.component';
+import { ReportComponent } from './report/report.component';
 // modules
 import { AppRoutingModule } from './app-routing.module';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
@@ -68,7 +69,8 @@ import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
     BookRoomComponent,
     RoomTableComponent,
     BookRoomFormComponent,
-    CheckoutFormComponent
+    CheckoutFormComponent,
+    ReportComponent
     // TaxComponent
   ],
   entryComponents: [DashboardComponent, AddTaxDialog],

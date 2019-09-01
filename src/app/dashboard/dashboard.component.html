@@ -51,9 +51,10 @@
                 <li [ngClass]="(selectedMenu=='rooms') ? 'active' : '' " (click)="activeMenu('rooms')">
                     <a [routerLink]="['rooms']">
                         <i class="fa fa-home"></i>
-                        Rooms
+                        Add Room
                     </a>
                 </li>
+
                 <li [ngClass]="(selectedMenu=='customer') ? 'active' : '' " (click)="activeMenu('customer')">
                     <a [routerLink]="['customer']">
                         <i class="fa fa-users"></i>
@@ -64,6 +65,12 @@
                     <a (click)="openDialog()">
                         <i class="fa fa-calendar-o"></i>
                         Tax
+                    </a>
+                </li>
+                <li [ngClass]="(selectedMenu=='report') ? 'active' : '' " (click)="activeMenu('report')">
+                    <a [routerLink]="['report']">
+                        <i class="fa fa-home"></i>
+                        Reports
                     </a>
                 </li>
             </ul>
