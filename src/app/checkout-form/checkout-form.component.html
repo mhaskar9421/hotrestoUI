@@ -1,85 +1,85 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 invoiceBox" id="printArea">
+      <form>
+        <h3>Invoice Details</h3>
+        <h5>Customer Name: Deepti Mhaksar</h5>
 
-      <h3>Invoice Details</h3>
-      <h5>Customer Name: Deepti Mhaksar</h5>
+        <hr>
+        <br>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th class="price">Details</th>
+                <th class="total">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Room Amount</td>
+                <td>Room No : 101</td>
+                <td>
+                  <i class="fa fa-rupee"></i>2350.00</td>
+              </tr>
+              <tr>
+                <td>Extra Occupancy Charges</td>
+                <td>75.00</td>
+                <td>
+                  <i class="fa fa-rupee"></i>750.00</td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Food Amount</label>
+                </td>
+                <td>
+                  Bill Number : 10254125
+                </td>
+                <td>
+                  <input type="text" name="amount" class="foodamount" placeholder="Enter Amount">
+                </td>
+              </tr>
+              <tr class=" row-subtotal">
+                <td colspan="1"></td>
+                <td>
+                  <strong>Subtotal:</strong>
+                </td>
+                <td>
+                  <i class="fa fa-rupee"></i>4100.00</td>
+              </tr>
+              <tr>
+                <td colspan="1"></td>
+                <td>
+                  <strong>GST(in %)</strong>
+                </td>
+                <td>
+                  <strong>110</strong>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1"></td>
+                <td>
+                  <strong>Total Amount:</strong>
+                </td>
+                <td>
+                  <strong>
+                    <i class="fa fa-rupee"></i>3850.00</strong>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-right noprint">
+          <button type="button" (click)="callCustomerList()" class="btn btn-success btn-xs">
+            Cancel&nbsp;
+          </button>
+          <button type="button" value="Print" (click)="printInvoice('printArea')" class="btn btn-success btn-xs">
+            Print&nbsp;
+          </button>
+        </div>
 
-      <hr>
-      <br>
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Description</th>
-              <th class="price">Details</th>
-              <th class="total">Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Room Amount</td>
-              <td>Room No : 101</td>
-              <td>
-                <i class="fa fa-rupee"></i>2350.00</td>
-            </tr>
-            <tr>
-              <td>Extra Occupancy Charges</td>
-              <td>75.00</td>
-              <td>
-                <i class="fa fa-rupee"></i>750.00</td>
-            </tr>
-            <tr>
-              <td>Food Amount</td>
-              <td>
-                Bill Number : 10254125
-              </td>
-              <td>
-                <span>
-                  <input type="text" name="amount" id="amount" (keyup)="sync('amount')" class="foodamount" placeholder="Enter Amount">
-
-                </span>
-              </td>
-            </tr>
-            <tr class=" row-subtotal">
-              <td colspan="1"></td>
-              <td>
-                <strong>Subtotal:</strong>
-              </td>
-              <td>
-                <i class="fa fa-rupee"></i>4100.00</td>
-            </tr>
-            <tr>
-              <td colspan="1"></td>
-              <td>
-                <strong>GST(in %)</strong>
-              </td>
-              <td>
-                <strong>110</strong>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="1"></td>
-              <td>
-                <strong>Total Amount:</strong>
-              </td>
-              <td>
-                <strong>
-                  <i class="fa fa-rupee"></i>3850.00</strong>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="text-right noprint">
-        <button type="button" (click)="callCustomerList()" class="btn btn-success btn-xs">
-          Cancel&nbsp;
-        </button>
-        <button type="button" value="Print" (click)="printInvoice('printArea')" class="btn btn-success btn-xs">
-          Print&nbsp;
-        </button>
-      </div>
-
+      </form>
     </div>
   </div>
 </div>

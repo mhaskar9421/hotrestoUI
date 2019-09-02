@@ -18,15 +18,11 @@
     #print{
       display:block;
     }
+    .noprint {
+      display:none;
+    }
   }
   
-@media print
-{
-  .noprint {
-    display:none;
-  }
-}
-
 .foodamount{
   border:none !important;
 }
