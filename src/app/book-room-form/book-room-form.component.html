@@ -4,10 +4,8 @@
       <ng-template matStepLabel>Booking Info</ng-template>
       <mat-form-field *ngIf="!viewCustomer">
         <mat-label>Customer List</mat-label>
-        <mat-select matNativeControl formControlName="name">
-          <mat-option value="sachin">sachin</mat-option>
-          <mat-option value="deepti">deepti</mat-option>
-          <mat-option value="swati">swati</mat-option>
+        <mat-select matNativeControl formControlName="customerId">
+          <mat-option *ngFor="let item of customerList" value="item.customer_id">{{item.customer_name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <button type="button" (click)="viewCustomerForm()" data-sticky="true"
@@ -52,7 +50,7 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable" (click)="calculateTotal()">
+  <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>Payment Info</ng-template>
       <mat-form-field>

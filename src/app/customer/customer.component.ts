@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CustomerService } from './customer.service';
 import { CustomerModel } from './customer.model';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { notificationMessages } from '../../notificationMessages';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { filter } from 'rxjs/operators';
+import { CustomerTableComponent } from '../customer-table/customer-table.component';
 
 @Component({
   selector: 'app-customer',
@@ -23,6 +24,8 @@ export class CustomerInfoComponent implements OnInit {
     this.customermodel = new CustomerModel();
   }
 
+  @ViewChild(CustomerTableComponent) customertablecomponent: CustomerTableComponent;
+
   ngOnInit() {
     this.viewCustomerDetails();
   }
@@ -31,19 +34,19 @@ export class CustomerInfoComponent implements OnInit {
     this.loading = true;
     this.customerService.viewCustomerDetails()
       .subscribe(
-      data => {
-        if (data) {
+        data => {
+          if (data) {
+            this.loading = false;
+            this.customerList = data;
+          } else {
+            this.loading = false;
+            this.customerList = null;
+          }
+        },
+        error => {
+          console.log(error);
           this.loading = false;
-          this.customerList = data;
-        } else {
-          this.loading = false;
-          this.customerList = null;
-        }
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
+        });
   }
 
   onSubmit() {
@@ -61,32 +64,20 @@ export class CustomerInfoComponent implements OnInit {
   addCustomer() {
     this.customerService.addCustomer(this.customermodel.customername, this.customermodel.custid, this.customermodel.idnumber, this.customermodel.phonenumber, this.customermodel.address, this.customermodel.image)
       .subscribe(
-      data => {
-        this.loading = false;
-        this._snackBar.open(this.constants.addCustomer, '', {
-          duration: 5000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top'
+        data => {
+          this.loading = false;
+          this._snackBar.open(this.constants.addCustomer, '', {
+            duration: 5000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top'
+          });
+          this.customertablecomponent.viewCustomer();
+        },
+        error => {
+          console.log(error);
+          this.loading = false;
         });
-        this.viewCustomerDetails();
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
   }
-
-  deleteCustomer(item) {
-    this.customerService.deleteCustomer(item)
-      .subscribe(data => {
-        this._snackBar.open(this.constants.deleteCustomer, '', {
-          duration: 3000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top'
-        });
-        this.viewCustomerDetails();
-      })
-  };
 
   onSelectedFile(event) {
     if (event.target.files.length > 0) {

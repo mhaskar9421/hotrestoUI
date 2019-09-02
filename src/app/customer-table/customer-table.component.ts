@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerService } from '../customer/customer.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { notificationMessages } from '../../notificationMessages';
 
 @Component({
   selector: 'app-customer-table',
@@ -14,7 +16,7 @@ export class CustomerTableComponent implements OnInit {
   @Input() activeTab: string;
   @Output() checkoutEvent = new EventEmitter<boolean>();
 
-  constructor(private router: Router, private customerService: CustomerService) { }
+  constructor(private router: Router, public constants: notificationMessages, private customerService: CustomerService, private _snackBar: MatSnackBar, ) { }
 
   ngOnInit() {
     this.viewCustomer();
@@ -38,6 +40,18 @@ export class CustomerTableComponent implements OnInit {
           this.loading = false;
         });
   }
+
+  deleteCustomer(item) {
+    this.customerService.deleteCustomer(item)
+      .subscribe(data => {
+        this._snackBar.open(this.constants.deleteCustomer, '', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
+        });
+        this.viewCustomer();
+      })
+  };
 
   checkout() {
     this.checkoutEvent.emit(this.showCheckout);

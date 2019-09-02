@@ -70,8 +70,6 @@ export class RoomTableComponent implements OnInit {
         });
   }
 
-
-
   deleteRoom(item) {
     this.roomTableService.deleteRoom(item)
       .subscribe(data => {
