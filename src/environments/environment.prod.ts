@@ -7,7 +7,6 @@ export const environment = {
   BACKEND: {
     URL: {
       login: "http://www.ebenezerssschool.org/hotresto/backend/AuthController/login",
-      logout: "http://www.ebenezerssschool.org/hotresto/backend/AuthController/logout",
       addTax: "http://www.ebenezerssschool.org/hotresto/backend/TaxController/addTax",
       viewTax: "http://www.ebenezerssschool.org/hotresto/backend/TaxController/viewTax",
       addRoom: "http://www.ebenezerssschool.org/hotresto/backend/RoomController/addRoom",

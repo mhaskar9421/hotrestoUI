@@ -4,7 +4,6 @@ import { RoomService } from './room.service';
 import { notificationMessages } from '../../notificationMessages';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { filter } from 'rxjs/operators';
 import { RoomTableComponent } from '../room-table/room-table.component';
 
 @Component({

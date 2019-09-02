@@ -55,45 +55,37 @@ export class DashboardComponent implements OnInit {
   }
 
   logoutUser() {
-    this.dashboardService.logout()
-      .subscribe(
-      data => {
-        if (data) {
-          this.router.navigate(['login']);
-        }
-      },
-      error => {
-        console.log(error);
-      });
+    localStorage.removeItem('Token');
+    this.router.navigate(['login']);
   }
 
   totalCustomers() {
     this.dashboardService.totalCustomers()
       .subscribe(
-      data => {
-        if (data) {
-          this.customerCount = data;
-        } else {
-          this.customerCount = 0;
-        }
-      },
-      error => {
-        console.log(error);
-      });
+        data => {
+          if (data) {
+            this.customerCount = data;
+          } else {
+            this.customerCount = 0;
+          }
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   totalRooms() {
     this.dashboardService.totalRooms()
       .subscribe(
-      data => {
-        if (data) {
-          this.roomCount = data;
-        } else {
-          this.roomCount = 0;
-        }
-      },
-      error => {
-        console.log(error);
-      });
+        data => {
+          if (data) {
+            this.roomCount = data;
+          } else {
+            this.roomCount = 0;
+          }
+        },
+        error => {
+          console.log(error);
+        });
   }
 }
