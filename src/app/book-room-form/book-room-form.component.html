@@ -1,8 +1,8 @@
 <mat-horizontal-stepper #stepper>
   <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
     <form class="form" [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()">
-      <ng-template matStepLabel>Customer Info</ng-template>
-      <mat-form-field>
+      <ng-template matStepLabel>Booking Info</ng-template>
+      <mat-form-field *ngIf="!viewCustomer">
         <mat-label>Customer List</mat-label>
         <mat-select matNativeControl formControlName="name">
           <mat-option value="sachin">sachin</mat-option>
@@ -10,58 +10,49 @@
           <mat-option value="swati">swati</mat-option>
         </mat-select>
       </mat-form-field>
+      <button type="button" (click)="viewCustomerForm()" data-sticky="true"
+        class="btn btn-secondary btn-xs addCustomerBtn">
+        <span *ngIf="!viewCustomer"><i class="fa fa-plus"></i> Add Customer</span>
+        <span *ngIf="viewCustomer"><i class="fa fa-bars"></i> Customer List</span>
+      </button>
+      <mat-form-field>
+        <input matInput placeholder="Room Charges" formControlName="roomamount" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Extra Occupancy Charges" formControlName="extraoccupancy" required>
+      </mat-form-field>
+      <button type="button" class="btn btn-default btn-sm roomInfoButton" disabled>
+        Room No : 102 <br>
+        Room Type : Super Delux
+      </button>
       <br>
-      <mat-form-field>
-        <input matInput placeholder="Customer Name" formControlName="name">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="ID Type" formControlName="idtype">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="ID Number" formControlName="idnumber">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Phone Number" formControlName="phonenumber">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Address" formControlName="address">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Upload Id" formControlName="uploadid">
-      </mat-form-field>
+      <div *ngIf="viewCustomer">
+        <mat-form-field>
+          <input matInput placeholder="Customer Name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="ID Type" formControlName="idtype">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="ID Number" formControlName="idnumber">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Phone Number" formControlName="phonenumber">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Address" formControlName="address">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Upload Id" formControlName="uploadid">
+        </mat-form-field>
+      </div>
       <div>
-        <button type="button" [disabled]="firstFormGroup.invalid" mat-button matStepperNext
+        <button type="button" [disabled]="firstFormGroup.invalid" (click)="calculateTotal()" mat-button matStepperNext
           mat-flat-button>Next</button>
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-    <form [formGroup]="secondFormGroup" (ngSubmit)="onSubmit()">
-      <ng-template matStepLabel>Room Info</ng-template>
-      <mat-form-field>
-        <mat-label>Select Room</mat-label>
-        <mat-select matNativeControl formControlName="roomtype" required>
-          <mat-option value="101">101 (Delux)</mat-option>
-          <mat-option value="102">102 (Super Delux)</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Number of Days" formControlName="noofdays" required>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Room Amount" formControlName="roomamount" required>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Extra Occupancy" formControlName="extraoccupancy" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button type="button" [disabled]="secondFormGroup.invalid" mat-button matStepperNext
-          mat-flat-button>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
+  <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable" (click)="calculateTotal()">
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>Payment Info</ng-template>
       <mat-form-field>
@@ -82,7 +73,6 @@
           <mat-option value="in-Cash">In Cash</mat-option>
         </mat-select>
       </mat-form-field>
-
       <mat-form-field>
         <mat-label>Payment Status</mat-label>
         <mat-select matNativeControl formControlName="paymentstatus" required>
@@ -99,6 +89,6 @@
     </form>
   </mat-step>
 </mat-horizontal-stepper>
-<button type="button" (click)="callRoomTable()" class="btn btn-success btn-xs">
+<!-- <button type="button" (click)="callRoomTable()" class="btn btn-success btn-xs">
   Room Table&nbsp;
-</button>
+</button> -->

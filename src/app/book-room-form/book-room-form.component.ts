@@ -19,6 +19,7 @@ export class BookRoomFormComponent implements OnInit {
   thirdFormGroup: FormGroup;
   formView: boolean = false;
   bookForm: {};
+  viewCustomer = false;
   @Input() activeTab: string;
   @ViewChild('stepper') stepper: MatStepper;
   isEditable = true;
@@ -35,17 +36,9 @@ export class BookRoomFormComponent implements OnInit {
       idnumber: [''],
       phonenumber: [''],
       address: [''],
-      uploadid: ['']
-    });
-    //this.firstFormGroup.disable();
-    //this.firstFormGroup.enable();
-
-    this.secondFormGroup = this.formBuilder.group({
-      roomtype: ['', Validators.required],
-      roomnumber: ['', Validators.required],
-      noofdays: ['', Validators.required],
-      roomamount: ['', Validators.required],
-      extraoccupancy: ['', Validators.required]
+      uploadid: [''],
+      roomamount: [''],
+      extraoccupancy: ['']
     });
     this.thirdFormGroup = this.formBuilder.group({
       billamount: ['', Validators.required],
@@ -58,8 +51,7 @@ export class BookRoomFormComponent implements OnInit {
   onSubmit() {
     this.loading = true;
     this.bookForm = {
-      "customerInfo": this.firstFormGroup.value,
-      "roomInfo": this.secondFormGroup.value,
+      "bookingInfo": this.firstFormGroup.value,
       "paymentInfo": this.thirdFormGroup.value
     };
     console.log(this.bookForm);
@@ -88,4 +80,13 @@ export class BookRoomFormComponent implements OnInit {
     this.formEvent.emit(this.formView);
     localStorage.setItem('showRoomList', 'true');
   }
+
+  viewCustomerForm() {
+    this.viewCustomer = !this.viewCustomer;
+  }
+
+  calculateTotal() {
+    this.thirdFormGroup.controls.totalamount.setValue(parseInt(this.firstFormGroup.controls.roomamount.value) + parseInt(this.firstFormGroup.controls.extraoccupancy.value));
+  }
+
 }
