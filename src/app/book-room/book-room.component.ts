@@ -47,6 +47,7 @@ export class BookRoomComponent implements OnInit {
   }
 
   getAvaliableRooms() {
+    this.formView = false;
     this.getRooms.getAvaliableRooms(this.checkinDate, this.checkoutDate)
       .subscribe(
         data => {
