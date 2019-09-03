@@ -84,13 +84,19 @@
 }
 
 .logout {
-    color: #070707;
+    color: white;
     padding: 30px;
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
 }
 
+h4 {
+    color: white;
+    padding: 10px;
+    font-size: 25px;
+    margin-top: 20px;
+}
 .fa-sign-out:before {
     font-size: 15px !important;
 }
@@ -120,7 +126,7 @@
 }
 
 .navbar {
-    background: #eeeeee;
+    background: #212121;
 }
 
 .logo-align {
