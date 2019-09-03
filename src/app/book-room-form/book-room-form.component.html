@@ -5,7 +5,7 @@
       <mat-form-field *ngIf="!viewCustomer">
         <mat-label>Customer List</mat-label>
         <mat-select matNativeControl formControlName="customerId">
-          <mat-option *ngFor="let item of customerList" value="item.customer_id">{{item.customer_name}}</mat-option>
+          <mat-option *ngFor="let item of customerList" value="{{item.customer_id}}">{{item.customer_name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <button type="button" (click)="viewCustomerForm()" data-sticky="true"
@@ -20,8 +20,8 @@
         <input matInput placeholder="Extra Occupancy Charges" formControlName="extraoccupancy" required>
       </mat-form-field>
       <button type="button" class="btn btn-default btn-sm roomInfoButton" disabled>
-        Room No : 102 <br>
-        Room Type : Super Delux
+        Room No : {{roomObject.room_number}} <br>
+        Room Type : {{roomObject.room_name}}
       </button>
       <br>
       <div *ngIf="viewCustomer">
@@ -40,9 +40,9 @@
         <mat-form-field>
           <input matInput placeholder="Address" formControlName="address">
         </mat-form-field>
-        <mat-form-field>
+        <!-- <mat-form-field>
           <input matInput placeholder="Upload Id" formControlName="uploadid">
-        </mat-form-field>
+        </mat-form-field> -->
       </div>
       <div>
         <button type="button" [disabled]="firstFormGroup.invalid" (click)="calculateTotal()" mat-button matStepperNext

@@ -25,6 +25,9 @@ export class BookRoomFormComponent implements OnInit {
   @Input() activeTab: string;
   @ViewChild('stepper') stepper: MatStepper;
   isEditable = true;
+  @Input() roomObject: Object;
+  @Input() checkinDate: Object;
+  @Input() checkoutDate: Object;
   @Output() formEvent = new EventEmitter<boolean>();
 
   constructor(private formBuilder: FormBuilder, private customerService: CustomerService, private bookroomformService: BookRoomFormService, public constants: notificationMessages, private _snackBar: MatSnackBar) {
@@ -39,7 +42,6 @@ export class BookRoomFormComponent implements OnInit {
       idnumber: [''],
       phonenumber: [''],
       address: [''],
-      uploadid: [''],
       roomamount: [''],
       extraoccupancy: ['']
     });
@@ -74,10 +76,31 @@ export class BookRoomFormComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
-    this.bookForm = {
-      "bookingInfo": this.firstFormGroup.value,
-      "paymentInfo": this.thirdFormGroup.value
-    };
+    if (this.firstFormGroup.controls.customerId.value) {
+      this.bookForm = {
+        "bookingInfo": this.firstFormGroup.value,
+        "paymentInfo": this.thirdFormGroup.value
+      };
+      let customerObj = this.bookForm['bookingInfo'];
+      customerObj['room_id'] = this.roomObject['room_id'];
+      customerObj['checkin_date'] = this.checkinDate;
+      customerObj['checkout_date'] = this.checkoutDate;
+      delete customerObj.name;
+      delete customerObj.address;
+      delete customerObj.idnumber;
+      delete customerObj.phonenumber;
+      delete customerObj.idtype;
+    } else {
+      this.bookForm = {
+        "bookingInfo": this.firstFormGroup.value,
+        "paymentInfo": this.thirdFormGroup.value
+      };
+      let customerObj = this.bookForm['bookingInfo'];
+      customerObj['room_id'] = this.roomObject['room_id'];
+      customerObj['checkin_date'] = this.checkinDate;
+      customerObj['checkout_date'] = this.checkoutDate;
+      delete customerObj.customerId;
+    }
     console.log(this.bookForm);
     this.bookroomformService.bookRoom(this.bookForm)
       .subscribe(
@@ -106,6 +129,9 @@ export class BookRoomFormComponent implements OnInit {
   }
 
   viewCustomerForm() {
+    if (!this.viewCustomer) {
+      this.firstFormGroup.controls.customerId.setValue(undefined);
+    }
     this.viewCustomer = !this.viewCustomer;
   }
 
