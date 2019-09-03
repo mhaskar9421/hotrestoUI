@@ -131,7 +131,11 @@ h4 {
 
 .logo-align {
     vertical-align: middle;
-    height: 100px;
-    width: 150px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    z-index: 1;
+    left: -55px;
+    top: 5px;
+    background: whitesmoke;
 }
