@@ -17,7 +17,7 @@ export class RoomTableComponent implements OnInit {
   loading = false;
   @Input() roomList: {};
 
-  @Output() formEvent = new EventEmitter<boolean>();
+  @Output() formEvent = new EventEmitter();
 
   constructor(private router: Router, private _snackBar: MatSnackBar, private roomTableService: RoomTableService, public constants: notificationMessages) { }
 
@@ -28,8 +28,8 @@ export class RoomTableComponent implements OnInit {
     }
   }
 
-  callbookRoomForm() {
-    this.formEvent.emit(this.formView);
+  callbookRoomForm(item) {
+    this.formEvent.emit({ formView: this.formView, item: item });
   }
 
   viewRooms() {

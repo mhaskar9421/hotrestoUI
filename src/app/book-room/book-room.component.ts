@@ -25,6 +25,7 @@ export class BookRoomComponent implements OnInit {
   formView: false;
   roomList: {};
   loading: false;
+  roomObject: {};
   constructor(private router: Router, private getRooms: BookRoomService, public constants: notificationMessages, private _snackBar: MatSnackBar) { }
   minDate = new Date();
   maxDate = new Date(Date.now() + (30 * 24 * 60 * 60 * 1000));
@@ -34,6 +35,7 @@ export class BookRoomComponent implements OnInit {
 
   receiveEvent($event) {
     this.formView = $event;
+    this.roomObject = $event.item;
   }
 
   keyPress(event: any) {
@@ -45,8 +47,6 @@ export class BookRoomComponent implements OnInit {
   }
 
   getAvaliableRooms() {
-    console.log(this.checkinDate);
-    console.log(this.checkoutDate);
     this.getRooms.getAvaliableRooms(this.checkinDate, this.checkoutDate)
       .subscribe(
         data => {
