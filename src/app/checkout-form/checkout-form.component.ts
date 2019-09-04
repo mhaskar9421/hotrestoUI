@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { getTaxService } from './checkout-form.service';
 
 @Component({
   selector: 'app-checkout-form',
@@ -7,12 +8,18 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class CheckoutFormComponent implements OnInit {
   showCheckout: boolean = false;
+  subTotal = 0;
+  finalTotal = 0;
   document: Document;
-  $: this;
+  taxData: {};
+  @Input() checkoutData: Object;
   @Output() checkoutEvent = new EventEmitter<boolean>();
-  constructor() { }
+  constructor(private gettaxService: getTaxService) { }
 
   ngOnInit() {
+    this.checkoutData;
+    this.getTaxAmount();
+    this.subTotal = parseInt(this.checkoutData['room_charges']) + parseInt(this.checkoutData['extra_occupancy']);
   }
 
   printInvoice(printArea) {
@@ -28,6 +35,22 @@ export class CheckoutFormComponent implements OnInit {
 
   callCustomerList() {
     this.checkoutEvent.emit(this.showCheckout);
+  }
+
+  getTaxAmount() {
+    this.gettaxService.getTaxData()
+      .subscribe(
+        data => {
+          if (data) {
+            this.taxData = data[0];
+            this.finalTotal = this.subTotal + (this.subTotal * parseInt(this.taxData['tax_amount']) / 100);
+          } else {
+            this.taxData = 0;
+          }
+        },
+        error => {
+          console.log(error);
+        });
   }
 
 }

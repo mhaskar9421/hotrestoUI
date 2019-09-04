@@ -9,7 +9,7 @@
         <div>
             <ul class="nav navbar-nav navbar-left">
                 <li class="dropdown navbar-profile">
-                    <img class="logo-align" src="assets/img/logoHotResto.png" alt="Profile">
+                    <img class="logo-align" src="hotresto/assets/img/logoHotResto.png" alt="Profile">
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-left">
@@ -130,9 +130,10 @@
                 <div class="col-md-12">
                     <router-outlet></router-outlet>
                 </div>
-                <app-customer-table activeTab="dashboard" *ngIf="showCustomer" (checkoutEvent)="receiveEvent($event)">
-                </app-customer-table>
-                <app-checkout-form *ngIf="showCheckout" (checkoutEvent)="receiveEvent($event)"></app-checkout-form>
+                <app-booked-customer-list activeTab="dashboard" *ngIf="showCustomer"
+                    (checkoutEvent)="receiveEvent($event)"></app-booked-customer-list>
+                <app-checkout-form *ngIf="showCheckout" (checkoutEvent)="receiveEvent($event)"
+                    [checkoutData]="checkoutData"></app-checkout-form>
             </div>
         </div>
     </div>

@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   showCustomer = true;
   showCheckout = false;
   customerCount = 0;
+  checkoutData: {};
   roomCount = 0;
   constructor(private router: Router, private dashboardService: DashboardService, public dialog: MatDialog) { }
 
@@ -52,6 +53,7 @@ export class DashboardComponent implements OnInit {
   receiveEvent($event) {
     this.showCheckout = $event;
     this.showCustomer = !this.showCustomer;
+    this.checkoutData = $event.item;
   }
 
   logoutUser() {

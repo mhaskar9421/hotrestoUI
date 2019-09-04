@@ -17,6 +17,8 @@ import { RoomService } from './rooms/room.service';
 import { CustomerService } from './customer/customer.service';
 import { BookRoomFormService } from './book-room-form/book-room-form.service';
 import { BookRoomService } from './book-room/book-room.service';
+import { BookedCustomerService } from './booked-customer-list/booked-customer-list.service';
+import { getTaxService } from './checkout-form/checkout-form.service';
 
 // interceptors
 import { BasicAuthInterceptor } from './httpRequestsInterceptor.service';
@@ -51,6 +53,7 @@ import { BookRoomComponent } from './book-room/book-room.component';
 import { RoomTableComponent } from './room-table/room-table.component';
 import { BookRoomFormComponent } from './book-room-form/book-room-form.component';
 import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
+import { BookedCustomerListComponent } from './booked-customer-list/booked-customer-list.component';
 // import { TaxComponent } from './tax/tax.component';
 
 @NgModule({
@@ -70,7 +73,8 @@ import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
     RoomTableComponent,
     BookRoomFormComponent,
     CheckoutFormComponent,
-    ReportComponent
+    ReportComponent,
+    BookedCustomerListComponent
     // TaxComponent
   ],
   entryComponents: [DashboardComponent, AddTaxDialog],
@@ -122,7 +126,9 @@ import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
     RoomService,
     CustomerService,
     BookRoomFormService,
-    BookRoomService
+    BookRoomService,
+    BookedCustomerService,
+    getTaxService
   ],
   bootstrap: [AppComponent]
 })

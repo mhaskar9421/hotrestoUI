@@ -21,6 +21,6 @@
 <app-room-table *ngIf="!formView" activeTab="book-room" [roomList]="roomList" (formEvent)="receiveEvent($event, item)"
   tabTitle="Avaliable Rooms List">
 </app-room-table>
-<app-book-room-form *ngIf="formView" activeTab="book-room-form" [roomObject]="roomObject" [checkinDate]="checkinDate"
-  [checkoutDate]="checkoutDate" (formEvent)="receiveEvent($event)">
+<app-book-room-form *ngIf="formView" activeTab="book-room-form" [roomObject]="roomObject"
+  (formEvent)="receiveEvent($event)">
 </app-book-room-form>

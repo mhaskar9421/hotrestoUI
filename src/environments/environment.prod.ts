@@ -14,10 +14,13 @@ export const environment = {
       deleteTax: "http://www.ebenezerssschool.org/hotresto/backend/TaxController/deleteTax/",
       deleteRoom: "http://www.ebenezerssschool.org/hotresto/backend/RoomController/deleteRoom/",
       totalRooms: "http://www.ebenezerssschool.org/hotresto/backend/RoomController/totalRooms",
+      bookRoom: "http://www.ebenezerssschool.org/hotresto/backend/RoomController/bookRoom",
+      getRoomsList: "http://www.ebenezerssschool.org/hotresto/backend/RoomController/getAvaliableRooms",
       addCustomer: "http://www.ebenezerssschool.org/hotresto/backend/CustomerController/addCustomer",
       viewCustomer: "http://www.ebenezerssschool.org/hotresto/backend/CustomerController/viewCustomer",
       deleteCustomer: "http://www.ebenezerssschool.org/hotresto/backend/CustomerController/deleteCustomer/",
-      totalCustomers: "http://www.ebenezerssschool.org/hotresto/backend/CustomerController/totalCustomers"
+      totalCustomers: "http://www.ebenezerssschool.org/hotresto/backend/CustomerController/totalCustomers",
+      viewBookedCustomers: "http://www.ebenezerssschool.org/hotresto/backend/CustomerController/viewBookedCustomers"
     }
   }
 };

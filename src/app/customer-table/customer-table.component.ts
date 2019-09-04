@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 import { CustomerService } from '../customer/customer.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { notificationMessages } from '../../notificationMessages';
@@ -16,7 +15,7 @@ export class CustomerTableComponent implements OnInit {
   @Input() activeTab: string;
   @Output() checkoutEvent = new EventEmitter<boolean>();
 
-  constructor(private router: Router, public constants: notificationMessages, private customerService: CustomerService, private _snackBar: MatSnackBar, ) { }
+  constructor(public constants: notificationMessages, private customerService: CustomerService, private _snackBar: MatSnackBar, ) { }
 
   ngOnInit() {
     this.viewCustomer();

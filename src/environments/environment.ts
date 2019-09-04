@@ -19,7 +19,8 @@ export const environment = {
       addCustomer: "http://hotresto/backend/CustomerController/addCustomer",
       viewCustomer: "http://hotresto/backend/CustomerController/viewCustomer",
       deleteCustomer: "http://hotresto/backend/CustomerController/deleteCustomer/",
-      totalCustomers: "http://hotresto/backend/CustomerController/totalCustomers"
+      totalCustomers: "http://hotresto/backend/CustomerController/totalCustomers",
+      viewBookedCustomers: "http://hotresto/backend/CustomerController/viewBookedCustomers"
     }
   }
 };

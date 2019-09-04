@@ -6,6 +6,7 @@ import { BookRoomModel } from './book-room-form.model';
 import { BookRoomFormService } from './book-room-form.service';
 import { notificationMessages } from '../../notificationMessages';
 import { CustomerService } from '../customer/customer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-room-form',
@@ -26,11 +27,9 @@ export class BookRoomFormComponent implements OnInit {
   @ViewChild('stepper') stepper: MatStepper;
   isEditable = true;
   @Input() roomObject: Object;
-  @Input() checkinDate: Object;
-  @Input() checkoutDate: Object;
   @Output() formEvent = new EventEmitter<boolean>();
 
-  constructor(private formBuilder: FormBuilder, private customerService: CustomerService, private bookroomformService: BookRoomFormService, public constants: notificationMessages, private _snackBar: MatSnackBar) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private customerService: CustomerService, private bookroomformService: BookRoomFormService, public constants: notificationMessages, private _snackBar: MatSnackBar) {
     this.bookroommodel = new BookRoomModel();
   }
 
@@ -82,9 +81,9 @@ export class BookRoomFormComponent implements OnInit {
         "paymentInfo": this.thirdFormGroup.value
       };
       let customerObj = this.bookForm['bookingInfo'];
-      customerObj['room_id'] = this.roomObject['room_id'];
-      customerObj['checkin_date'] = this.checkinDate;
-      customerObj['checkout_date'] = this.checkoutDate;
+      customerObj['room_id'] = this.roomObject['roomId'].room_id;
+      customerObj['checkin_date'] = this.roomObject['checkin'];
+      customerObj['checkout_date'] = this.roomObject['checkout'];
       delete customerObj.name;
       delete customerObj.address;
       delete customerObj.idnumber;
@@ -96,9 +95,9 @@ export class BookRoomFormComponent implements OnInit {
         "paymentInfo": this.thirdFormGroup.value
       };
       let customerObj = this.bookForm['bookingInfo'];
-      customerObj['room_id'] = this.roomObject['room_id'];
-      customerObj['checkin_date'] = this.checkinDate;
-      customerObj['checkout_date'] = this.checkoutDate;
+      customerObj['room_id'] = this.roomObject['roomId'].room_id;
+      customerObj['checkin_date'] = this.roomObject['checkin'];
+      customerObj['checkout_date'] = this.roomObject['checkout'];
       delete customerObj.customerId;
     }
     console.log(this.bookForm);

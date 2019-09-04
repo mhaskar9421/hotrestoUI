@@ -35,7 +35,7 @@ export class BookRoomComponent implements OnInit {
 
   receiveEvent($event) {
     this.formView = $event;
-    this.roomObject = $event.item;
+    this.roomObject = { roomId: $event.item, checkin: this.checkinDate, checkout: this.checkoutDate };
   }
 
   keyPress(event: any) {
