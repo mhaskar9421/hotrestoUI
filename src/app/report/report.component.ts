@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./report.component.scss']
 })
 export class ReportComponent implements OnInit {
-  startDate = Object;
-  endDate = Object;
+  // startDate = Object;
+  // endDate = Object;
   report: {};
   loading: boolean;
   constructor(private router: Router, private reportService: ReportService) { }
@@ -22,23 +22,23 @@ export class ReportComponent implements OnInit {
     this.loading = true;
     this.reportService.viewReports()
       .subscribe(
-      data => {
-        if (data) {
+        data => {
+          if (data) {
+            this.loading = false;
+            this.report = data;
+          } else {
+            this.loading = false;
+            this.report = null;
+          }
+        },
+        error => {
+          console.log(error);
           this.loading = false;
-          this.report = data;
-        } else {
-          this.loading = false;
-          this.report = null;
-        }
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
+        });
   }
   searchReports() {
-    console.log(this.startDate);
-    console.log(this.endDate);
+    // console.log(this.startDate);
+    // console.log(this.endDate);
     // this.reportService.getReports(this.startDate, this.endDate)
     //   .subscribe(
     //     data => {

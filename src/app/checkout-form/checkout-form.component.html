@@ -20,20 +20,20 @@
                 <td>Room Amount</td>
                 <td>-</td>
                 <td>
-                  <i class="fa fa-rupee"></i>{{checkoutData.room_charges}}</td>
+                  <i class="fa fa-rupee"></i>{{roomCharges}}</td>
               </tr>
               <tr>
                 <td>Extra Occupancy Charges</td>
                 <td>-</td>
                 <td>
-                  <i class="fa fa-rupee"></i>{{checkoutData.extra_occupancy}}</td>
+                  <i class="fa fa-rupee"></i>{{extraOccupancy}}</td>
               </tr>
               <tr>
                 <td>
                   <label>Food Amount</label>
                 </td>
                 <td>
-                  Bill Number : {{checkoutData.food_bill_number}}
+                  Bill Number : {{foodBillNumber}}
                 </td>
                 <td>
                   <input type="text" name="amount" class="foodamount" placeholder="Enter Amount">
@@ -53,7 +53,7 @@
                   <strong>GST</strong>
                 </td>
                 <td>
-                  <strong>{{taxData.tax_amount}}%</strong>
+                  <strong>{{taxAmount}}%</strong>
                 </td>
               </tr>
               <tr>

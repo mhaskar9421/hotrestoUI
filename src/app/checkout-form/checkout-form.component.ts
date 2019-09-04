@@ -12,12 +12,18 @@ export class CheckoutFormComponent implements OnInit {
   finalTotal = 0;
   document: Document;
   taxData: {};
+  roomCharges: Number;
+  extraOccupancy: Number;
+  foodBillNumber: Number;
+  taxAmount: Number;
   @Input() checkoutData: Object;
   @Output() checkoutEvent = new EventEmitter<boolean>();
   constructor(private gettaxService: getTaxService) { }
 
   ngOnInit() {
-    this.checkoutData;
+    this.roomCharges = this.checkoutData['room_charges'];
+    this.extraOccupancy = this.checkoutData['extra_occupancy'];
+    this.foodBillNumber = this.checkoutData['food_bill_number'];
     this.getTaxAmount();
     this.subTotal = parseInt(this.checkoutData['room_charges']) + parseInt(this.checkoutData['extra_occupancy']);
   }
@@ -43,6 +49,7 @@ export class CheckoutFormComponent implements OnInit {
         data => {
           if (data) {
             this.taxData = data[0];
+            this.taxAmount = this.taxData['tax_amount'];
             this.finalTotal = this.subTotal + (this.subTotal * parseInt(this.taxData['tax_amount']) / 100);
           } else {
             this.taxData = 0;

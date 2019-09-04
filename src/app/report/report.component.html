@@ -1,17 +1,17 @@
 <div class="form-group">
   <mat-form-field>
-    <input matInput [matDatepicker]="picker1" [min]="minDate" [max]="maxDate" name="startdate" [(ngModel)]="startdate" placeholder="Start Date">
+    <input matInput [matDatepicker]="picker1" name="startdate" placeholder="Start Date">
     <mat-datepicker-toggle matSuffix [for]="picker1">
     </mat-datepicker-toggle>
     <mat-datepicker #picker1></mat-datepicker>
   </mat-form-field>
   <mat-form-field>
-    <input matInput [matDatepicker]="picker2" [min]="minDate" [max]="maxDate" name="enddate" [(ngModel)]="enddate" placeholder="End date">
+    <input matInput [matDatepicker]="picker2" name="enddate" placeholder="End date">
     <mat-datepicker-toggle matSuffix [for]="picker2">
     </mat-datepicker-toggle>
     <mat-datepicker #picker2></mat-datepicker>
   </mat-form-field>
-  <button type="button" (click)="getReports()" data-sticky="true" class="btn btn-secondary searchBtn" tabindex="3">
+  <button type="button" data-sticky="true" class="btn btn-secondary searchBtn" tabindex="3">
     Search &nbsp;
   </button>
 </div>
@@ -29,25 +29,31 @@
         Table loading please wait...
       </div>
       <div class="table-responsive" *ngIf="!loading">
-        <table class="table table-striped table-bordered table-hover table-highlight" data-display-rows="10" data-info="true" data-search="true"
-          data-length-change="true" data-paginate="true">
+        <table class="table table-striped table-bordered table-hover table-highlight" data-display-rows="10"
+          data-info="true" data-search="true" data-length-change="true" data-paginate="true">
           <thead>
             <tr>
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">
                 Name
               </th>
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Booking Amonut</th>
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">Booking Amonut</th>
 
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">GST Amount
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">GST Amount
 
                 <!-- <th data-filterable="false" class="hidden-sm">Image</th> -->
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Food Bill Amount</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left; font-weight:bold;" aria-label="Platform(s): activate to sort column ascending">Total Bill Amount</th>
-                <th data-filterable="false" class="hidden-sm">Action</th>
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">Food Bill Amount</th>
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1"
+                style="width: 192px; text-align:left; font-weight:bold;"
+                aria-label="Platform(s): activate to sort column ascending">Total Bill Amount</th>
+              <th data-filterable="false" class="hidden-sm">Action</th>
 
             </tr>
           </thead>
-          <tbody>
+          <!-- <tbody>
             <tr *ngIf="!report">
               <td class="text-center" colspan="6">
                 No records found
@@ -65,12 +71,8 @@
                 </button>
                 <i class="fa fa-trash-o" *ngIf="activeTab == 'customer'" (click)="deleteCustomer(item.customer_id)"></i>
               </td>
-              <!-- 
-              <button type="button" data-sticky="true" class="btn btn-success text right searchBtn" tabindex="3">
-                Export &nbsp;
-              </button> -->
             </tr>
-          </tbody>
+          </tbody> -->
         </table>
       </div>
     </div>

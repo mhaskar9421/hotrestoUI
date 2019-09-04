@@ -27,6 +27,8 @@ export class BookRoomFormComponent implements OnInit {
   @ViewChild('stepper') stepper: MatStepper;
   isEditable = true;
   @Input() roomObject: Object;
+  roomNumber: String;
+  roomType: String;
   @Output() formEvent = new EventEmitter<boolean>();
 
   constructor(private router: Router, private formBuilder: FormBuilder, private customerService: CustomerService, private bookroomformService: BookRoomFormService, public constants: notificationMessages, private _snackBar: MatSnackBar) {
@@ -52,6 +54,8 @@ export class BookRoomFormComponent implements OnInit {
       paymentstatus: ['', Validators.required]
     });
     this.viewCustomerDetails();
+    this.roomNumber = this.roomObject['roomId'].room_number;
+    this.roomType = this.roomObject['roomId'].room_name;
   }
 
   viewCustomerDetails() {
