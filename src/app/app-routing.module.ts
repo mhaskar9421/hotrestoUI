@@ -8,6 +8,8 @@ import { CustomerInfoComponent } from "src/app/customer/customer.component";
 import { BookRoomComponent } from './book-room/book-room.component';
 import { RoomTableComponent } from './room-table/room-table.component'
 import { ReportComponent } from './report/report.component';
+import { BookRoomFormComponent } from './book-room-form/book-room-form.component';
+import { BookedCustomerListComponent } from './booked-customer-list/booked-customer-list.component';
 
 const appRoutes: Routes = [
     {
@@ -27,7 +29,9 @@ const appRoutes: Routes = [
             { path: 'rooms', component: AddroomComponent, canActivateChild: [AuthGuard] },
             { path: 'customer', component: CustomerInfoComponent, canActivateChild: [AuthGuard] },
             { path: 'book-room', component: BookRoomComponent, canActivateChild: [AuthGuard] },
-            { path: 'report', component: ReportComponent, canActivateChild: [AuthGuard] }
+            { path: 'report', component: ReportComponent, canActivateChild: [AuthGuard] },
+            { path: 'book-room-form', component: BookRoomFormComponent, canActivateChild: [AuthGuard] },
+            { path: 'booked-customer-list', component: BookedCustomerListComponent, canActivateChild: [AuthGuard] }
         ],
     },
     {

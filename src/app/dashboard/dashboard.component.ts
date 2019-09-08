@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   selectedMenu = 'dashboard';
   showCustomer = true;
   showCheckout = false;
+  showEditBooking = false;
   customerCount = 0;
   checkoutData: {};
   roomCount = 0;
@@ -29,6 +30,7 @@ export class DashboardComponent implements OnInit {
     if (bookRoom != -1) { this.selectedMenu = 'book-room'; this.showCustomer = false; }
     if (report != -1) { this.selectedMenu = 'report'; this.showCustomer = false; }
     this.totalCustomers();
+    this.showCheckout = false;
   }
 
   activeMenu(menu) {
@@ -54,6 +56,7 @@ export class DashboardComponent implements OnInit {
     this.showCheckout = $event;
     this.showCustomer = !this.showCustomer;
     this.checkoutData = $event.item;
+
   }
 
   logoutUser() {
@@ -64,30 +67,30 @@ export class DashboardComponent implements OnInit {
   totalCustomers() {
     this.dashboardService.totalCustomers()
       .subscribe(
-        data => {
-          if (data) {
-            this.customerCount = data;
-          } else {
-            this.customerCount = 0;
-          }
-        },
-        error => {
-          console.log(error);
-        });
+      data => {
+        if (data) {
+          this.customerCount = data;
+        } else {
+          this.customerCount = 0;
+        }
+      },
+      error => {
+        console.log(error);
+      });
   }
 
   totalRooms() {
     this.dashboardService.totalRooms()
       .subscribe(
-        data => {
-          if (data) {
-            this.roomCount = data;
-          } else {
-            this.roomCount = 0;
-          }
-        },
-        error => {
-          console.log(error);
-        });
+      data => {
+        if (data) {
+          this.roomCount = data;
+        } else {
+          this.roomCount = 0;
+        }
+      },
+      error => {
+        console.log(error);
+      });
   }
 }

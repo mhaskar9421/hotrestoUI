@@ -50,19 +50,24 @@ export class BookRoomComponent implements OnInit {
     this.formView = false;
     this.getRooms.getAvaliableRooms(this.checkinDate, this.checkoutDate)
       .subscribe(
-        data => {
-          if (data) {
-            this.loading = false;
-            this.roomList = data;
-          } else {
-            this.loading = false;
-            this.roomList = null;
-          }
-        },
-        error => {
-          console.log(error);
+      data => {
+        if (data) {
           this.loading = false;
-        });
+          this.roomList = data;
+        } else {
+          this.loading = false;
+          this.roomList = null;
+        }
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+      });
+  }
+
+  receiveBookingFormEvent($event) {
+    // this.showEditBooking = $event;
+    // this.showEditBooking = !this.showEditBooking;
   }
 
 }

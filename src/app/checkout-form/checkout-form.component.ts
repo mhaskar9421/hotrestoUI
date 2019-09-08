@@ -29,10 +29,9 @@ export class CheckoutFormComponent implements OnInit {
   }
 
   printInvoice(printArea) {
-    var input = input.setAttribute("value", input.value)
     var printContents = document.getElementById(printArea).innerHTML;
     var originalContents = document.body.innerHTML;
-    document.body.innerHTML = input;
+    // document.body.innerHTML = input;
     document.body.innerHTML = printContents;
     window.print();
 
@@ -46,18 +45,18 @@ export class CheckoutFormComponent implements OnInit {
   getTaxAmount() {
     this.gettaxService.getTaxData()
       .subscribe(
-        data => {
-          if (data) {
-            this.taxData = data[0];
-            this.taxAmount = this.taxData['tax_amount'];
-            this.finalTotal = this.subTotal + (this.subTotal * parseInt(this.taxData['tax_amount']) / 100);
-          } else {
-            this.taxData = 0;
-          }
-        },
-        error => {
-          console.log(error);
-        });
+      data => {
+        if (data) {
+          this.taxData = data[0];
+          this.taxAmount = this.taxData['tax_amount'];
+          this.finalTotal = this.subTotal + (this.subTotal * parseInt(this.taxData['tax_amount']) / 100);
+        } else {
+          this.taxData = 0;
+        }
+      },
+      error => {
+        console.log(error);
+      });
   }
 
 }

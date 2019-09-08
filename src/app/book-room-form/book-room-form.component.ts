@@ -62,19 +62,19 @@ export class BookRoomFormComponent implements OnInit {
     this.loading = true;
     this.customerService.viewCustomerDetails()
       .subscribe(
-        data => {
-          if (data) {
-            this.loading = false;
-            this.customerList = data;
-          } else {
-            this.loading = false;
-            this.customerList = null;
-          }
-        },
-        error => {
-          console.log(error);
+      data => {
+        if (data) {
           this.loading = false;
-        });
+          this.customerList = data;
+        } else {
+          this.loading = false;
+          this.customerList = null;
+        }
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+      });
   }
 
   onSubmit() {
@@ -104,22 +104,22 @@ export class BookRoomFormComponent implements OnInit {
       customerObj['checkout_date'] = this.roomObject['checkout'];
       delete customerObj.customerId;
     }
-    console.log(this.bookForm);
     this.bookroomformService.bookRoom(this.bookForm)
       .subscribe(
-        data => {
-          console.log(data);
-          this.loading = false;
-          this._snackBar.open(this.constants.roomBooked, '', {
-            duration: 5000,
-            horizontalPosition: 'right',
-            verticalPosition: 'top'
-          });
-        },
-        error => {
-          console.log(error);
-          this.loading = false;
+      data => {
+        console.log(data);
+        this.loading = false;
+        this._snackBar.open(this.constants.roomBooked, '', {
+          duration: 5000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
         });
+        this.router.navigate(['dashboard/booked-customer-list']);
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+      });
   }
 
   move(index: number) {
