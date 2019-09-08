@@ -6,6 +6,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule } from '@angular/material';
+import { AngularFileUploaderModule } from "angular-file-uploader";
 
 // services
 import { AuthService } from './auth.service';
@@ -75,7 +76,6 @@ import { BookedCustomerListComponent } from './booked-customer-list/booked-custo
     CheckoutFormComponent,
     ReportComponent,
     BookedCustomerListComponent
-    // TaxComponent
   ],
   entryComponents: [DashboardComponent, AddTaxDialog],
   imports: [
@@ -93,6 +93,7 @@ import { BookedCustomerListComponent } from './booked-customer-list/booked-custo
     MatInputModule,
     MatButtonModule,
     MatAutocompleteModule,
+    AngularFileUploaderModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

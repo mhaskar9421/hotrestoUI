@@ -13,12 +13,39 @@ import { CustomerTableComponent } from '../customer-table/customer-table.compone
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.scss']
 })
+
 export class CustomerInfoComponent implements OnInit {
 
   public customermodel: CustomerModel;
   loading = true;
   submitted = false;
+  fileToUpload: File = null;
   customerList: {};
+
+  // afuConfig = {
+  //   multiple: false,
+  //   formatsAllowed: ".jpg,.png",
+  //   maxSize: "1",
+  //   uploadAPI: {
+  //     url: "http://hotresto/backend/CustomerController/storeImage",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Authorization": `${localStorage.getItem('Token')}`
+  //     }
+  //   },
+  //   hideProgressBar: true,
+  //   hideResetBtn: true,
+  //   hideSelectBtn: false,
+  //   replaceTexts: {
+  //     selectFileBtn: 'Select Files',
+  //     resetBtn: 'Reset',
+  //     uploadBtn: 'Upload',
+  //     dragNDropBox: 'Drag N Drop',
+  //     attachPinBtn: 'Attach Files...',
+  //     afterUploadMsg_success: 'Successfully Uploaded !',
+  //     afterUploadMsg_error: 'Upload Failed !'
+  //   }
+  // };
 
   constructor(private router: Router, public constants: notificationMessages, private route: ActivatedRoute, private _snackBar: MatSnackBar, private customerService: CustomerService) {
     this.customermodel = new CustomerModel();
@@ -62,21 +89,21 @@ export class CustomerInfoComponent implements OnInit {
   }
 
   addCustomer() {
-    this.customerService.addCustomer(this.customermodel.customername, this.customermodel.custid, this.customermodel.idnumber, this.customermodel.phonenumber, this.customermodel.address, this.customermodel.image)
-      .subscribe(
-        data => {
-          this.loading = false;
-          this._snackBar.open(this.constants.addCustomer, '', {
-            duration: 5000,
-            horizontalPosition: 'right',
-            verticalPosition: 'top'
-          });
-          this.customertablecomponent.viewCustomer();
-        },
-        error => {
-          console.log(error);
-          this.loading = false;
-        });
+    // this.customerService.addCustomer(this.customermodel.customername, this.customermodel.custid, this.customermodel.idnumber, this.customermodel.phonenumber, this.customermodel.address, this.fileToUpload)
+    //   .subscribe(
+    //     data => {
+    //       this.loading = false;
+    //       this._snackBar.open(this.constants.addCustomer, '', {
+    //         duration: 5000,
+    //         horizontalPosition: 'right',
+    //         verticalPosition: 'top'
+    //       });
+    //       this.customertablecomponent.viewCustomer();
+    //     },
+    //     error => {
+    //       console.log(error);
+    //       this.loading = false;
+    //     });
   }
 
   onSelectedFile(event) {
