@@ -25,10 +25,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.data.setNewValue
       .subscribe(
-      showEditBooking => (
-        this.showEditBooking = showEditBooking,
-        this.showCustomer = !showEditBooking
-      )
+        showEditBooking => (
+          this.showEditBooking = showEditBooking,
+          this.showCustomer = !showEditBooking
+        )
       );
     let customer = this.router.url.indexOf('customer');
     let rooms = this.router.url.indexOf('rooms');
@@ -47,6 +47,8 @@ export class DashboardComponent implements OnInit {
       this.totalCustomers();
       this.selectedMenu = menu;
       this.showCustomer = true;
+      this.showCheckout = false;
+      this.showEditBooking = false;
     } else {
       this.selectedMenu = menu;
       this.showCustomer = false;
@@ -76,30 +78,30 @@ export class DashboardComponent implements OnInit {
   totalCustomers() {
     this.dashboardService.totalCustomers()
       .subscribe(
-      data => {
-        if (data) {
-          this.customerCount = data;
-        } else {
-          this.customerCount = 0;
-        }
-      },
-      error => {
-        console.log(error);
-      });
+        data => {
+          if (data) {
+            this.customerCount = data;
+          } else {
+            this.customerCount = 0;
+          }
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   totalRooms() {
     this.dashboardService.totalRooms()
       .subscribe(
-      data => {
-        if (data) {
-          this.roomCount = data;
-        } else {
-          this.roomCount = 0;
-        }
-      },
-      error => {
-        console.log(error);
-      });
+        data => {
+          if (data) {
+            this.roomCount = data;
+          } else {
+            this.roomCount = 0;
+          }
+        },
+        error => {
+          console.log(error);
+        });
   }
 }
