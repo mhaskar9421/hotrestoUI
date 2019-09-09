@@ -17,15 +17,16 @@
           <thead>
             <tr>
               <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
-                aria-label="Platform(s): activate to sort column ascending">Booking Date
+                aria-label="Platform(s): activate to sort column ascending">Invoice No
               </th>
+
               <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
                 aria-label="Platform(s): activate to sort column ascending">Checkin Date
               </th>
               <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
                 aria-label="Platform(s): activate to sort column ascending">Checkout Date</th>
               <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
-                aria-label="Platform(s): activate to sort column ascending">Invoice No.
+                aria-label="Platform(s): activate to sort column ascending">Booking Date
               </th>
               <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
                 aria-label="Platform(s): activate to sort column ascending">Total Bill Amount
@@ -47,10 +48,10 @@
               </td>
             </tr>
             <tr *ngFor="let item of bookedCustomerList">
-              <td>{{item.booking_date}}</td>
+              <td>{{item.booking_id}}</td>
               <td>{{item.checkin_date}}</td>
               <td>{{item.checkout_date}}</td>
-              <td>{{item.booking_id}}</td>
+              <td>{{item.booking_date}}</td>
               <td>{{item.total_amount}}</td>
               <td>{{item.paid_amount}}</td>
               <td>{{item.payment_status}}</td>
