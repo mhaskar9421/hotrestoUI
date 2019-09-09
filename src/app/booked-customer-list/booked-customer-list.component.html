@@ -1,4 +1,4 @@
-<div class="col-md-12" *ngIf="bookedCustomerList">
+<div class="col-md-12">
   <div class="portlet">
     <div class="portlet-header">
       <h3>
@@ -43,30 +43,27 @@
           <tbody>
             <tr *ngIf="!bookedCustomerList">
               <td class="text-center" colspan="8">
-                No records found
+                No rooms booked yet...
               </td>
             </tr>
             <tr *ngFor="let item of bookedCustomerList">
               <td>{{item.booking_date}}</td>
               <td>{{item.checkin_date}}</td>
               <td>{{item.checkout_date}}</td>
-              <td>{{item.invoice_no}}</td>
-              <td>{{item.bill_total_amount}}</td>
+              <td>{{item.booking_id}}</td>
+              <td>{{item.total_amount}}</td>
               <td>{{item.paid_amount}}</td>
               <td>{{item.payment_status}}</td>
               <td>
                 <!-- <a routerLink="book-room-form"> -->
-                <button *ngIf="activeTab == 'dashboard'" type="button" class="btn btn-secondary btn-xs"
-                  (click)="bookedRoomForm(item)">
+                <button type="button" class="btn btn-secondary btn-xs" (click)="bookedRoomForm(item)">
                   Edit &nbsp;
                 </button>
                 <!-- </a> -->
-                <button *ngIf="activeTab == 'dashboard'" type="button" class="btn btn-secondary btn-xs"
-                  (click)="checkout(item)">
+                <button type="button" class="btn btn-secondary btn-xs" (click)="checkout(item)">
                   Checkout &nbsp;
                 </button>
-                <button *ngIf="activeTab == 'dashboard'" type="button" class="btn btn-secondary btn-xs"
-                  (click)="deleteBookedRoom(item)">
+                <button type="button" class="btn btn-secondary btn-xs" (click)="deleteBookedRoom(item)">
                   Delete &nbsp;
                 </button>
               </td>

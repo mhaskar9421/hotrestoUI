@@ -31,6 +31,9 @@ export class BookRoomFormComponent implements OnInit {
   remainingAmount: number = 0;
   @Input() roomObject: Object;
   roomNumber: String;
+  GST: number;
+  totalRoomAmount: number;
+  totalFoodBill: number;
   roomType: String;
   message: String;
   item: {};
@@ -49,7 +52,9 @@ export class BookRoomFormComponent implements OnInit {
       phonenumber: [''],
       address: [''],
       roomamount: [''],
-      extraoccupancy: ['']
+      extraoccupancy: [''],
+      foodbillnumber: [''],
+      foodbillamount: ['']
     });
     this.thirdFormGroup = this.formBuilder.group({
       billamount: ['', Validators.required],
@@ -58,25 +63,30 @@ export class BookRoomFormComponent implements OnInit {
       totalamount: ['', Validators.required],
       paymentstatus: ['', Validators.required]
     });
-    this.data.currentItem
-      .subscribe(
-        item => (
-          this.item = item,
-          this.firstFormGroup.controls.customerId.setValue(item['customer_id']),
-          this.firstFormGroup.controls.roomamount.setValue(item['room_charges']),
-          this.firstFormGroup.controls.extraoccupancy.setValue(item['extra_occupancy']),
-          this.thirdFormGroup.controls.billamount.setValue(item['food_bill_number']),
-          this.thirdFormGroup.controls.paidamount.setValue(item['paid_amount']),
-          this.thirdFormGroup.controls.paymenttype.setValue(item['payment_mode']),
-          this.thirdFormGroup.controls.totalamount.setValue(item['total_amount']),
-          this.thirdFormGroup.controls.paymentstatus.setValue(item['payment_status']),
-          this.remainingAmount = parseInt(item['total_amount']) - parseInt(item['paid_amount'])
-        ),
-      );
     this.viewCustomerDetails();
     if (this.roomObject) {
       this.roomNumber = this.roomObject['roomId'].room_number;
       this.roomType = this.roomObject['roomId'].room_name;
+    } else {
+      this.data.currentItem
+        .subscribe(
+          item => (
+            this.item = item,
+            this.firstFormGroup.controls.customerId.setValue(item['customer_id']),
+            this.firstFormGroup.controls.roomamount.setValue(item['room_charges']),
+            this.firstFormGroup.controls.extraoccupancy.setValue(item['extra_occupancy']),
+            this.firstFormGroup.controls.foodbillnumber.setValue(item['food_bill_number']),
+            this.firstFormGroup.controls.foodbillamount.setValue(item['food_bill_amount']),
+            this.thirdFormGroup.controls.paidamount.setValue(item['paid_amount']),
+            this.thirdFormGroup.controls.paymenttype.setValue(item['payment_mode']),
+            this.thirdFormGroup.controls.totalamount.setValue(item['grandTotal']),
+            this.thirdFormGroup.controls.paymentstatus.setValue(item['payment_status']),
+            this.remainingAmount = parseInt(item['grandTotal']) - parseInt(item['paid_amount']),
+            this.GST = item['GST'],
+            this.totalFoodBill = item['food_bill_amount'],
+            this.totalRoomAmount = item['totalRoomCharges']
+          ),
+        );
     }
   }
 
@@ -176,7 +186,7 @@ export class BookRoomFormComponent implements OnInit {
   }
 
   calculateTotal() {
-    this.thirdFormGroup.controls.totalamount.setValue(parseInt(this.firstFormGroup.controls.roomamount.value) + parseInt(this.firstFormGroup.controls.extraoccupancy.value));
+    this.thirdFormGroup.controls.totalamount.setValue(parseInt(this.firstFormGroup.controls.roomamount.value) + parseInt(this.firstFormGroup.controls.extraoccupancy.value) + parseInt(this.firstFormGroup.controls.foodbillamount.value));
   }
 
 }
