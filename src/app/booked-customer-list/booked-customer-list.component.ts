@@ -10,6 +10,7 @@ import { DataService } from "../data.service";
 })
 export class BookedCustomerListComponent implements OnInit {
   bookedCustomerList: {};
+  invoiceObjList: {};
   loading = false;
   showCheckout: boolean = true;
   showEditBooking: boolean = true;
@@ -29,19 +30,19 @@ export class BookedCustomerListComponent implements OnInit {
     this.loading = true;
     this.bookedcustomerService.viewBookedCustomerList()
       .subscribe(
-        data => {
-          if (data) {
-            this.loading = false;
-            this.bookedCustomerList = data;
-          } else {
-            this.loading = false;
-            this.bookedCustomerList = null;
-          }
-        },
-        error => {
-          console.log(error);
+      data => {
+        if (data) {
           this.loading = false;
-        });
+          this.bookedCustomerList = data;
+        } else {
+          this.loading = false;
+          this.bookedCustomerList = null;
+        }
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+      });
   }
 
   checkout(item) {

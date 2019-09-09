@@ -4,7 +4,7 @@
         <div class="invoiceDetails">
             <div class="form-group">
                 <span class="title">Invoice No:</span>
-                <span class="value">{{invoivceNumber}}</span>
+                <span class="value">{{invoiceNumber}}</span>
             </div>
             <div class="form-group">
                 <span class="title">Booking Date:</span>
@@ -26,11 +26,11 @@
             <div class="dates">
                 <div class="form-group">
                     <span class="title">Check-in Date:</span>
-                    <span class="value">{{checkindate}}</span>
+                    <span class="value">{{checkinDate}}</span>
                 </div>
                 <div class="form-group">
                     <span class="title">Check-out Date:</span>
-                    <span class="value">{{checkoutdate}}</span>
+                    <span class="value">{{checkoutDate}}</span>
                 </div>
             </div>
         </div>
@@ -46,12 +46,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngIf="!customerList">
-                        <td class="text-center" colspan="5">
-                            No records found
-                        </td>
-                    </tr>
-                    <tr *ngFor="let item of invoiceobj">
+                    <tr *ngFor="let item of invoiceObjList">
                         <td>{{item.room_type}}</td>
                         <td>{{item.room_amount}}</td>
                         <td>{{item.extra_occupancy}}</td>
@@ -64,11 +59,11 @@
             <div class="invoiceDetails">
                 <div class="form-group">
                     <span class="title">Total Room Amount=</span>
-                    <span class="value">{{totalamount}}</span>
+                    <span class="value">{{roomCharges}}</span>
                 </div>
                 <div class="form-group">
                     <span class="title">Food Bill Number=</span>
-                    <span class="value">{{foodbillnumber}}</span>
+                    <span class="value">{{foodBillNumber}}</span>
                 </div>
                 <div class="form-group">
                     <span class="title">Food Bill Amount=</span>

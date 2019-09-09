@@ -17,4 +17,10 @@ export class getTaxService {
             });
     }
 
+    getRoomCustDetails(room_id: number, customer_id: number) {
+        return this.http.get('environment.BACKEND.URL.getRoomCustDetails')
+            .map(res => {
+                return res;
+            });
+    }
 }
