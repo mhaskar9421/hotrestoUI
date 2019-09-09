@@ -20,6 +20,7 @@ import { BookRoomFormService } from './book-room-form/book-room-form.service';
 import { BookRoomService } from './book-room/book-room.service';
 import { BookedCustomerService } from './booked-customer-list/booked-customer-list.service';
 import { getTaxService } from './checkout-form/checkout-form.service';
+import { DataService } from "./data.service";
 
 // interceptors
 import { BasicAuthInterceptor } from './httpRequestsInterceptor.service';
@@ -129,7 +130,8 @@ import { BookedCustomerListComponent } from './booked-customer-list/booked-custo
     BookRoomFormService,
     BookRoomService,
     BookedCustomerService,
-    getTaxService
+    getTaxService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })

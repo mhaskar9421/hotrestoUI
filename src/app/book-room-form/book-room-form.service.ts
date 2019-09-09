@@ -14,4 +14,13 @@ export class BookRoomFormService {
             });
     }
 
+    updateBookingInfo(updatedform: Object, updateFormData: Object) {
+        return this.http.post(environment.BACKEND.URL.editBooking, { updatedform: updatedform, updateFormData: updateFormData })
+            .map(res => {
+                return res;
+            });
+    }
+
+
+
 }

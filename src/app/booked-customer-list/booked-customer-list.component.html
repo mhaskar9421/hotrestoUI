@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12" *ngIf="bookedCustomerList">
   <div class="portlet">
     <div class="portlet-header">
       <h3>
@@ -12,23 +12,30 @@
         Table loading please wait...
       </div>
       <div class="table-responsive col-*" *ngIf="!loading">
-        <table class="table table-striped table-bordered table-hover table-highlight" data-display-rows="10" data-info="true" data-search="true"
-          data-length-change="true" data-paginate="true">
+        <table class="table table-striped table-bordered table-hover table-highlight" data-display-rows="10"
+          data-info="true" data-search="true" data-length-change="true" data-paginate="true">
           <thead>
             <tr>
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Booking Date
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">Booking Date
               </th>
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Checkin Date
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">Checkin Date
               </th>
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Checkout Date</th>
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Invoice No.
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">Checkout Date</th>
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">Invoice No.
               </th>
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Total Bill Amount
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">Total Bill Amount
               </th>
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">
                 Paid Amount
               </th>
-              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;" aria-label="Platform(s): activate to sort column ascending">Status</th>
+              <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style="width: 192px; text-align:left;"
+                aria-label="Platform(s): activate to sort column ascending">Status</th>
               <!-- <th data-filterable="false" class="hidden-sm">Image</th> -->
               <th data-filterable="false" class="hidden-sm">Action</th>
             </tr>
@@ -48,13 +55,18 @@
               <td>{{item.paid_amount}}</td>
               <td>{{item.payment_status}}</td>
               <td>
-                <button *ngIf="activeTab == 'dashboard'" type="button" class="btn btn-secondary btn-xs" (click)="bookedRoomForm(item)">
+                <!-- <a routerLink="book-room-form"> -->
+                <button *ngIf="activeTab == 'dashboard'" type="button" class="btn btn-secondary btn-xs"
+                  (click)="bookedRoomForm(item)">
                   Edit &nbsp;
                 </button>
-                <button *ngIf="activeTab == 'dashboard'" type="button" class="btn btn-secondary btn-xs" (click)="checkout(item)">
+                <!-- </a> -->
+                <button *ngIf="activeTab == 'dashboard'" type="button" class="btn btn-secondary btn-xs"
+                  (click)="checkout(item)">
                   Checkout &nbsp;
                 </button>
-                <button *ngIf="activeTab == 'dashboard'" type="button" class="btn btn-secondary btn-xs" (click)="deleteBookedRoom(item)">
+                <button *ngIf="activeTab == 'dashboard'" type="button" class="btn btn-secondary btn-xs"
+                  (click)="deleteBookedRoom(item)">
                   Delete &nbsp;
                 </button>
               </td>

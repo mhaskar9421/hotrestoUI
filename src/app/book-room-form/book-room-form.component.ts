@@ -7,6 +7,7 @@ import { BookRoomFormService } from './book-room-form.service';
 import { notificationMessages } from '../../notificationMessages';
 import { CustomerService } from '../customer/customer.service';
 import { Router } from '@angular/router';
+import { DataService } from "../data.service";
 
 @Component({
   selector: 'app-book-room-form',
@@ -20,18 +21,22 @@ export class BookRoomFormComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   formView: boolean = false;
+  bookedCustomerList = true;
   bookForm: {};
   customerList: {};
   viewCustomer = false;
   @Input() activeTab: string;
   @ViewChild('stepper') stepper: MatStepper;
   isEditable = true;
+  remainingAmount: number = 0;
   @Input() roomObject: Object;
   roomNumber: String;
   roomType: String;
+  message: String;
+  item: {};
   @Output() formEvent = new EventEmitter<boolean>();
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private customerService: CustomerService, private bookroomformService: BookRoomFormService, public constants: notificationMessages, private _snackBar: MatSnackBar) {
+  constructor(private data: DataService, private router: Router, private formBuilder: FormBuilder, private customerService: CustomerService, private bookroomformService: BookRoomFormService, public constants: notificationMessages, private _snackBar: MatSnackBar) {
     this.bookroommodel = new BookRoomModel();
   }
 
@@ -53,28 +58,60 @@ export class BookRoomFormComponent implements OnInit {
       totalamount: ['', Validators.required],
       paymentstatus: ['', Validators.required]
     });
+    this.data.currentItem
+      .subscribe(
+        item => (
+          this.item = item,
+          this.firstFormGroup.controls.customerId.setValue(item['customer_id']),
+          this.firstFormGroup.controls.roomamount.setValue(item['room_charges']),
+          this.firstFormGroup.controls.extraoccupancy.setValue(item['extra_occupancy']),
+          this.thirdFormGroup.controls.billamount.setValue(item['food_bill_number']),
+          this.thirdFormGroup.controls.paidamount.setValue(item['paid_amount']),
+          this.thirdFormGroup.controls.paymenttype.setValue(item['payment_mode']),
+          this.thirdFormGroup.controls.totalamount.setValue(item['total_amount']),
+          this.thirdFormGroup.controls.paymentstatus.setValue(item['payment_status']),
+          this.remainingAmount = parseInt(item['total_amount']) - parseInt(item['paid_amount'])
+        ),
+      );
     this.viewCustomerDetails();
-    this.roomNumber = this.roomObject['roomId'].room_number;
-    this.roomType = this.roomObject['roomId'].room_name;
+    if (this.roomObject) {
+      this.roomNumber = this.roomObject['roomId'].room_number;
+      this.roomType = this.roomObject['roomId'].room_name;
+    }
+  }
+
+
+  editBooking() {
+    this.data.setBookingFormValue(false);
+    this.bookroomformService.updateBookingInfo(this.item, this.thirdFormGroup.value)
+      .subscribe(
+        data => {
+          if (data) {
+            console.log(data);
+          }
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   viewCustomerDetails() {
     this.loading = true;
     this.customerService.viewCustomerDetails()
       .subscribe(
-      data => {
-        if (data) {
+        data => {
+          if (data) {
+            this.loading = false;
+            this.customerList = data;
+          } else {
+            this.loading = false;
+            this.customerList = null;
+          }
+        },
+        error => {
+          console.log(error);
           this.loading = false;
-          this.customerList = data;
-        } else {
-          this.loading = false;
-          this.customerList = null;
-        }
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
+        });
   }
 
   onSubmit() {
@@ -106,20 +143,20 @@ export class BookRoomFormComponent implements OnInit {
     }
     this.bookroomformService.bookRoom(this.bookForm)
       .subscribe(
-      data => {
-        console.log(data);
-        this.loading = false;
-        this._snackBar.open(this.constants.roomBooked, '', {
-          duration: 5000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top'
+        data => {
+          console.log(data);
+          this.loading = false;
+          this._snackBar.open(this.constants.roomBooked, '', {
+            duration: 5000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top'
+          });
+          this.router.navigate(['dashboard/booked-customer-list']);
+        },
+        error => {
+          console.log(error);
+          this.loading = false;
         });
-        this.router.navigate(['dashboard/booked-customer-list']);
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
   }
 
   move(index: number) {

@@ -131,9 +131,12 @@
                 <div class="col-md-12">
                     <router-outlet></router-outlet>
                 </div>
-                <app-booked-customer-list activeTab="dashboard" *ngIf="showCustomer" (checkoutEvent)="receiveEvent($event)"></app-booked-customer-list>
-                <app-checkout-form *ngIf="showCheckout" (checkoutEvent)="receiveEvent($event)" [checkoutData]="checkoutData"></app-checkout-form>
-                <app-book-room-form *ngIf="showEditBooking" (bookingFormEvent)="receiveBookingFormEvent($event)"></app-book-room-form>
+                <app-booked-customer-list activeTab="dashboard" *ngIf="showCustomer"
+                    (checkoutEvent)="receiveEvent($event)"></app-booked-customer-list>
+                <app-checkout-form *ngIf="showCheckout" (checkoutEvent)="receiveEvent($event)"
+                    [checkoutData]="checkoutData"></app-checkout-form>
+                <app-book-room-form *ngIf="showEditBooking" (bookingFormEvent)="receiveBookingFormEvent($event)">
+                </app-book-room-form>
             </div>
         </div>
     </div>
