@@ -22,6 +22,9 @@ export class CheckoutFormComponent implements OnInit {
   @Input() checkoutData: Object;
   message: string;
   item: {};
+  roomObject: {};
+  room_id: number;
+  customer_id: number;
   @Output() checkoutEvent = new EventEmitter<boolean>();
   constructor(private data: DataService, private gettaxService: getTaxService) { }
 
@@ -33,6 +36,7 @@ export class CheckoutFormComponent implements OnInit {
     this.checkoutDate = this.checkoutData['checkout_date'];
     this.finalTotal = this.checkoutData['total_amount'];
     this.getTaxAmount();
+    this.getRoomCustDetails();
     // this.subTotal = parseInt(this.checkoutData['room_charges']) + parseInt(this.checkoutData['extra_occupancy']);
   }
 
@@ -67,4 +71,18 @@ export class CheckoutFormComponent implements OnInit {
       });
   }
 
+  getRoomCustDetails() {
+    this.gettaxService.getRoomCustDetails(this.room_id, this.customer_id)
+      .subscribe(
+      data => {
+        if (data) {
+          this.roomObject = data;
+        } else {
+          this.roomObject = null;
+        }
+      },
+      error => {
+        console.log(error);
+      });
+  }
 }

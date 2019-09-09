@@ -46,9 +46,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of invoiceObjList">
+                    <tr *ngIf="!roomObject">
+                        <td class="text-center" colspan="5">
+                            No records found
+                        </td>
+                    </tr>
+                    <tr *ngFor="let item of roomObject">
                         <td>{{item.room_type}}</td>
-                        <td>{{item.room_amount}}</td>
+                        <td>{{item.room_charges}}</td>
                         <td>{{item.extra_occupancy}}</td>
                         <td>{{item.gst}}</td>
                         <td>{{item.gst_amount}}</td>
@@ -58,19 +63,19 @@
             </table>
             <div class="invoiceDetails">
                 <div class="form-group">
-                    <span class="title">Total Room Amount=</span>
+                    <span class="title">Total Room Amount:</span>
                     <span class="value">{{roomCharges}}</span>
                 </div>
                 <div class="form-group">
-                    <span class="title">Food Bill Number=</span>
+                    <span class="title">Food Bill Number:</span>
                     <span class="value">{{foodBillNumber}}</span>
                 </div>
                 <div class="form-group">
-                    <span class="title">Food Bill Amount=</span>
+                    <span class="title">Food Bill Amount:</span>
                     <span class="value">{{foodbillamount}}</span>
                 </div>
                 <div class="form-group">
-                    <span class="title">Total Bill Amount=</span>
+                    <span class="title">Total Bill Amount:</span>
                     <span class="value">{{finalTotal}}</span>
                 </div>
             </div>
