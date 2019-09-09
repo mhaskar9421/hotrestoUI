@@ -31,6 +31,7 @@ export class CheckoutFormComponent implements OnInit {
     this.foodBillNumber = this.checkoutData['food_bill_number'];
     this.checkinDate = this.checkoutData['checkin_date'];
     this.checkoutDate = this.checkoutData['checkout_date'];
+    this.finalTotal = this.checkoutData['total_amount'];
     this.getTaxAmount();
     // this.subTotal = parseInt(this.checkoutData['room_charges']) + parseInt(this.checkoutData['extra_occupancy']);
   }
