@@ -75,11 +75,12 @@
                 </div>
             </div>
             <div class="text-right noprint">
-                <button type="button" value="Print" (click)="printInvoice('printArea')" class="btn btn-success btn-xs">
-                    Print&nbsp;
-                </button>
-                <button type="button" (click)="callCustomerList()" class="btn btn-success btn-xs">
+                <button type="button" (click)="callCustomerList()" class="btn btn-secondary btn-sm customBtn">
                     Close&nbsp;
+                </button>
+                <button type="button" value="Print" (click)="printInvoice('printArea')"
+                    class="btn btn-success btn-sm customBtn">
+                    Print&nbsp;
                 </button>
             </div>
         </div>
