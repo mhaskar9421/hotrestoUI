@@ -6,21 +6,23 @@ export const environment = {
   production: true,
   BACKEND: {
     URL: {
-      login: "http://www.ebenezerssschool.org/hotresto/backend/AuthController/login",
-      addTax: "http://www.ebenezerssschool.org/hotresto/backend/TaxController/addTax",
-      viewTax: "http://www.ebenezerssschool.org/hotresto/backend/TaxController/viewTax",
-      addRoom: "http://www.ebenezerssschool.org/hotresto/backend/RoomController/addRoom",
-      viewRoom: "http://www.ebenezerssschool.org/hotresto/backend/RoomController/viewRoom",
-      deleteTax: "http://www.ebenezerssschool.org/hotresto/backend/TaxController/deleteTax/",
-      deleteRoom: "http://www.ebenezerssschool.org/hotresto/backend/RoomController/deleteRoom/",
-      totalRooms: "http://www.ebenezerssschool.org/hotresto/backend/RoomController/totalRooms",
-      bookRoom: "http://www.ebenezerssschool.org/hotresto/backend/RoomController/bookRoom",
-      getRoomsList: "http://www.ebenezerssschool.org/hotresto/backend/RoomController/getAvaliableRooms",
-      addCustomer: "http://www.ebenezerssschool.org/hotresto/backend/CustomerController/addCustomer",
-      viewCustomer: "http://www.ebenezerssschool.org/hotresto/backend/CustomerController/viewCustomer",
-      deleteCustomer: "http://www.ebenezerssschool.org/hotresto/backend/CustomerController/deleteCustomer/",
-      totalCustomers: "http://www.ebenezerssschool.org/hotresto/backend/CustomerController/totalCustomers",
-      viewBookedCustomers: "http://www.ebenezerssschool.org/hotresto/backend/CustomerController/viewBookedCustomers"
+      login: "http://www.swatikinkar.com/hotresto/backend/AuthController/login",
+      addTax: "http://www.swatikinkar.com/hotresto/backend/TaxController/addTax",
+      viewTax: "http://www.swatikinkar.com/hotresto/backend/TaxController/viewTax",
+      addRoom: "http://www.swatikinkar.com/hotresto/backend/RoomController/addRoom",
+      viewRoom: "http://www.swatikinkar.com/hotresto/backend/RoomController/viewRoom",
+      deleteTax: "http://www.swatikinkar.com/hotresto/backend/TaxController/deleteTax/",
+      deleteRoom: "http://www.swatikinkar.com/hotresto/backend/RoomController/deleteRoom/",
+      totalRooms: "http://www.swatikinkar.com/hotresto/backend/RoomController/totalRooms",
+      bookRoom: "http://www.swatikinkar.com/hotresto/backend/RoomController/bookRoom",
+      getRoomsList: "http://www.swatikinkar.com/hotresto/backend/RoomController/getAvaliableRooms",
+      addCustomer: "http://www.swatikinkar.com/hotresto/backend/CustomerController/addCustomer",
+      viewCustomer: "http://www.swatikinkar.com/hotresto/backend/CustomerController/viewCustomer",
+      deleteCustomer: "http://www.swatikinkar.com/hotresto/backend/CustomerController/deleteCustomer/",
+      editBooking: "http://www.swatikinkar.com/hotresto/backend/RoomController/updateBookingInfo",
+      totalCustomers: "http://www.swatikinkar.com/hotresto/backend/CustomerController/totalCustomers",
+      viewBookedCustomers: "http://www.swatikinkar.com/hotresto/backend/CustomerController/viewBookedCustomers",
+      getRoomCustomerDetails: "http://www.swatikinkar.com/hotresto/backend/CustomerController/getRoomCustomerDetails"
     }
   }
 };
