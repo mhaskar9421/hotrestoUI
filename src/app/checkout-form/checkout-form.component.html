@@ -12,15 +12,15 @@
             </div>
             <div class="form-group">
                 <span class="title">Customer Name:</span>
-                <span class="value">{{customerName}}</span>
+                <span class="value">{{customer_name}}</span>
             </div>
             <div class="form-group">
                 <span class="title">Mobile Number:</span>
-                <span class="value">{{mobilenumber}}</span>
+                <span class="value">{{customer_mobile}}</span>
             </div>
             <div class="form-group">
                 <span class="title">Address:</span>
-                <span class="value">{{address}}</span>
+                <span class="value">{{customer_address}}</span>
             </div>
 
             <div class="dates">
@@ -46,17 +46,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngIf="!roomObject">
-                        <td class="text-center" colspan="5">
-                            No records found
-                        </td>
-                    </tr>
-                    <tr *ngFor="let item of roomObject">
-                        <td>{{item.room_type}}</td>
-                        <td>{{item.room_charges}}</td>
-                        <td>{{item.extra_occupancy}}</td>
-                        <td>{{item.gst}}</td>
-                        <td>{{item.gst_amount}}</td>
+                    <tr>
+                        <td>{{room_name}} {{room_number}}</td>
+                        <td>{{roomCharges}}</td>
+                        <td>{{extraOccupancy}}</td>
+                        <td>{{GST}}</td>
+                        <td>{{GSTAmount}}</td>
                         <!-- <td class=" hidden-xs hidden-sm">{{item.customer_uploadImage}}</td> -->
                     </tr>
                 </tbody>
@@ -64,7 +59,7 @@
             <div class="invoiceDetails">
                 <div class="form-group">
                     <span class="title">Total Room Amount:</span>
-                    <span class="value">{{roomCharges}}</span>
+                    <span class="value">{{totalRoomAmount}}</span>
                 </div>
                 <div class="form-group">
                     <span class="title">Food Bill Number:</span>
@@ -72,7 +67,7 @@
                 </div>
                 <div class="form-group">
                     <span class="title">Food Bill Amount:</span>
-                    <span class="value">{{foodbillamount}}</span>
+                    <span class="value">{{foodBillAmount}}</span>
                 </div>
                 <div class="form-group">
                     <span class="title">Total Bill Amount:</span>

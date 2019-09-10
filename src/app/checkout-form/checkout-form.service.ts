@@ -17,8 +17,8 @@ export class getTaxService {
             });
     }
 
-    getRoomCustDetails(room_id: number, customer_id: number) {
-        return this.http.get('environment.BACKEND.URL.getRoomCustDetails')
+    getRoomCustDetails(customer_id: number, room_id: number) {
+        return this.http.post(environment.BACKEND.URL.getRoomCustomerDetails, { customer_id: customer_id, room_id: room_id })
             .map(res => {
                 return res;
             });
