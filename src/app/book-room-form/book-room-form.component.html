@@ -14,10 +14,10 @@
         <span *ngIf="viewCustomer"><i class="fa fa-bars"></i> Customer List</span>
       </button>
       <mat-form-field>
-        <input matInput placeholder="Room Charges" formControlName="roomamount" required>
+        <input matInput placeholder="Room Charges" type="number" formControlName="roomamount" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Extra Occupancy Charges" formControlName="extraoccupancy" required>
+        <input matInput placeholder="Extra Occupancy Charges" type="number" formControlName="extraoccupancy" required>
       </mat-form-field>
       <button type="button" *ngIf="roomObject" class="btn btn-default btn-sm roomInfoButton" disabled>
         Room No : {{roomNumber}} <br>
@@ -27,9 +27,8 @@
       <mat-form-field>
         <input matInput placeholder="Food Bill Number" formControlName="foodbillnumber">
       </mat-form-field>
-
       <mat-form-field>
-        <input matInput placeholder="Food Bill Amount" formControlName="foodbillamount">
+        <input matInput placeholder="Food Bill Amount" type="number" formControlName="foodbillamount">
       </mat-form-field>
       <br>
       <div *ngIf="viewCustomer">

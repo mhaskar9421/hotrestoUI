@@ -89,21 +89,21 @@ export class CustomerInfoComponent implements OnInit {
   }
 
   addCustomer() {
-    // this.customerService.addCustomer(this.customermodel.customername, this.customermodel.custid, this.customermodel.idnumber, this.customermodel.phonenumber, this.customermodel.address, this.fileToUpload)
-    //   .subscribe(
-    //     data => {
-    //       this.loading = false;
-    //       this._snackBar.open(this.constants.addCustomer, '', {
-    //         duration: 5000,
-    //         horizontalPosition: 'right',
-    //         verticalPosition: 'top'
-    //       });
-    //       this.customertablecomponent.viewCustomer();
-    //     },
-    //     error => {
-    //       console.log(error);
-    //       this.loading = false;
-    //     });
+    this.customerService.addCustomer(this.customermodel.customername, this.customermodel.custid, this.customermodel.idnumber, this.customermodel.phonenumber, this.customermodel.address, this.fileToUpload)
+      .subscribe(
+        data => {
+          this.loading = false;
+          this._snackBar.open(this.constants.addCustomer, '', {
+            duration: 5000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top'
+          });
+          this.customertablecomponent.viewCustomer();
+        },
+        error => {
+          console.log(error);
+          this.loading = false;
+        });
   }
 
   onSelectedFile(event) {

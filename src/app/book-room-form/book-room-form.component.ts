@@ -186,7 +186,11 @@ export class BookRoomFormComponent implements OnInit {
   }
 
   calculateTotal() {
-    this.thirdFormGroup.controls.totalamount.setValue(parseInt(this.firstFormGroup.controls.roomamount.value) + parseInt(this.firstFormGroup.controls.extraoccupancy.value) + parseInt(this.firstFormGroup.controls.foodbillamount.value));
+    if (this.firstFormGroup.controls.foodbillamount.value) {
+      this.thirdFormGroup.controls.totalamount.setValue(parseInt(this.firstFormGroup.controls.roomamount.value) + parseInt(this.firstFormGroup.controls.extraoccupancy.value) + parseInt(this.firstFormGroup.controls.foodbillamount.value));
+    } else {
+      this.thirdFormGroup.controls.totalamount.setValue(parseInt(this.firstFormGroup.controls.roomamount.value) + parseInt(this.firstFormGroup.controls.extraoccupancy.value));
+    }
   }
 
 }
