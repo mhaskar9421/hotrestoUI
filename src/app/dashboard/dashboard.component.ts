@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
   }
 
   activeMenu(menu) {
-    if ((menu == 'tax' && this.selectedMenu == 'dashboard') || menu == 'dashboard') {
+    if ((menu == 'tax' && this.selectedMenu == 'dashboard') || menu == 'dashboard' || (menu == 'tax' && this.selectedMenu == 'tax')) {
       this.totalCustomers();
       this.selectedMenu = menu;
       this.showCustomer = true;

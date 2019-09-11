@@ -14,8 +14,8 @@ export class BookRoomFormService {
             });
     }
 
-    updateBookingInfo(updatedform: Object, updateFormData: Object) {
-        return this.http.post(environment.BACKEND.URL.editBooking, { updatedform: updatedform, updateFormData: updateFormData })
+    updateBookingInfo(firstForm: Object, thirdForm: Object, bookingId: number) {
+        return this.http.post(environment.BACKEND.URL.editBooking, { firstForm: firstForm, thirdForm: thirdForm, bookingId: bookingId })
             .map(res => {
                 return res;
             });

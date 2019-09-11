@@ -34,6 +34,8 @@ export class BookRoomFormComponent implements OnInit {
   GST: number;
   totalRoomAmount: number;
   totalFoodBill: number;
+  updatedTotal: number;
+  totalGSTAmount: number;
   roomType: String;
   message: String;
   item: {};
@@ -84,7 +86,8 @@ export class BookRoomFormComponent implements OnInit {
             this.remainingAmount = parseInt(item['grandTotal']) - parseInt(item['paid_amount']),
             this.GST = item['GST'],
             this.totalFoodBill = item['food_bill_amount'],
-            this.totalRoomAmount = item['totalRoomCharges']
+            this.totalRoomAmount = item['totalRoomCharges'],
+            this.totalGSTAmount = item['totalGSTAmount']
           ),
         );
     }
@@ -93,7 +96,7 @@ export class BookRoomFormComponent implements OnInit {
 
   editBooking() {
     this.data.setBookingFormValue(false);
-    this.bookroomformService.updateBookingInfo(this.item, this.thirdFormGroup.value)
+    this.bookroomformService.updateBookingInfo(this.firstFormGroup.value, this.thirdFormGroup.value, this.item['booking_id'])
       .subscribe(
         data => {
           if (data) {
@@ -183,6 +186,19 @@ export class BookRoomFormComponent implements OnInit {
       this.firstFormGroup.controls.customerId.setValue(undefined);
     }
     this.viewCustomer = !this.viewCustomer;
+  }
+
+  calculateEditFormValues() {
+    // default set to zero to avoid mis calculation
+    this.firstFormGroup.controls.foodbillamount.setValue(parseInt(this.firstFormGroup.controls.foodbillamount.value) ? parseInt(this.firstFormGroup.controls.foodbillamount.value) : 0);
+    this.totalRoomAmount = parseInt(this.firstFormGroup.controls.roomamount.value) + parseInt(this.firstFormGroup.controls.extraoccupancy.value);
+    if (this.totalRoomAmount > 999) {
+      this.totalGSTAmount = this.totalRoomAmount * this.GST / 100;
+      this.totalRoomAmount = this.totalRoomAmount + this.totalGSTAmount;
+    }
+    this.totalFoodBill = parseInt(this.firstFormGroup.controls.foodbillamount.value);
+    this.thirdFormGroup.controls.totalamount.setValue(this.totalRoomAmount + parseInt(this.firstFormGroup.controls.foodbillamount.value));
+    this.remainingAmount = (this.totalRoomAmount + parseInt(this.firstFormGroup.controls.foodbillamount.value)) - parseInt(this.thirdFormGroup.controls.paidamount.value);
   }
 
   calculateTotal() {
