@@ -10,6 +10,7 @@ import { RoomTableComponent } from './room-table/room-table.component'
 import { ReportComponent } from './report/report.component';
 import { BookRoomFormComponent } from './book-room-form/book-room-form.component';
 import { BookedCustomerListComponent } from './booked-customer-list/booked-customer-list.component';
+import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
 
 const appRoutes: Routes = [
     {
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
             { path: 'book-room', component: BookRoomComponent, canActivateChild: [AuthGuard] },
             { path: 'report', component: ReportComponent, canActivateChild: [AuthGuard] },
             { path: 'book-room-form', component: BookRoomFormComponent, canActivateChild: [AuthGuard] },
-            { path: 'booked-customer-list', component: BookedCustomerListComponent, canActivateChild: [AuthGuard] }
+            { path: 'booked-customer-list', component: BookedCustomerListComponent, canActivateChild: [AuthGuard] },
+            { path: 'checkout-form', component: CheckoutFormComponent, canActivateChild: [AuthGuard] }
         ],
     },
     {

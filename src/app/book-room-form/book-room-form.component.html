@@ -52,7 +52,7 @@
         </mat-form-field> -->
       </div>
       <div>
-        <button type="button" [disabled]="firstFormGroup.invalid" *ngIf="roomObject" (click)="calculateTotal()"
+        <button type="button" [disabled]="firstFormGroup.invalid" *ngIf="roomObject" (click)="calculateEditFormValues()"
           mat-button matStepperNext mat-flat-button>Next</button>
         <button type="button" [disabled]="firstFormGroup.invalid" *ngIf="!roomObject" mat-button matStepperNext
           mat-flat-button (click)="calculateEditFormValues()">Next</button>
@@ -85,19 +85,16 @@
         </mat-select>
       </mat-form-field>
       <br>
-      <button type="button" *ngIf="!roomObject" class="btn btn-default btn-sm roomInfoButton totalDisplayButton"
-        disabled>
+      <button type="button" class="btn btn-default btn-sm roomInfoButton totalDisplayButton" disabled>
         Total Room Amount <span *ngIf="totalRoomAmount > 999"> {{totalRoomAmount - totalGSTAmount}} + GST ({{GST}}%)
           {{totalGSTAmount}}
         </span> =
         {{totalRoomAmount}}
       </button>
-      <button type="button" *ngIf="!roomObject" class="btn btn-default btn-sm roomInfoButton totalDisplayButton"
-        disabled>
+      <button type="button" class="btn btn-default btn-sm roomInfoButton totalDisplayButton" disabled>
         Total Food Bill Amount = {{totalFoodBill}}
       </button>
-      <button type="button" *ngIf="!roomObject" class="btn btn-default btn-sm roomInfoButton totalDisplayButton"
-        disabled>
+      <button type="button" class="btn btn-default btn-sm roomInfoButton totalDisplayButton" disabled>
         Remaining Amount = {{remainingAmount}}
       </button>
       <br>

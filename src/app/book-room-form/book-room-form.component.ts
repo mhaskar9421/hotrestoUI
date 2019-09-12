@@ -115,7 +115,8 @@ export class BookRoomFormComponent implements OnInit {
         data => {
           if (data) {
             this.loading = false;
-            this.customerList = data;
+            this.customerList = data['customerList'];
+            this.GST = data['GST'];
           } else {
             this.loading = false;
             this.customerList = null;
@@ -189,8 +190,8 @@ export class BookRoomFormComponent implements OnInit {
   }
 
   calculateEditFormValues() {
-    // default set to zero to avoid mis calculation
     this.firstFormGroup.controls.foodbillamount.setValue(parseInt(this.firstFormGroup.controls.foodbillamount.value) ? parseInt(this.firstFormGroup.controls.foodbillamount.value) : 0);
+    this.thirdFormGroup.controls.paidamount.setValue(parseInt(this.thirdFormGroup.controls.paidamount.value) ? parseInt(this.thirdFormGroup.controls.paidamount.value) : 0);
     this.totalRoomAmount = parseInt(this.firstFormGroup.controls.roomamount.value) + parseInt(this.firstFormGroup.controls.extraoccupancy.value);
     if (this.totalRoomAmount > 999) {
       this.totalGSTAmount = this.totalRoomAmount * this.GST / 100;

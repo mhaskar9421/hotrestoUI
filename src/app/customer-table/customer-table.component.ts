@@ -28,7 +28,7 @@ export class CustomerTableComponent implements OnInit {
         data => {
           if (data) {
             this.loading = false;
-            this.customerList = data;
+            this.customerList = data['customerList'];
           } else {
             this.loading = false;
             this.customerList = null;
