@@ -36,6 +36,8 @@ export class BookRoomFormComponent implements OnInit {
   totalFoodBill: number;
   updatedTotal: number;
   totalGSTAmount: number;
+  totalNoOfDays: number;
+  totalRoomAmt: number;
   roomType: String;
   message: String;
   item: {};
@@ -53,10 +55,14 @@ export class BookRoomFormComponent implements OnInit {
       idnumber: [''],
       phonenumber: [''],
       address: [''],
+      noofdays: [''],
+      roomamt: [''],
       roomamount: [''],
       extraoccupancy: [''],
       foodbillnumber: [''],
-      foodbillamount: ['']
+      foodbillamount: [''],
+      checkinDate: [''],
+      checkoutDate: ['']
     });
     this.thirdFormGroup = this.formBuilder.group({
       billamount: ['', Validators.required],
@@ -72,60 +78,64 @@ export class BookRoomFormComponent implements OnInit {
     } else {
       this.data.currentItem
         .subscribe(
-          item => (
-            this.item = item,
-            this.firstFormGroup.controls.customerId.setValue(item['customer_id']),
-            this.firstFormGroup.controls.roomamount.setValue(item['room_charges']),
-            this.firstFormGroup.controls.extraoccupancy.setValue(item['extra_occupancy']),
-            this.firstFormGroup.controls.foodbillnumber.setValue(item['food_bill_number']),
-            this.firstFormGroup.controls.foodbillamount.setValue(item['food_bill_amount']),
-            this.thirdFormGroup.controls.paidamount.setValue(item['paid_amount']),
-            this.thirdFormGroup.controls.paymenttype.setValue(item['payment_mode']),
-            this.thirdFormGroup.controls.totalamount.setValue(item['grandTotal']),
-            this.thirdFormGroup.controls.paymentstatus.setValue(item['payment_status']),
-            this.remainingAmount = parseInt(item['grandTotal']) - parseInt(item['paid_amount']),
+        item => (
+          this.item = item,
+          this.firstFormGroup.controls.customerId.setValue(item['customer_id']),
+          this.firstFormGroup.controls.roomamount.setValue(item['room_charges']),
+          this.firstFormGroup.controls.checkinDate.setValue(item['checkin_date']),
+          this.firstFormGroup.controls.checkoutDate.setValue(item['checkout_date']),
+          this.firstFormGroup.controls.noofdays.setValue(item['totalNoOfDays']),
+          this.firstFormGroup.controls.roomamt.setValue(item['roomamt']),
+          this.firstFormGroup.controls.extraoccupancy.setValue(item['extra_occupancy']),
+          this.firstFormGroup.controls.foodbillnumber.setValue(item['food_bill_number']),
+          this.firstFormGroup.controls.foodbillamount.setValue(item['food_bill_amount']),
+          this.thirdFormGroup.controls.paidamount.setValue(item['paid_amount']),
+          this.thirdFormGroup.controls.paymenttype.setValue(item['payment_mode']),
+          this.thirdFormGroup.controls.totalamount.setValue(item['grandTotal']),
+          this.thirdFormGroup.controls.paymentstatus.setValue(item['payment_status']),
+          this.remainingAmount = parseInt(item['grandTotal']) - parseInt(item['paid_amount']),
+          this.totalNoOfDays = (this.firstFormGroup.controls.noofdays.(parseInt(item['checkin_date']) - parseInt(item['checkout_date'])),
             this.GST = item['GST'],
             this.totalFoodBill = item['food_bill_amount'],
             this.totalRoomAmount = item['totalRoomCharges'],
             this.totalGSTAmount = item['totalGSTAmount']
           ),
-        );
+      );
     }
   }
-
 
   editBooking() {
     this.data.setBookingFormValue(false);
     this.bookroomformService.updateBookingInfo(this.firstFormGroup.value, this.thirdFormGroup.value, this.item['booking_id'])
       .subscribe(
-        data => {
-          if (data) {
-            console.log(data);
-          }
-        },
-        error => {
-          console.log(error);
-        });
+      data => {
+        if (data) {
+          console.log(data);
+        }
+      },
+      error => {
+        console.log(error);
+      });
   }
 
   viewCustomerDetails() {
     this.loading = true;
     this.customerService.viewCustomerDetails()
       .subscribe(
-        data => {
-          if (data) {
-            this.loading = false;
-            this.customerList = data['customerList'];
-            this.GST = data['GST'];
-          } else {
-            this.loading = false;
-            this.customerList = null;
-          }
-        },
-        error => {
-          console.log(error);
+      data => {
+        if (data) {
           this.loading = false;
-        });
+          this.customerList = data['customerList'];
+          this.GST = data['GST'];
+        } else {
+          this.loading = false;
+          this.customerList = null;
+        }
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+      });
   }
 
   onSubmit() {
@@ -157,20 +167,20 @@ export class BookRoomFormComponent implements OnInit {
     }
     this.bookroomformService.bookRoom(this.bookForm)
       .subscribe(
-        data => {
-          console.log(data);
-          this.loading = false;
-          this._snackBar.open(this.constants.roomBooked, '', {
-            duration: 5000,
-            horizontalPosition: 'right',
-            verticalPosition: 'top'
-          });
-          this.router.navigate(['dashboard/booked-customer-list']);
-        },
-        error => {
-          console.log(error);
-          this.loading = false;
+      data => {
+        console.log(data);
+        this.loading = false;
+        this._snackBar.open(this.constants.roomBooked, '', {
+          duration: 5000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
         });
+        this.router.navigate(['dashboard/booked-customer-list']);
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+      });
   }
 
   move(index: number) {
@@ -200,6 +210,7 @@ export class BookRoomFormComponent implements OnInit {
     this.totalFoodBill = parseInt(this.firstFormGroup.controls.foodbillamount.value);
     this.thirdFormGroup.controls.totalamount.setValue(this.totalRoomAmount + parseInt(this.firstFormGroup.controls.foodbillamount.value));
     this.remainingAmount = (this.totalRoomAmount + parseInt(this.firstFormGroup.controls.foodbillamount.value)) - parseInt(this.thirdFormGroup.controls.paidamount.value);
+    this.totalNoOfDays = parseInt(this.firstFormGroup.controls.checkinDate.value) - parseInt(this.firstFormGroup.controls.checkoutDate.value);
   }
 
   calculateTotal() {

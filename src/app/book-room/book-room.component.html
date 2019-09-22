@@ -1,26 +1,22 @@
 <div class="form-group">
   <mat-form-field>
-    <input matInput [matDatepicker]="picker1" [min]="minDate" [max]="maxDate" name="checkinDate"
-      [(ngModel)]="checkinDate" placeholder="Checkin date">
+    <input matInput [matDatepicker]="picker1" [min]="minDate" [max]="maxDate" name="checkinDate" [(ngModel)]="checkinDate" placeholder="Checkin date">
     <mat-datepicker-toggle matSuffix [for]="picker1">
     </mat-datepicker-toggle>
     <mat-datepicker #picker1></mat-datepicker>
   </mat-form-field>
   <mat-form-field>
-    <input matInput [matDatepicker]="picker2" [min]="minDate" [max]="maxDate" name="checkoutDate"
-      [(ngModel)]="checkoutDate" placeholder="Checkout date">
+    <input matInput [matDatepicker]="picker2" [min]="minDate" [max]="maxDate" name="checkoutDate" [(ngModel)]="checkoutDate"
+      placeholder="Checkout date">
     <mat-datepicker-toggle matSuffix [for]="picker2">
     </mat-datepicker-toggle>
     <mat-datepicker #picker2></mat-datepicker>
   </mat-form-field>
-  <button type="button" (click)="getAvaliableRooms()" data-sticky="true" class="btn btn-secondary searchBtn"
-    tabindex="3">
+  <button type="button" (click)="getAvaliableRooms()" data-sticky="true" class="btn btn-secondary searchBtn" tabindex="3">
     Search &nbsp;
   </button>
 </div>
-<app-room-table *ngIf="!formView" activeTab="book-room" [roomList]="roomList" (formEvent)="receiveEvent($event, item)"
-  tabTitle="Avaliable Rooms List">
+<app-room-table *ngIf="!formView" activeTab="book-room" [roomList]="roomList" (formEvent)="receiveEvent($event, item)" tabTitle="Avaliable Rooms List">
 </app-room-table>
-<app-book-room-form *ngIf="formView" activeTab="book-room-form" [roomObject]="roomObject"
-  (formEvent)="receiveEvent($event)">
+<app-book-room-form *ngIf="formView" activeTab="book-room-form" [roomObject]="roomObject" (formEvent)="receiveEvent($event)">
 </app-book-room-form>

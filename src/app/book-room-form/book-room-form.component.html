@@ -8,20 +8,43 @@
           <mat-option *ngFor="let item of customerList" value="{{item.customer_id}}">{{item.customer_name}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <button type="button" *ngIf="roomObject" (click)="viewCustomerForm()" data-sticky="true"
-        class="btn btn-secondary btn-xs addCustomerBtn">
-        <span *ngIf="!viewCustomer"><i class="fa fa-plus"></i> Add Customer</span>
-        <span *ngIf="viewCustomer"><i class="fa fa-bars"></i> Customer List</span>
+      <button type="button" *ngIf="roomObject" (click)="viewCustomerForm()" data-sticky="true" class="btn btn-secondary btn-xs addCustomerBtn">
+        <span *ngIf="!viewCustomer">
+          <i class="fa fa-plus"></i> Add Customer</span>
+        <span *ngIf="viewCustomer">
+          <i class="fa fa-bars"></i> Customer List</span>
       </button>
+      <div *ngIf="!roomObject">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker1" [min]="minDate" [max]="maxDate" name="checkinDate" formControlName="checkinDate"
+            placeholder="Checkin date" required>
+          <mat-datepicker-toggle matSuffix [for]="picker1">
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker2" [min]="minDate" [max]="maxDate" name="checkoutDate" formControlName="checkoutDate"
+            placeholder="Checkout date" required>
+          <mat-datepicker-toggle matSuffix [for]="picker2">
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
       <mat-form-field>
         <input matInput placeholder="Room Charges" type="number" formControlName="roomamount" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="No.of Days" formControlName="noofdays"> {{noOfDays}}
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Room Amt as per no of day " formControlName="roomamt">
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Extra Occupancy Charges" type="number" formControlName="extraoccupancy" required>
       </mat-form-field>
       <button type="button" *ngIf="roomObject" class="btn btn-default btn-sm roomInfoButton" disabled>
-        Room No : {{roomNumber}} <br>
-        Room Type : {{roomType}}
+        Room No : {{roomNumber}}
+        <br> Room Type : {{roomType}}
       </button>
       <br>
       <mat-form-field>
@@ -52,10 +75,9 @@
         </mat-form-field> -->
       </div>
       <div>
-        <button type="button" [disabled]="firstFormGroup.invalid" *ngIf="roomObject" (click)="calculateEditFormValues()"
-          mat-button matStepperNext mat-flat-button>Next</button>
-        <button type="button" [disabled]="firstFormGroup.invalid" *ngIf="!roomObject" mat-button matStepperNext
-          mat-flat-button (click)="calculateEditFormValues()">Next</button>
+        <button type="button" [disabled]="firstFormGroup.invalid" *ngIf="roomObject" (click)="calculateEditFormValues()" mat-button
+          matStepperNext mat-flat-button>Next</button>
+        <button type="button" [disabled]="firstFormGroup.invalid" *ngIf="!roomObject" mat-button matStepperNext mat-flat-button (click)="calculateEditFormValues()">Next</button>
       </div>
     </form>
   </mat-step>
@@ -86,10 +108,9 @@
       </mat-form-field>
       <br>
       <button type="button" class="btn btn-default btn-sm roomInfoButton totalDisplayButton" disabled>
-        Total Room Amount <span *ngIf="totalRoomAmount > 999"> {{totalRoomAmount - totalGSTAmount}} + GST ({{GST}}%)
-          {{totalGSTAmount}}
-        </span> =
-        {{totalRoomAmount}}
+        Total Room Amount
+        <span *ngIf="totalRoomAmount > 999"> {{totalRoomAmount - totalGSTAmount}} + GST ({{GST}}%) {{totalGSTAmount}}
+        </span> = {{totalRoomAmount}}
       </button>
       <button type="button" class="btn btn-default btn-sm roomInfoButton totalDisplayButton" disabled>
         Total Food Bill Amount = {{totalFoodBill}}
