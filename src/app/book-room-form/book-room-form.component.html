@@ -2,45 +2,42 @@
   <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
     <form class="form" [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()">
       <ng-template matStepLabel>Booking Info</ng-template>
-      <mat-form-field *ngIf="!viewCustomer">
-        <mat-label>Customer List</mat-label>
-        <mat-select matNativeControl formControlName="customerId">
-          <mat-option *ngFor="let item of customerList" value="{{item.customer_id}}">{{item.customer_name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button type="button" *ngIf="roomObject" (click)="viewCustomerForm()" data-sticky="true" class="btn btn-secondary btn-xs addCustomerBtn">
-        <span *ngIf="!viewCustomer">
-          <i class="fa fa-plus"></i> Add Customer</span>
-        <span *ngIf="viewCustomer">
-          <i class="fa fa-bars"></i> Customer List</span>
-      </button>
       <div *ngIf="!roomObject">
         <mat-form-field>
-          <input matInput [matDatepicker]="picker1" [min]="minDate" [max]="maxDate" name="checkinDate" formControlName="checkinDate"
+          <input matInput [matDatepicker]="picker1" [min]="minDate" [max]="maxDate" name="checkinDate"
+            formControlName="checkinDate" (ngModelChange)="calculateTotalRoomAmount($event, 'CI')"
             placeholder="Checkin date" required>
           <mat-datepicker-toggle matSuffix [for]="picker1">
           </mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [matDatepicker]="picker2" [min]="minDate" [max]="maxDate" name="checkoutDate" formControlName="checkoutDate"
+          <input matInput [matDatepicker]="picker2" [min]="minDate" [max]="maxDate" name="checkoutDate"
+            formControlName="checkoutDate" (ngModelChange)="calculateTotalRoomAmount($event, 'CO')"
             placeholder="Checkout date" required>
           <mat-datepicker-toggle matSuffix [for]="picker2">
           </mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
       </div>
+      <mat-form-field *ngIf="!viewCustomer">
+        <mat-label>Customer List</mat-label>
+        <mat-select matNativeControl formControlName="customerId">
+          <mat-option *ngFor="let item of customerList" value="{{item.customer_id}}">{{item.customer_name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button type="button" *ngIf="roomObject" (click)="viewCustomerForm()" data-sticky="true"
+        class="btn btn-secondary btn-xs addCustomerBtn">
+        <span *ngIf="!viewCustomer">
+          <i class="fa fa-plus"></i> Add Customer</span>
+        <span *ngIf="viewCustomer">
+          <i class="fa fa-bars"></i> Customer List</span>
+      </button>
       <mat-form-field>
-        <input matInput placeholder="Room Charges" type="number" formControlName="roomamount" required>
+        <input matInput placeholder="Food Bill Number" formControlName="foodbillnumber">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="No.of Days" formControlName="noofdays"> {{noOfDays}}
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Room Amt as per no of day " formControlName="roomamt">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Extra Occupancy Charges" type="number" formControlName="extraoccupancy" required>
+        <input matInput placeholder="Food Bill Amount" type="number" formControlName="foodbillamount">
       </mat-form-field>
       <button type="button" *ngIf="roomObject" class="btn btn-default btn-sm roomInfoButton" disabled>
         Room No : {{roomNumber}}
@@ -48,10 +45,17 @@
       </button>
       <br>
       <mat-form-field>
-        <input matInput placeholder="Food Bill Number" formControlName="foodbillnumber">
+        <input matInput #txtVal placeholder="Room charges per day" type="number"
+          (keyup)="calculateTotalRoomAmount($event.target.value)" formControlName="roomamount" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Food Bill Amount" type="number" formControlName="foodbillamount">
+        <input matInput placeholder="No of Days" formControlName="noofdays"> {{noOfDays}}
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Total Room Amount" formControlName="roomamt">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Extra Occupancy Charges" type="number" formControlName="extraoccupancy" required>
       </mat-form-field>
       <br>
       <div *ngIf="viewCustomer">
@@ -75,9 +79,10 @@
         </mat-form-field> -->
       </div>
       <div>
-        <button type="button" [disabled]="firstFormGroup.invalid" *ngIf="roomObject" (click)="calculateEditFormValues()" mat-button
-          matStepperNext mat-flat-button>Next</button>
-        <button type="button" [disabled]="firstFormGroup.invalid" *ngIf="!roomObject" mat-button matStepperNext mat-flat-button (click)="calculateEditFormValues()">Next</button>
+        <button type="button" [disabled]="firstFormGroup.invalid" *ngIf="roomObject" (click)="calculateEditFormValues()"
+          mat-button matStepperNext mat-flat-button>Next</button>
+        <button type="button" [disabled]="firstFormGroup.invalid" *ngIf="!roomObject" mat-button matStepperNext
+          mat-flat-button (click)="calculateEditFormValues()">Next</button>
       </div>
     </form>
   </mat-step>
@@ -122,8 +127,10 @@
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="move(0)" *ngIf="roomObject">Edit Booking</button>
-        <button mat-button mat-flat-button (click)="onSubmit()" *ngIf="roomObject">Book Now</button>
-        <button mat-button mat-flat-button (click)="editBooking()" *ngIf="!roomObject">Save</button>
+        <button mat-button mat-flat-button (click)="onSubmit()" [disabled]="thirdFormGroup.invalid"
+          *ngIf="roomObject">Book Now</button>
+        <button mat-button mat-flat-button (click)="editBooking()" [disabled]="thirdFormGroup.invalid"
+          *ngIf="!roomObject">Save</button>
       </div>
     </form>
   </mat-step>

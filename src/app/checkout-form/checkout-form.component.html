@@ -41,8 +41,8 @@
                         <th>Room Number</th>
                         <th>Room Amount</th>
                         <th>Extra Occupancy</th>
-                        <th>GST %</th>
-                        <th>GST Amount</th>
+                        <th *ngIf="GSTAmount!=0">GST %</th>
+                        <th *ngIf="GSTAmount!=0">GST Amount</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,8 +50,8 @@
                         <td>{{room_name}} {{room_number}}</td>
                         <td>{{roomCharges}}</td>
                         <td>{{extraOccupancy}}</td>
-                        <td>{{GST}}</td>
-                        <td>{{GSTAmount}}</td>
+                        <td *ngIf="GSTAmount!=0">{{GST}}</td>
+                        <td *ngIf="GSTAmount!=0">{{GSTAmount}}</td>
                         <!-- <td class=" hidden-xs hidden-sm">{{item.customer_uploadImage}}</td> -->
                     </tr>
                 </tbody>
