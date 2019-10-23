@@ -39,6 +39,7 @@ export class BookRoomFormComponent implements OnInit {
   totalNoOfDays: number;
   totalRoomAmt: number;
   roomType: String;
+  noOfDays: number;
   message: String;
   item: {};
   @Output() formEvent = new EventEmitter<boolean>();
@@ -116,10 +117,11 @@ export class BookRoomFormComponent implements OnInit {
     if (type) {
       var timeDiff = (new Date(this.firstFormGroup.controls.checkoutDate.value).getTime() - new Date(this.firstFormGroup.controls.checkinDate.value).getTime());
       var DaysDiff = timeDiff / (1000 * 3600 * 24);
-      this.firstFormGroup.controls.noofdays.setValue(Math.ceil(DaysDiff));
+      this.firstFormGroup.controls.noofdays.setValue((DaysDiff));
     }
     var total = (parseInt(this.firstFormGroup.controls.roomamount.value) * parseInt(this.firstFormGroup.controls.noofdays.value));
     this.firstFormGroup.controls.roomamt.setValue(total);
+    // this.firstFormGroup.controls.roomamount.setValue('room_charges');
   }
 
   editBooking() {

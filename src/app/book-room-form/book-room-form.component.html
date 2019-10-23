@@ -46,10 +46,11 @@
       <br>
       <mat-form-field>
         <input matInput #txtVal placeholder="Room charges per day" type="number"
-          (keyup)="calculateTotalRoomAmount($event.target.value)" formControlName="roomamount" required>
+          (keyup)="calculateTotalRoomAmount($event.target.value, '')" formControlName="roomamount" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="No of Days" formControlName="noofdays"> {{noOfDays}}
+        <input matInput placeholder="No of Days" formControlName="noofdays"
+          (keyup)="calculateTotalRoomAmount($event.target.value, '')"> {{noOfDays}}
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Total Room Amount" formControlName="roomamt">
