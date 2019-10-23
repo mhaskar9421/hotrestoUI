@@ -32,6 +32,8 @@ export class BookRoomFormComponent implements OnInit {
   @Input() roomObject: Object;
   roomNumber: String;
   GST: number;
+  totalRoundUp: number;
+  totalGSTRoundUp: number;
   totalRoomAmount: number;
   totalFoodBill: number;
   updatedTotal: number;
@@ -224,8 +226,10 @@ export class BookRoomFormComponent implements OnInit {
     this.thirdFormGroup.controls.paidamount.setValue(parseInt(this.thirdFormGroup.controls.paidamount.value) ? parseInt(this.thirdFormGroup.controls.paidamount.value) : 0);
     this.totalRoomAmount = parseInt(this.firstFormGroup.controls.roomamt.value) + parseInt(this.firstFormGroup.controls.extraoccupancy.value);
     if (this.totalRoomAmount > 999) {
-      this.totalGSTAmount = this.totalRoomAmount * this.GST / 100;
-      this.totalRoomAmount = this.totalRoomAmount + this.totalGSTAmount;
+      this.totalGSTRoundUp = this.totalRoomAmount * this.GST / 100;
+      this.totalGSTAmount = Math.round(this.totalGSTRoundUp);
+      this.totalRoundUp = this.totalRoomAmount + this.totalGSTAmount;
+      this.totalRoomAmount = Math.round(this.totalRoundUp);
     }
     this.totalFoodBill = parseInt(this.firstFormGroup.controls.foodbillamount.value);
     this.thirdFormGroup.controls.totalamount.setValue(this.totalRoomAmount + parseInt(this.firstFormGroup.controls.foodbillamount.value));
